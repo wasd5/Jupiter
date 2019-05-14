@@ -98,15 +98,18 @@ def set_globals():
 	pricing_option 			= 'pricing' #original pricing
 	profiler_option         = 'multiple_home'
 
+	if PRICING == 0: #non-pricing
+		pricing_option 		= 'original'
+		print('Non pricing scheme selected')
 	if PRICING == 1:#multiple home (push circe)
 		pricing_option 		= 'pricing_push'
 		print('Pricing pushing scheme selected')
 	if PRICING == 2:#multiple home, pricing (event-driven circe)
 		pricing_option 		= 'pricing_event'
 		print('Pricing event driven scheme selected')
-	if PRICING == 0: #non-pricing
-		pricing_option 		= 'original'
-		print('Non pricing scheme selected')
+	if PRICING == 3: #non-pricing
+		pricing_option 		= 'pricing'
+		print('Pricing scheme selected')
 	CIRCE_PATH          	= HERE + 'circe/%s/'%(pricing_option)
 
 	print('CIRCE path-------------------------------------------')
@@ -142,15 +145,15 @@ def set_globals():
 	# APP_NAME                = 'app_specific_files/network_monitoring_app_dag'
 	# app_option 				= 'dag'
 
-	# HOME_CHILD              = 'task0'
-	# APP_PATH                = HERE  + 'app_specific_files/dummy_app/'
-	# APP_NAME                = 'app_specific_files/dummy_app'
-	# app_option 				= 'dummy'
+	HOME_CHILD              = 'task0'
+	APP_PATH                = HERE  + 'app_specific_files/dummy_app/'
+	APP_NAME                = 'app_specific_files/dummy_app'
+	app_option 				= 'dummy'
 
-	HOME_CHILD              = 'dummy'
-	APP_PATH                = HERE  + 'app_specific_files/MCPDAG/'
-	APP_NAME                = 'app_specific_files/MCPDAG'
-	app_option 				= 'mcp'
+	# HOME_CHILD              = 'dummy'
+	# APP_PATH                = HERE  + 'app_specific_files/MCPDAG/'
+	# APP_NAME                = 'app_specific_files/MCPDAG'
+	# app_option 				= 'mcp'
 
 
 	"""pricing CIRCE home and worker images"""

@@ -129,45 +129,49 @@ def k8s_jupiter_deploy(app_id,app_name,port):
         print('*************************')
 
         #Start the task to node mapper
-        
-        task_mapping_function(profiler_ips,execution_ips,node_names,app_name)
 
-        """
-            Make sure you run kubectl proxy --port=8080 on a terminal.
-            Then this is link to get the task to node mapping
-        """
+        if pricing != 3: 
+            task_mapping_function(profiler_ips,execution_ips,node_names,app_name)
 
-        line = "http://localhost:%d/api/v1/namespaces/"%(port)
-        line = line + jupiter_config.MAPPER_NAMESPACE + "/services/"+app_name+"-home:" + str(jupiter_config.FLASK_SVC) + "/proxy"
-        time.sleep(5)
-        print(line)
-        while 1:
-            try:
-                print("get the data from " + line)
-                time.sleep(5)
-                r = requests.get(line)
-                mapping = r.json()
-                data = json.dumps(mapping)
-                print(data)
-                if len(mapping) != 0:
-                    if "status" not in data:
-                        break
-            except Exception as e:
-                #print(e)
-                print("Will retry to get the mapping for app "+ app_name)
-                time.sleep(30)
+            """
+                Make sure you run kubectl proxy --port=8080 on a terminal.
+                Then this is link to get the task to node mapping
+            """
+
+            line = "http://localhost:%d/api/v1/namespaces/"%(port)
+            line = line + jupiter_config.MAPPER_NAMESPACE + "/services/"+app_name+"-home:" + str(jupiter_config.FLASK_SVC) + "/proxy"
+            time.sleep(5)
+            print(line)
+            while 1:
+                try:
+                    print("get the data from " + line)
+                    time.sleep(5)
+                    r = requests.get(line)
+                    mapping = r.json()
+                    data = json.dumps(mapping)
+                    print(data)
+                    if len(mapping) != 0:
+                        if "status" not in data:
+                            break
+                except Exception as e:
+                    #print(e)
+                    print("Will retry to get the mapping for app "+ app_name)
+                    time.sleep(30)
 
 
-        pprint(mapping)
-        schedule = utilities.k8s_get_hosts(path1, path2, mapping)
-        dag = utilities.k8s_read_dag(path1)
-        dag.append(mapping)
-        print("Printing DAG:")
-        pprint(dag)
-        print("Printing schedule")
-        pprint(schedule)
-        print("End print")
-        
+            pprint(mapping)
+            schedule = utilities.k8s_get_hosts(path1, path2, mapping)
+            print("Printing schedule")
+            pprint(schedule)
+            print("End print")
+            dag = utilities.k8s_read_dag(path1)
+            dag.append(mapping)
+            print("Printing DAG:")
+            pprint(dag)
+        else:
+            dag = utilities.k8s_read_dag(path1)
+            print("Printing DAG:")
+            pprint(dag)
     
     else:
         import static_assignment1 as st
@@ -178,6 +182,10 @@ def k8s_jupiter_deploy(app_id,app_name,port):
     if pricing == 0:
         print('Non pricing evaluation')
         k8s_circe_scheduler(dag,schedule,app_name)
+    elif pricing == 3:
+        print('New Pricing evaluation')
+        print(pricing)
+        k8s_pricing_circe_scheduler_new(dag,profiler_ips,execution_ips,app_name)
     else:
         print('Pricing evaluation')
         print(pricing)
