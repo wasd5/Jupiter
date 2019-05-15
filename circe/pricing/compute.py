@@ -33,6 +33,7 @@ import urllib
 from apscheduler.schedulers.background import BackgroundScheduler
 from readconfig import read_config
 from shutil import copyfile
+import datetime
 
 app = Flask(__name__)
 
@@ -148,7 +149,7 @@ def prepare_global_info():
 
 
     """Get information of corresponding profiler (network profiler, execution profiler)"""
-    global self_profiler_ip,profiler_ip, profiler_nodes,exec_home_ip, self_name,self_ip, task_controllers, task_controllers_ips, home_ips,home_ids, home_ip_map
+    global self_profiler_ip,profiler_ip, profiler_nodes,exec_home_ip, self_name,self_ip, task_controllers, task_controllers_ips, home_ips,home_ids, home_ip_map, node_ip_map
     profiler_ip = os.environ['ALL_PROFILERS'].split(' ')
     profiler_ip = [info.split(":") for info in profiler_ip]
     profiler_ip = profiler_ip[0][1:]
@@ -172,6 +173,7 @@ def prepare_global_info():
 
     computing_nodes = os.environ['ALL_COMPUTING_NODES'].split(':')
     computing_ips = os.environ['ALL_COMPUTING_IPS'].split(':')
+    node_ip_map = dict(zip(computing_nodes, computing_ips))
 
     global manager,task_mul, count_mul, queue_mul, size_mul,next_mul, files_mul, controllers_id_map, task_node_map
 
@@ -184,6 +186,13 @@ def prepare_global_info():
     files_mul = manager.dict()
     controllers_id_map = manager.dict()
     task_node_map = manager.dict()
+
+    global task_price_cpu, task_price_mem, task_price_queue, task_price_net
+    task_price_cpu = manager.dict()
+    task_price_mem = manager.dict()
+    task_price_queue = manager.dict()
+    task_price_net = manager.dict()
+    
 
     global home_node_host_ports, dag
     home_node_host_ports = dict()
@@ -200,6 +209,11 @@ def prepare_global_info():
 
     global tasks, task_order, super_tasks, non_tasks
     tasks, task_order, super_tasks, non_tasks = get_taskmap()
+    print('----------- TASKS INFO')
+    print(tasks)
+    print(task_order)
+    print(super_tasks)
+    print(non_tasks)
 
 
     global ip_profilers_map,profilers_ip_map, controllers_ip_map, computing_ip_map, profilers_ip_homes
@@ -272,7 +286,8 @@ def prepare_global_info():
 
 
     
-
+    global pass_time
+    pass_time = dict()
     
     
 
@@ -898,35 +913,36 @@ def announce_price(price):
             print(e)
             return "not ok"
 
-def push_updated_price():
-    """Push my current price to all the task controllers
-    """
-    # print('***********')
-    # print(task_controllers)
-    # print(controllers_ip_map)
-    # for idx,task in enumerate(task_controllers):
-    #     if task in home_ids: continue
-    #     if task in super_tasks: continue 
-    #     if task in non_tasks: continue 
-    price = price_aggregate(task)
-        # print('Uhmmmm')
-        # print(task)
-        # print(controllers_ip_map)
-        # print(controllers_ip_map[task])
-        # print(price)
-    announce_price(price)
+# def push_updated_price():
+#     """Push my current price to all the task controllers
+#     """
+#     # print('***********')
+#     # print(task_controllers)
+#     # print(controllers_ip_map)
+#     # for idx,task in enumerate(task_controllers):
+#     for task in tasks:
+#         if task in home_ids: continue
+#         if task in super_tasks: continue 
+#         if task in non_tasks: continue 
+#         price = price_aggregate(task)
+#         # print('Uhmmmm')
+#         # print(task)
+#         # print(controllers_ip_map)
+#         # print(controllers_ip_map[task])
+#         # print(price)
+#         announce_price(price)
 
     
-def schedule_update_price(interval):
-    """Schedule the price update procedure every interval
+# def schedule_update_price(interval):
+#     """Schedule the price update procedure every interval
     
-    Args:
-        interval (int): chosen interval (minutes)
-    """
-    # scheduling updated price
-    sched = BackgroundScheduler()
-    sched.add_job(push_updated_price,'interval',id='push_price', minutes=interval, replace_existing=True)
-    sched.start()
+#     Args:
+#         interval (int): chosen interval (minutes)
+#     """
+#     # scheduling updated price
+#     sched = BackgroundScheduler()
+#     sched.add_job(push_updated_price,'interval',id='push_price', minutes=interval, replace_existing=True)
+#     sched.start()
 
 def execute_task(home_id,task_name,file_name, filenames, input_path, output_path):
     """Execute the task given the input information
@@ -1413,7 +1429,7 @@ def main():
     _thread.start_new_thread(update_exec_profile_file,())
 
 
-    _thread.start_new_thread(schedule_update_price,(update_interval,))
+    # _thread.start_new_thread(schedule_update_price,(update_interval,))
     # Update pricing information every interval
 
     #monitor INPUT as another process
