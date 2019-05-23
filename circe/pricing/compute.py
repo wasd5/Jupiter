@@ -175,7 +175,14 @@ def prepare_global_info():
     computing_ips = os.environ['ALL_COMPUTING_IPS'].split(':')
     node_ip_map = dict(zip(computing_nodes, computing_ips))
 
-    global manager,task_mul, count_mul, queue_mul, size_mul,next_mul, files_mul, controllers_id_map, task_node_map
+    global combined_ip_map
+
+    combined_nodes = home_ids + computing_nodes
+    combined_ips = home_ips + computing_ips
+    combined_ip_map = dict(zip(combined_nodes,combined_ips))
+
+    global manager,task_mul, count_mul, queue_mul, size_mul,next_mul, files_mul, controllers_id_map, task_node_map, pass_time
+    
 
     manager = Manager()
     task_mul = manager.dict() # list of incoming tasks and files
@@ -186,13 +193,14 @@ def prepare_global_info():
     files_mul = manager.dict()
     controllers_id_map = manager.dict()
     task_node_map = manager.dict()
+    pass_time = manager.dict()
 
-    global task_price_cpu, task_price_mem, task_price_queue, task_price_net
+    global task_price_cpu, task_price_mem, task_price_queue, task_price_net, my_task_price_net
     task_price_cpu = manager.dict()
     task_price_mem = manager.dict()
     task_price_queue = manager.dict()
     task_price_net = manager.dict()
-    
+    my_task_price_net = manager.dict()
 
     global home_node_host_ports, dag
     home_node_host_ports = dict()
@@ -214,6 +222,9 @@ def prepare_global_info():
     print(task_order)
     print(super_tasks)
     print(non_tasks)
+
+    # for task in tasks:
+    #     my_task_price_net[task] = dict()    
 
 
     global ip_profilers_map,profilers_ip_map, controllers_ip_map, computing_ip_map, profilers_ip_homes
@@ -238,7 +249,8 @@ def prepare_global_info():
     #     if task in super_tasks:
     #         computing_ip_map[task] = controllers_ip_map[task]
 
-    # print(computing_ip_map)  
+
+
 
     global next_tasks_map,last_tasks_map
     next_tasks_map = dict()
@@ -286,8 +298,7 @@ def prepare_global_info():
 
 
     
-    global pass_time
-    pass_time = dict()
+    
     
     
 
@@ -349,21 +360,21 @@ def prepare_global_info():
 #     return "ok"
 # app.add_url_rule('/update_controller_map', 'update_controller_map', update_controller_map)
 
-def receive_assignment_info():
-    """
-        Receive corresponding best nodes from the corresponding computing node
-    """
-    try:
-        assignment_info = request.args.get('assignment_info').split('#')
-        # print("Received assignment info")
-        task_node_map[assignment_info[0]] = assignment_info[1]
-        # print(task_node_map)
-    except Exception as e:
-        print("Bad reception or failed processing in Flask for assignment announcement: "+ e) 
-        return "not ok" 
+# def receive_assignment_info():
+#     """
+#         Receive corresponding best nodes from the corresponding computing node
+#     """
+#     try:
+#         assignment_info = request.args.get('assignment_info').split('#')
+#         # print("Received assignment info")
+#         task_node_map[assignment_info[0]] = assignment_info[1]
+#         # print(task_node_map)
+#     except Exception as e:
+#         print("Bad reception or failed processing in Flask for assignment announcement: "+ e) 
+#         return "not ok" 
 
-    return "ok"
-app.add_url_rule('/receive_assignment_info', 'receive_assignment_info', receive_assignment_info)
+#     return "ok"
+# app.add_url_rule('/receive_assignment_info', 'receive_assignment_info', receive_assignment_info)
 
 def update_exec_profile_file():
     """Update the execution profile from the home execution profiler's MongoDB and store it in text file.
@@ -493,7 +504,7 @@ def get_updated_resource_profile():
         print("Resource request failed. Will try again, details: " + str(e))
         return -1
 
-def price_aggregate(task_name):
+def price_aggregate():
     """Calculate price required to perform the task based on network information, resource information, execution information and task queue size and sample size
     
     Returns:
@@ -531,7 +542,7 @@ def price_aggregate(task_name):
         network_info = get_updated_network_profile()
         # print('--------------3')
         # print(network_info)
-        test_size = cal_file_size('/centralized_scheduler/1botnet.ipsum')
+        # test_size = cal_file_size('/centralized_scheduler/1botnet.ipsum')
         
         
         # print('----- Calculating price:')
@@ -555,35 +566,55 @@ def price_aggregate(task_name):
 
         # print('--- Network cost:----------- ')
         # print(task_name)
-        test_output = execution_info[task_name][1]
-        # print(test_output)
 
         price['network'] = dict()
-        for node in network_info:
-            # print('==')
-            # print(node)
-            # print(network_info[node])
-            computing_params = network_info[node].split(' ')
-            # print('====')
-            # print(computing_params)
-            computing_params = [float(x) for x in computing_params]
-            # print(computing_params)
-            p = (computing_params[0] * test_output * test_output) + (computing_params[1] * test_output) + computing_params[2]
-            # print(p)
-            # print(node)
-            price['network'][node] = p
+        # print(tasks)
+        # print(network_info)
+        
+        for task in tasks:
+            if task in home_ids: continue
+            if task in super_tasks: continue 
+            if task in non_tasks: continue 
+            test_output = execution_info[task][1]
+            # print(test_output)
+            tmp_price = sys.maxsize
+            tmp_node = -1
+            for node in network_info:
+                # print(test_output)
+                # print('==')
+                # print(node)
+                # print(network_info[node])
+                computing_params = network_info[node].split(' ')
+                # print('====')
+                # print(computing_params)
+                computing_params = [float(x) for x in computing_params]
+                # print(computing_params)
+                p = (computing_params[0] * test_output * test_output) + (computing_params[1] * test_output) + computing_params[2]
+                # print('update my network price')
+                # print(node)
+                # print(p)
+                my_task_price_net[(task,node)] = p
+                if p < tmp_price:
+                    tmp_price = p
+                    tmp_node = node
+            price['network'][task] = str(tmp_price)
             
-        # print(price['network'])
-        # print('-----------------')
+            task_node_map[task] = tmp_node #next best compute for a specific task
+            # print(price['network'][task])
+
+
+            
+        
+        print('-----------------')
         print('Overall price:')
+        print(task_node_map)
+        # print(price['network'])
         print(price)
         return price
              
     except:
         print('Error reading input information to calculate the price')
         
-    return price
-
 def receive_price_info():
     """
         Receive price from every computing node, choose the most suitable computing node 
@@ -600,16 +631,28 @@ def receive_price_info():
         task_price_queue[node_name] = float(pricing_info[3].split('$')[0])
         price_net_info = pricing_info[3].split('$')[1:]
         # print(price_net_info)
+        # print('------------')
+        # print(pricing_info[3].split('$'))
+        # print('------------1')
         for price in price_net_info:
+            # print('------------2')
             # print(price)
-            # print(node_name)
-            # print(price.split('%')[0])
-            # print(price.split('%')[1])
-            task_price_net[node_name,price.split('%')[0]] = float(price.split('%')[1])
+            # # print(node_name)
+            # print(price.split(':')[0]) #task
+            # print(price.split(':')[1]) #price
+            # print('------------3')
+            task_price_net[node_name,price.split(':')[0]] = float(price.split(':')[1])
+        # print('------------1')
         # print(task_price_net)
-        # print('Check price updated interval ')
+
+        # print('&&&&&&&&&&')
+        # print(task_price_net.keys())
+        print('Check price updated interval ')
         # print(node_name)
         pass_time[node_name] = TimedValue()
+        # print('^^^^')
+        # # print(pass_time)
+        # print(pass_time.keys())
 
 
     except Exception as e:
@@ -619,14 +662,18 @@ def receive_price_info():
     return "ok"
 app.add_url_rule('/receive_price_info', 'receive_price_info', receive_price_info) 
 
-def default_best_node():
-    """select the current best node
-    """
+
+def predict_best_node(next_task):
+    # print('***************************************************')
     print('Select the current best node')
+    print(next_task)
+    # t = tic()
     w_net = 1 # Network profiling: longer time, higher price
-    w_cpu = 1 # Resource profiling : larger cpu resource, lower price
-    w_mem = 1 # Resource profiling : larger mem resource, lower price
+    w_cpu = 100000 # Resource profiling : larger cpu resource, lower price
+    w_mem = 100000 # Resource profiling : larger mem resource, lower price
     w_queue = 1 # Queue : currently 0
+    # print('-----------------Current ratio')
+    # print(w_mem)
     best_node = -1
     task_price_network= dict()
     # print('----------')
@@ -634,95 +681,198 @@ def default_best_node():
     # print(task_price_mem)
     # print(task_price_queue)
     # print(task_price_net)
-    # print(len(task_price_net))
-    # print(source_node)
+    # # print(len(task_price_net))
+    # # print(source_node)
+    # # print('DEBUG')
 
-    # case that have multiple parents: temporarily choose the lowest index???
-    # print('----------------------------??????')
-    # print(last_tasks_map)
-    # print(self_task)
-    # print(last_tasks_map[self_task])
-    temp_parents = [x for x in last_tasks_map[self_task] if x not in super_tasks]
+    # # I am the source node
+    # # print(my_task)
+    # print('--------5')
+    # print(self_name)
+    # print(next_task)
+    # print(task_price_net.keys())
+    # from next node 
+    for (source, nTask), price in task_price_net.items():
+        # print('***')
+        # print(source)
+        if nTask == next_task:
+            # print('hehehehe')
+            # print(source)
+            # print(dest)
+            # print(task_price_net[source,dest])
+            task_price_network[source]= float(task_price_net[source,nTask])
 
-    # print(temp_parents)
-    # print(task_node_map)
     
-    if temp_parents[0] not in task_node_map:
-    #if last_tasks_map[self_task][0] not in task_node_map:
-        print('Parent tasks not available yet!!!!')
-    else:
-        print('Parent tasks')
-        # print(last_tasks_map[self_task])
-        # print(last_tasks_map[self_task][0])
-        source_node = task_node_map[temp_parents[0]]
-        # source_node = task_node_map[last_tasks_map[self_task][0]]
-        # print('Current best compute node of parent tasks')
-        # print(source_node)
-        # print('DEBUG')
-        # print(task_price_net)
-        for (source, dest), price in task_price_net.items():
-            if source == source_node:
-                # print('hehehhehheheh')
-                # print(source_node)
-                task_price_network[dest]= price
-        
-        task_price_network[source_node] = 0 #the same node
-        # print('uhmmmmmmm')
-        # print(task_price_network)
-        # print(task_price_cpu)
-        # print(self_id)
-        # print(self_task)
-        # print(self_name)
-        # print(task_price_network.keys())
-        # print(task_price_cpu.keys())
-        # print(len(task_price_network.keys()))
-        # print(len(task_price_cpu.keys()))
-        # print('CPU utilization')
-        # print(task_price_cpu)
-        # print('Memory utilization')
-        # print(task_price_mem)
-        # print('Queue cost')
-        # print(task_price_queue)
-        # print('Network cost')
-        # print(task_price_network)
-        # print(task_price_network.keys())
-        if len(task_price_network.keys())>1: #net(node,home) not exist
-            
-            # print('------------2')
-            # print(task_price_network)
-            # print('Available task price information')
-            task_price_summary = dict()
-            # print(task_price_cpu.items())
-            # print(task_price_network)
-            # print(home_ids)
-            for item, p in task_price_cpu.items():
-                # print('---')
-                # print(item)
-                # print(p)
-                if item in home_ids: continue
-                #check time pass
-                # print('Check passing time------------------')
-                # print(item)
+    # print('uhmmmmmmm')
+    
+    task_price_network[self_name] = 0 #the same node
 
-                test = pass_time[item].__call__()
-                # print(test)
-                if test==True: 
-                    # print('Yeahhhhhhhhhhhhhhhhhhhhhh')
-                    task_price_network[item] = float('Inf')
-                # print(task_price_network[item])
-                task_price_summary[item] = task_price_cpu[item]*w_cpu +  task_price_mem[item]*w_mem + task_price_queue[item]*w_queue + task_price_network[item]*w_net
-                # print(task_price_summary[item])
-            # print('------------3')
+    # print('price of home node')
+    
+    # print(task_price_cpu)
+
+    # print('------------3')
+    # print('CPU utilization')
+    # print(task_price_cpu)
+    # print('Memory utilization')
+    # print(task_price_mem)
+    # print('Queue cost')
+    # print(task_price_queue)
+    # print('Network cost')
+    # print(task_price_network)
+    # print(my_task_price_net.keys())
+    # print(my_task_price_net)
+    # print(task_price_cpu.items())
+    if len(task_price_network.keys())>1: #net(node,home) not exist
+        #print('------------2')
+        task_price_summary = dict()
+        
+        for item, p in task_price_cpu.items():
+            # print('---')
+            # print(item)
+            # print(p)
+            if item in home_ids: continue
+            # print(task_price_cpu[item])
+            # print(task_price_mem[item])
+            # print(task_price_queue[item])
+            # print(task_price_network[item])
+
+            # check time pass
+            # print('Check passing time------------------')
+            # print(pass_time.keys())
+            test = pass_time[item].__call__()
+            # print(test)
+            if test==True: 
+                # print('Yeahhhhhhhhhhhhhhhhhhhhhh')
+                task_price_network[item] = float('Inf')
+            # print(task_price_network[item])
             
-            print('Summary cost')
-            print(task_price_summary)
-            if task_price_summary:
-                #print(task_price_summary)
-                best_node = min(task_price_summary,key=task_price_summary.get)
-                print(best_node)
-                task_node_map[self_task] = best_node   
-        else:
-            print('Task price summary is not ready yet.....') 
+            # print(task_price_cpu[item])
+            # print(task_price_queue[item])
+            # print(task_price_mem[item])
+            # print(task_price_network[item])
+            task_price_summary[item] = task_price_cpu[item]*w_cpu +  task_price_mem[item]*w_mem + task_price_queue[item]*w_queue + task_price_network[item]*w_net
+            # print(task_price_summary[item])
+        
+        print('Summary cost')
+        print(task_price_summary)
+        best_node = min(task_price_summary,key=task_price_summary.get)
+        print('Best node')
+        print(best_node)
+
+        # txec = toc(t)
+        # bottleneck['selectbest'].append(txec)
+        # print(np.mean(bottleneck['selectbest']))
+        # print('***************************************************')
+    else:
+        print('Task price summary is not ready yet.....') 
+    return best_node
+
+#OLD
+# def predict_best_node():
+#     """select the current best node
+#     """
+#     print('Select the current best node')
+#     w_net = 1 # Network profiling: longer time, higher price
+#     w_cpu = 1 # Resource profiling : larger cpu resource, lower price
+#     w_mem = 1 # Resource profiling : larger mem resource, lower price
+#     w_queue = 1 # Queue : currently 0
+#     best_node = -1
+#     task_price_network= dict()
+#     # print('----------')
+#     # print(task_price_cpu)
+#     # print(task_price_mem)
+#     # print(task_price_queue)
+#     # print(task_price_net)
+#     # print(len(task_price_net))
+#     # print(source_node)
+
+#     # case that have multiple parents: temporarily choose the lowest index???
+#     # print('----------------------------??????')
+#     # print(last_tasks_map)
+#     # print(self_task)
+#     # print(last_tasks_map[self_task])
+#     temp_parents = [x for x in last_tasks_map[self_task] if x not in super_tasks]
+
+#     # print(temp_parents)
+#     # print(task_node_map)
+    
+#     if temp_parents[0] not in task_node_map:
+#     #if last_tasks_map[self_task][0] not in task_node_map:
+#         print('Parent tasks not available yet!!!!')
+#     else:
+#         print('Parent tasks')
+#         # print(last_tasks_map[self_task])
+#         # print(last_tasks_map[self_task][0])
+#         source_node = task_node_map[temp_parents[0]]
+#         # source_node = task_node_map[last_tasks_map[self_task][0]]
+#         # print('Current best compute node of parent tasks')
+#         # print(source_node)
+#         # print('DEBUG')
+#         # print(task_price_net)
+#         for (source, dest), price in task_price_net.items():
+#             if source == source_node:
+#                 # print('hehehhehheheh')
+#                 # print(source_node)
+#                 task_price_network[dest]= price
+        
+#         task_price_network[source_node] = 0 #the same node
+#         # print('uhmmmmmmm')
+#         # print(task_price_network)
+#         # print(task_price_cpu)
+#         # print(self_id)
+#         # print(self_task)
+#         # print(self_name)
+#         # print(task_price_network.keys())
+#         # print(task_price_cpu.keys())
+#         # print(len(task_price_network.keys()))
+#         # print(len(task_price_cpu.keys()))
+#         # print('CPU utilization')
+#         # print(task_price_cpu)
+#         # print('Memory utilization')
+#         # print(task_price_mem)
+#         # print('Queue cost')
+#         # print(task_price_queue)
+#         # print('Network cost')
+#         # print(task_price_network)
+#         # print(task_price_network.keys())
+#         if len(task_price_network.keys())>1: #net(node,home) not exist
+            
+#             # print('------------2')
+#             # print(task_price_network)
+#             # print('Available task price information')
+#             task_price_summary = dict()
+#             # print(task_price_cpu.items())
+#             # print(task_price_network)
+#             # print(home_ids)
+#             for item, p in task_price_cpu.items():
+#                 # print('---')
+#                 # print(item)
+#                 # print(p)
+#                 if item in home_ids: continue
+#                 #check time pass
+#                 # print('Check passing time------------------')
+#                 # print(item)
+
+#                 test = pass_time[item].__call__()
+#                 # print(test)
+#                 if test==True: 
+#                     # print('Yeahhhhhhhhhhhhhhhhhhhhhh')
+#                     task_price_network[item] = float('Inf')
+#                 # print(task_price_network[item])
+#                 task_price_summary[item] = task_price_cpu[item]*w_cpu +  task_price_mem[item]*w_mem + task_price_queue[item]*w_queue + task_price_network[item]*w_net
+#                 # print(task_price_summary[item])
+#             # print('------------3')
+            
+#             print('Summary cost')
+#             print(task_price_summary)
+#             if task_price_summary:
+#                 #print(task_price_summary)
+#                 best_node = min(task_price_summary,key=task_price_summary.get)
+#                 print(best_node)
+#                 task_node_map[self_task] = best_node   
+#         else:
+#             print('Task price summary is not ready yet.....') 
 
 # def default_best_node(source_node):
 #     # print('***************************************************')
@@ -809,77 +959,77 @@ def default_best_node():
 #         print('Task price summary is not ready yet.....') 
     # return best_node
 
-def predict_best_node(source_node):
-    """Select the best node from price information of all nodes, either default or customized from user price file
-    """
-    #if PRICE_OPTION ==0: #default
-    best_node = default_best_node(source_node)
-    return best_node
+# def predict_best_node(source_node):
+#     """Select the best node from price information of all nodes, either default or customized from user price file
+#     """
+#     #if PRICE_OPTION ==0: #default
+#     best_node = default_best_node(source_node)
+#     return best_node
 
-def receive_best_assignment_request():
-    try:
-        # print('***************************************************')
-        # print("------ Receive request of best assignment")
-        # t = tic()
-        home_id = request.args.get('home_id')
-        source_node = request.args.get('node_name')
-        file_name = request.args.get('file_name')
-        source_key = request.args.get('key')
-        # print('***')
-        # print(home_id)
-        # print(source_node)
-        # print(file_name)
-        # print(source_key)
-        best_node = predict_best_node(source_node)
-        # print(best_node)
-        # print('******')
-        # txec = toc(t)
-        # bottleneck['receiveassign'].append(txec)
-        # print(np.mean(bottleneck['receiveassign']))
-        # print('***************************************************')
-        # print('Announce ---')
+# def receive_best_assignment_request():
+#     try:
+#         # print('***************************************************')
+#         # print("------ Receive request of best assignment")
+#         # t = tic()
+#         home_id = request.args.get('home_id')
+#         source_node = request.args.get('node_name')
+#         file_name = request.args.get('file_name')
+#         source_key = request.args.get('key')
+#         # print('***')
+#         # print(home_id)
+#         # print(source_node)
+#         # print(file_name)
+#         # print(source_key)
+#         best_node = predict_best_node(source_node)
+#         # print(best_node)
+#         # print('******')
+#         # txec = toc(t)
+#         # bottleneck['receiveassign'].append(txec)
+#         # print(np.mean(bottleneck['receiveassign']))
+#         # print('***************************************************')
+#         # print('Announce ---')
         
-        announce_best_assignment(home_id,best_node, source_node, file_name,source_key)
+#         announce_best_assignment(home_id,best_node, source_node, file_name,source_key)
         
-    except Exception as e:
-        print("Sending assignment message to flask server on computing node FAILED!!!")
-        print(e)
-        return "not ok"
-    return "ok"
-app.add_url_rule('/receive_best_assignment_request', 'receive_best_assignment_request', receive_best_assignment_request)
+#     except Exception as e:
+#         print("Sending assignment message to flask server on computing node FAILED!!!")
+#         print(e)
+#         return "not ok"
+#     return "ok"
+# app.add_url_rule('/receive_best_assignment_request', 'receive_best_assignment_request', receive_best_assignment_request)
 
-def announce_best_assignment(home_id,best_node, source_node, file_name,source_key):
-    try:
-        # print('***************************************************')
-        # print("Announce the best computing node for my task:" + self_task)
-        # t = tic()
-        # print(node_ip_map)
-        # print(source_node)
-        # print(self_task)
-        # print(best_node)
-        # print(file_name)
-        # print(source_key)
-        # print(node_ip_map[source_key])
-        url = "http://" + node_ip_map[source_key] + ":" + str(FLASK_SVC) + "/receive_best_assignment"
-        # print(url)
-        params = {'home_id':home_id,'task_name':self_task,'file_name':file_name,'best_computing_node':best_node}
-        params = urllib.parse.urlencode(params)
-        req = urllib.request.Request(url='%s%s%s' % (url, '?', params))
-        # print(req)
-        res = urllib.request.urlopen(req)
-        # print(res)
-        res = res.read()
-        res = res.decode('utf-8')
-        # print(res)
+# def announce_best_assignment(home_id,best_node, source_node, file_name,source_key):
+#     try:
+#         # print('***************************************************')
+#         # print("Announce the best computing node for my task:" + self_task)
+#         # t = tic()
+#         # print(node_ip_map)
+#         # print(source_node)
+#         # print(self_task)
+#         # print(best_node)
+#         # print(file_name)
+#         # print(source_key)
+#         # print(node_ip_map[source_key])
+#         url = "http://" + node_ip_map[source_key] + ":" + str(FLASK_SVC) + "/receive_best_assignment"
+#         # print(url)
+#         params = {'home_id':home_id,'task_name':self_task,'file_name':file_name,'best_computing_node':best_node}
+#         params = urllib.parse.urlencode(params)
+#         req = urllib.request.Request(url='%s%s%s' % (url, '?', params))
+#         # print(req)
+#         res = urllib.request.urlopen(req)
+#         # print(res)
+#         res = res.read()
+#         res = res.decode('utf-8')
+#         # print(res)
 
-        # txec = toc(t)
-        # bottleneck['announcebest'].append(txec)
-        # # print(np.mean(bottleneck['announcebest']))
-        # print('***************************************************')
-    except Exception as e:
-        print("Sending assignment information to flask server on computing nodes FAILED!!!")
-        print(e)
-        return "not ok"
+#         # txec = toc(t)
+#         # bottleneck['announcebest'].append(txec)
+#         # # print(np.mean(bottleneck['announcebest']))
+#         # print('***************************************************')
+#     except Exception as e:
+#         print("Sending assignment information to flask server on computing nodes FAILED!!!")
+#         print(e)
+#         return "not ok"
 
 def announce_price(price):
     """Announce my current price to the task controller given its IP
@@ -888,61 +1038,81 @@ def announce_price(price):
         task_controller_ip (str): IP of the task controllers
         price: my current price
     """
-    for node in node_ip_map:
-        try:
+    print('Announce my price')
+    for node_id in combined_ip_map:
+        # print('------------')
+        # print(node_id)
+        # print(self_name)
 
+        if node_id == self_name: continue
+        try:
+            # print('------------2')
             # print("Announce my price")
-            url = "http://" + node_ip_map[node] + ":" + str(FLASK_SVC) + "/receive_price_info"
+            url = "http://" + combined_ip_map[node_id] + ":" + str(FLASK_SVC) + "/receive_price_info"
             pricing_info = self_name+"#"+str(price['cpu'])+"#"+str(price['memory'])+"#"+str(price['queue'])
-            for node in price['network']:
-                # print(node)
-                # print(price['network'][node])
-                pricing_info = pricing_info + "$"+node+"%"+str(price['network'][node])
-            
             # print(pricing_info)
+            # print('===')
+            # print(price['network'])
+            for task in price['network']:
+                # print(task)
+                # print(price['network'][task])
+                pricing_info = pricing_info + "$"+task+":"+price['network'][task]
+            # print('====1')
+            # print(pricing_info)
+            # print('-------------4')
             # print(url)
             # print(task_controller_ip)
             params = {'pricing_info':pricing_info}
             params = urllib.parse.urlencode(params)
+            # print('-------------5')
+            # print(url)
+            # print(params)
             req = urllib.request.Request(url='%s%s%s' % (url, '?', params))
             res = urllib.request.urlopen(req)
+            # print('-------------6')
             res = res.read()
             res = res.decode('utf-8')
+            # print('------------3')
         except Exception as e:
-            print("Sending price message to flask server on controller node FAILED!!!")
+            print("Sending price message to flask server on other compute nodes FAILED!!!")
+            print(node_id)
             print(e)
             return "not ok"
 
-# def push_updated_price():
-#     """Push my current price to all the task controllers
-#     """
-#     # print('***********')
-#     # print(task_controllers)
-#     # print(controllers_ip_map)
-#     # for idx,task in enumerate(task_controllers):
-#     for task in tasks:
-#         if task in home_ids: continue
-#         if task in super_tasks: continue 
-#         if task in non_tasks: continue 
-#         price = price_aggregate(task)
-#         # print('Uhmmmm')
-#         # print(task)
-#         # print(controllers_ip_map)
-#         # print(controllers_ip_map[task])
-#         # print(price)
-#         announce_price(price)
+def push_updated_price():
+    """Push my current price to all the task controllers
+    """
+    # print('***********')
+    # print(task_controllers)
+    # print(controllers_ip_map)
+    # for idx,task in enumerate(task_controllers):
+
+    # for task in tasks:
+    #     if task in home_ids: continue
+    #     if task in super_tasks: continue 
+    #     if task in non_tasks: continue 
+    price = price_aggregate()
+    # print('-----------------')
+    # print('Uhmmmm')
+    # print(task)
+    # print(controllers_ip_map)
+    # print(controllers_ip_map[task])
+    # print(price)
+    # print(task)
+    # print(price)
+    announce_price(price)
 
     
-# def schedule_update_price(interval):
-#     """Schedule the price update procedure every interval
+def schedule_update_price(interval):
+    """Schedule the price update procedure every interval
     
-#     Args:
-#         interval (int): chosen interval (minutes)
-#     """
-#     # scheduling updated price
-#     sched = BackgroundScheduler()
-#     sched.add_job(push_updated_price,'interval',id='push_price', minutes=interval, replace_existing=True)
-#     sched.start()
+    Args:
+        interval (int): chosen interval (minutes)
+    """
+    # scheduling updated price
+    sched = BackgroundScheduler()
+    sched.add_job(push_updated_price,'interval',id='push_price', minutes=interval, replace_existing=True)
+    sched.start()
 
 def execute_task(home_id,task_name,file_name, filenames, input_path, output_path):
     """Execute the task given the input information
@@ -1197,16 +1367,18 @@ class Handler1(FileSystemEventHandler):
             # print(next_tasks_map[task_name])
             # print(next_tasks_map[task_name][0])
             if next_tasks_map[task_name][0] in home_ids: 
-                # print('----- next step is home')
+                print('----- next step is home')
                 transfer_data(home_ip_map[home_id],username,password,event.src_path, "/output/"+new_file)   
             else:
-                # print('----- next step is not home')
+                print('----- next step is not home')
                 # print(task_node_map)
-                next_hosts =  [task_node_map[x] for x in next_tasks_map[task_name]]
+                next_hosts = [predict_best_node(x) for x in next_tasks_map[task_name]]
+                # next_hosts =  [task_node_map[x] for x in next_tasks_map[task_name]]
                 next_IPs   = [computing_ip_map[x] for x in next_hosts]
                 
-                # print(next_hosts)
+                print(next_hosts)
                 # print(next_IPs)
+                
                 # print(next_tasks_map[task_name])
                 # print(flag)
 
@@ -1253,6 +1425,124 @@ class Handler1(FileSystemEventHandler):
                                 # # print(cmd)
                                 # os.system(cmd)
                                 copyfile(files_mul[key][idx],destinations)
+
+#OLD
+# class Handler1(FileSystemEventHandler):
+
+
+#     @staticmethod
+#     def on_any_event(event):
+#         """
+#             Check for any event in the ``OUTPUT`` folder
+#         """
+#         if event.is_directory:
+#             return None
+
+#         elif event.event_type == 'created':
+             
+#             print("Received file as output - %s." % event.src_path)
+
+
+#             new_file = os.path.split(event.src_path)[-1]
+
+#             if '_' in new_file:
+#                 temp_name = new_file.split('_')[0]
+#             else:
+#                 temp_name = new_file.split('.')[0]
+
+            
+#             ts = time.time()
+            
+#             if RUNTIME == 1:
+#                 s = "{:<10} {:<10} {:<10} {:<10} \n".format(self_name,transfer_type,event.src_path,ts)
+#                 runtime_receiver_log.write(s)
+#                 runtime_receiver_log.flush()
+
+#             # print(event.src_path.split('#'))
+#             task_name = event.src_path.split('/')[-3]
+#             home_id = event.src_path.split('/')[-2]
+#             # print('!!!!!!!!!!!!!!!!!------------------')
+#             # print(home_id)
+#             # print(task_name)
+#             input_name = retrieve_input_finish(task_name, temp_name)
+#             runtime_info = 'rt_finish '+ input_name + ' '+str(ts)
+#             # print(input_name)
+#             send_runtime_profile_computingnode(runtime_info,task_name,home_id)
+#             key = (home_id,task_name,input_name)
+#             # print('#############')
+#             # print(next_mul)
+#             # print(key)
+#             flag = next_mul[key][0]
+#             # print(next_tasks_map)
+#             # print(next_tasks_map[task_name])
+#             # print(flag)
+#             # print('#############')
+#             # print(next_mul)
+#             #flag = next_mul[key][0]
+#             # print(next_tasks_map)
+#             # print(next_tasks_map[task_name])
+#             # print(flag)
+
+#             # print(next_tasks_map)
+#             # print(next_tasks_map[task_name])
+#             # print(next_tasks_map[task_name][0])
+#             if next_tasks_map[task_name][0] in home_ids: 
+#                 # print('----- next step is home')
+#                 transfer_data(home_ip_map[home_id],username,password,event.src_path, "/output/"+new_file)   
+#             else:
+#                 # print('----- next step is not home')
+#                 # print(task_node_map)
+#                 next_hosts =  [task_node_map[x] for x in next_tasks_map[task_name]]
+#                 next_IPs   = [computing_ip_map[x] for x in next_hosts]
+                
+#                 # print(next_hosts)
+#                 # print(next_IPs)
+#                 # print(next_tasks_map[task_name])
+#                 # print(flag)
+
+#                 # print('Sending the output files to the corresponding destinations')
+#                 if flag=='true': 
+#                     #send a single output of the task to all its children 
+#                     destinations = ["/centralized_scheduler/input/" +x + "/"+home_id+"/"+new_file for x in next_tasks_map[task_name]]
+#                     #destinations = ["/centralized_scheduler/input/" +new_file +"#"+home_id +"#"+x for x in next_tasks_map[task_name]]
+#                     for idx,ip in enumerate(next_IPs):
+#                         # print('----')
+#                         # print(ip)
+#                         # print(destinations[idx])
+#                         if self_ip!=ip: # different node
+#                             transfer_data(ip,username,password,event.src_path, destinations[idx])
+#                         else: # same node
+#                             # cmd = "cp %s %s"%(event.src_path,destinations[idx])
+#                             # print(cmd)
+#                             # os.system(cmd)
+#                             copyfile(event.src_path, destinations[idx])
+#                 else:
+#                     #it will wait the output files and start putting them into queue, send frst output to first listed child, ....
+#                     if key not in files_mul:
+#                         files_mul[key] = [event.src_path]
+#                     else:
+#                         files_mul[key] = files_mul[key] + [event.src_path]
+#                     # print('-------------')
+#                     # print(files_mul[key])
+#                     # print(next_IPs)
+#                     # print(self_name)
+#                     # print(self_ip)
+#                     if len(files_mul[key]) == len(next_IPs):
+#                         for idx,ip in enumerate(next_IPs):
+#                             # print(files_mul[key][idx])
+#                             # print(next_tasks_map[task_name][idx])
+#                             current_file = files_mul[key][idx].split('/')[-1]
+#                             # print(current_file)
+#                             # destinations = "/centralized_scheduler/input/" +current_file +"#"+home_id+"#"+next_tasks_map[task_name][idx]
+#                             destinations = "/centralized_scheduler/input/" +next_tasks_map[task_name][idx]+"/"+home_id+"/"+current_file
+#                             # print(destinations)
+#                             if self_ip!=ip:
+#                                 transfer_data(ip,username,password,files_mul[key][idx], destinations)
+#                             else: 
+#                                 # cmd = "cp %s %s"%(files_mul[key][idx],destinations)
+#                                 # # print(cmd)
+#                                 # os.system(cmd)
+#                                 copyfile(files_mul[key][idx],destinations)
             
 
 #for INPUT folder
@@ -1429,7 +1719,7 @@ def main():
     _thread.start_new_thread(update_exec_profile_file,())
 
 
-    # _thread.start_new_thread(schedule_update_price,(update_interval,))
+    _thread.start_new_thread(schedule_update_price,(update_interval,))
     # Update pricing information every interval
 
     #monitor INPUT as another process

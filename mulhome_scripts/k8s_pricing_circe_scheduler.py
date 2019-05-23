@@ -670,6 +670,7 @@ def k8s_pricing_circe_scheduler_new(dag_info , profiler_ips, execution_ips,app_n
                                     all_computing_ips = all_computing_ips,
                                     # all_node = all_node,
                                     # all_node_ips = all_node_ips,
+                                    home_node_ip = home_nodes_str,
                                     profiler_ip= profiler_ips[key],
                                     all_profiler_ips = all_profiler_ips,
                                     all_profiler_nodes = all_profiler_nodes,
