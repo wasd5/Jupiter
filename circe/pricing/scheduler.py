@@ -568,11 +568,11 @@ def push_updated_price():
     # print('&&&&&&&&&&&&&&&&&')
     # print(price['network'])
     for dest in price['network']:
-        print('-----')
-        print(dest)
+        # print('-----')
+        # print(dest)
         task_price_net[my_task,dest]= price['network'][dest]
         pass_time[dest] = TimedValue()
-    print(task_price_net)
+    # print(task_price_net)
     # announce_price(price)
 
 def schedule_update_price(interval):
@@ -711,7 +711,7 @@ def predict_best_node():
     # # I am the source node
     # # print(my_task)
     # print(task_price_net.keys())
-    print(task_price_net)
+    # print(task_price_net)
     for (source, dest), price in task_price_net.items():
         # print('***')
         # print(source)
@@ -723,7 +723,7 @@ def predict_best_node():
             task_price_network[dest]= float(task_price_net[source,dest])
 
     
-    print('uhmmmmmmm')
+    # print('uhmmmmmmm')
     
     task_price_network[my_task] = 0 #the same node
 
@@ -741,14 +741,14 @@ def predict_best_node():
     # print('Network cost')
     # print(task_price_network)
     # print(task_price_cpu.items())
-    print(task_price_network)
+    # print(task_price_network)
     if len(task_price_network.keys())>1: #net(node,home) not exist
         #print('------------2')
         task_price_summary = dict()
         
         for item, p in task_price_cpu.items():
-            print('---')
-            print(item)
+            # print('---')
+            # print(item)
             # print(p)
             if item in home_ids: continue
             # print(task_price_cpu[item])
