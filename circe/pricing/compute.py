@@ -174,7 +174,7 @@ def prepare_global_info():
     computing_ips = os.environ['ALL_COMPUTING_IPS'].split(':')
     node_ip_map = dict(zip(computing_nodes, computing_ips))
 
-    global combined_ip_map
+    global combined_ip_map,combined_ips
 
     combined_nodes = home_ids + computing_nodes
     combined_ips = home_ips + computing_ips
@@ -193,10 +193,10 @@ def prepare_global_info():
     controllers_id_map = manager.dict()
     pass_time = manager.dict()
 
-    global local_task_node_map, global_task_node_map, other_task_node_map
+    global local_task_node_map, global_task_node_map
     local_task_node_map = manager.dict()
     global_task_node_map = manager.dict()
-    other_task_node_map = manager.dict()
+    
 
     global task_price_cpu, task_price_mem, task_price_queue, task_price_net, my_task_price_net
     task_price_cpu = manager.dict()
@@ -355,7 +355,7 @@ def send_assignment_info(node_ip,task_name,best_node):
         print("Announce my current best computing node " + node_ip)
         url = "http://" + node_ip + ":" + str(FLASK_SVC) + "/receive_assignment_info"
         assignment_info = self_name+"#"+task_name + "#"+best_node
-        # print(assignment_info)
+        print(assignment_info)
         params = {'assignment_info': assignment_info}
         params = urllib.parse.urlencode(params)
         # print(params)
@@ -369,6 +369,10 @@ def send_assignment_info(node_ip,task_name,best_node):
     except Exception as e:
         print("The computing node is not yet available. Sending assignment message to flask server on computing node FAILED!!!")
         print(e)
+        print(node_ip)
+        print(self_name)
+        print(task_name)
+        print(best_node)
         return "not ok"
 
 def push_assignment_map():
@@ -382,16 +386,20 @@ def push_assignment_map():
         print(task)
         best_node = predict_best_node(task)
         print(best_node)
-        local_task_node_map[task] = best_node
+        print('----')
+        print(self_name)
+        local_task_node_map[self_name,task] = best_node
     print(local_task_node_map)
-    for computing_ip in computing_ips:
+    # for computing_ip in computing_ips:
+    for computing_ip in combined_ips:
         print(computing_ip)
         for task in tasks:
             print(task)
-            if local_task_node_map[task]==-1:
+            print(local_task_node_map[self_name,task])
+            if local_task_node_map[self_name,task]==-1:
                 print('Best node has not been provided yet')
                 continue
-            send_assignment_info(computing_ip,task,local_task_node_map[task])
+            send_assignment_info(computing_ip,task,local_task_node_map[self_name,task])
         # print('*********************************************')
         # print('home nodes')
         # print(home_ips)
@@ -435,6 +443,7 @@ def schedule_update_global(interval):
 
 def update_global_assignment():
     print('Trying to update global assignment')
+    print(local_task_node_map)
 
 
 
@@ -445,8 +454,8 @@ def receive_assignment_info():
     try:
         assignment_info = request.args.get('assignment_info').split('#')
         # print("Received assignment info")
-        other_task_node_map[(assignment_info[0],assignment_info[1])] = assignment_info[2]
-        print(other_task_node_map)
+        local_task_node_map[(assignment_info[0],assignment_info[1])] = assignment_info[2]
+        print(local_task_node_map)
     except Exception as e:
         print("Bad reception or failed processing in Flask for assignment announcement: "+ e) 
         return "not ok" 

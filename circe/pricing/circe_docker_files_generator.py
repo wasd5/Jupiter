@@ -68,6 +68,8 @@ RUN chmod +x /start.sh
 RUN chmod +x /central_mongod
 ADD {app_file}/name_convert.txt /centralized_scheduler/name_convert.txt
 ADD {app_file}/sample_input/1botnet.ipsum /centralized_scheduler/1botnet.ipsum
+ADD {app_file}/scripts/config.json /centralized_scheduler/config.json
+ADD {app_file}/configuration.txt  /centralized_scheduler/dag.txt
 
 WORKDIR /
 

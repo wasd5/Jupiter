@@ -108,23 +108,120 @@ def return_output_files():
     return json.dumps(num_files)
 app.add_url_rule('/', 'return_output_files', return_output_files)
 
-
 def receive_assignment_info():
     """
         Receive corresponding best nodes from the corresponding computing node
     """
     try:
         assignment_info = request.args.get('assignment_info').split('#')
-        # print("-----------Received assignment info")
-        task_node_summary[assignment_info[0]] = assignment_info[1]
-        # print(task_node_summary)
-
+        # print("Received assignment info")
+        local_task_node_map[(assignment_info[0],assignment_info[1])] = assignment_info[2]
+        print(local_task_node_map)
     except Exception as e:
         print("Bad reception or failed processing in Flask for assignment announcement: "+ e) 
         return "not ok" 
 
     return "ok"
 app.add_url_rule('/receive_assignment_info', 'receive_assignment_info', receive_assignment_info)
+
+def send_assignment_info(node_ip,task_name,best_node):
+    """Send my current best compute node to the node given its IP
+    
+    Args:
+        node_ip (str): IP of the node
+    """
+    try:
+        print("Announce my current best computing node " + node_ip)
+        url = "http://" + node_ip + ":" + str(FLASK_SVC) + "/receive_assignment_info"
+        assignment_info = my_task+"#"+task_name + "#"+best_node
+        print(assignment_info)
+        params = {'assignment_info': assignment_info}
+        params = urllib.parse.urlencode(params)
+        # print(params)
+        req = urllib.request.Request(url='%s%s%s' % (url, '?', params))
+        # print(req)
+        res = urllib.request.urlopen(req)
+        # print(res)
+        res = res.read()
+        # print(res)
+        res = res.decode('utf-8')
+    except Exception as e:
+        print("The computing node is not yet available. Sending assignment message to flask server on computing node FAILED!!!")
+        print(e)
+        print(node_ip)
+        print(self_name)
+        print(task_name)
+        print(best_node)
+        return "not ok"
+
+def push_assignment_map():
+    """Update assignment periodically
+    """
+    print('Updated assignment periodically')
+    for task in tasks:
+        # print('*********************************************')
+        # print('update compute nodes')
+        # print(all_computing_nodes)
+        print(task)
+        best_node = predict_best_node(task)
+        print(best_node)
+        print('----')
+        print(my_task)
+        local_task_node_map[my_task,task] = best_node
+    print(local_task_node_map)
+    for computing_ip in all_computing_ips:
+        print(computing_ip)
+        for task in tasks:
+            print(task)
+            if local_task_node_map[my_task,task]==-1:
+                print('Best node has not been provided yet')
+                continue
+            send_assignment_info(computing_ip,task,local_task_node_map[my_task,task])
+
+def schedule_update_assignment(interval):
+    """
+    Schedulete the assignment update every interval
+    
+    Args:
+        interval (int): chosen interval (minutes)
+    
+    """
+    sched = BackgroundScheduler()
+    sched.add_job(push_assignment_map,'interval',id='assign_id', minutes=interval, replace_existing=True)
+    sched.start()
+
+def schedule_update_global(interval):
+    """
+    Schedulete the assignment update every interval
+    
+    Args:
+        interval (int): chosen interval (minutes)
+    
+    """
+    sched = BackgroundScheduler()
+    sched.add_job(update_global_assignment,'interval',id='assign_id', minutes=interval, replace_existing=True)
+    sched.start()
+
+def update_global_assignment():
+    print('Trying to update global assignment')
+    print(local_task_node_map)
+
+# def receive_assignment_info():
+#     """
+#         Receive corresponding best nodes from the corresponding computing node
+#     """
+#     try:
+#         assignment_info = request.args.get('assignment_info').split('#')
+#         # print("-----------Received assignment info")
+#         task_node_summary[assignment_info[0]] = assignment_info[1]
+#         # print(task_node_summary)
+
+#     except Exception as e:
+#         print("Bad reception or failed processing in Flask for assignment announcement: "+ e) 
+#         return "not ok" 
+
+#     return "ok"
+# app.add_url_rule('/receive_assignment_info', 'receive_assignment_info', receive_assignment_info)
 
 # def update_controller_map():
 #     """
@@ -687,9 +784,109 @@ class MyHandler(PatternMatchingEventHandler):
     def on_created(self, event):
         self.process(event)
 
-def predict_best_node():
+# def predict_best_node():
+#     # print('***************************************************')
+#     print('Select the current best node')
+#     # t = tic()
+#     w_net = 1 # Network profiling: longer time, higher price
+#     w_cpu = 100000 # Resource profiling : larger cpu resource, lower price
+#     w_mem = 100000 # Resource profiling : larger mem resource, lower price
+#     w_queue = 1 # Queue : currently 0
+#     # print('-----------------Current ratio')
+#     # print(w_mem)
+#     best_node = -1
+#     task_price_network= dict()
+#     # print('----------')
+#     # print(task_price_cpu)
+#     # print(task_price_mem)
+#     # print(task_price_queue)
+#     # print(task_price_net)
+#     # # print(len(task_price_net))
+#     # # print(source_node)
+#     # # print('DEBUG')
+
+#     # # I am the source node
+#     # # print(my_task)
+#     # print(task_price_net.keys())
+#     # print(task_price_net)
+#     for (source, dest), price in task_price_net.items():
+#         # print('***')
+#         # print(source)
+#         if source == my_task:
+#             # print('hehehehe')
+#             # print(source)
+#             # print(dest)
+#             # print(task_price_net[source,dest])
+#             task_price_network[dest]= float(task_price_net[source,dest])
+
+    
+#     # print('uhmmmmmmm')
+    
+#     task_price_network[my_task] = 0 #the same node
+
+#     # print('price of home node')
+    
+#     # print(task_price_cpu)
+
+#     # print('------------3')
+#     # print('CPU utilization')
+#     # print(task_price_cpu)
+#     # print('Memory utilization')
+#     # print(task_price_mem)
+#     # print('Queue cost')
+#     # print(task_price_queue)
+#     # print('Network cost')
+#     # print(task_price_network)
+#     # print(task_price_cpu.items())
+#     # print(task_price_network)
+#     if len(task_price_network.keys())>1: #net(node,home) not exist
+#         #print('------------2')
+#         task_price_summary = dict()
+        
+#         for item, p in task_price_cpu.items():
+#             # print('---')
+#             # print(item)
+#             # print(p)
+#             if item in home_ids: continue
+#             # print(task_price_cpu[item])
+#             # print(task_price_mem[item])
+#             # print(task_price_queue[item])
+#             # print(task_price_network[item])
+
+#             #check time pass
+#             # print('Check passing time------------------')
+#             # print(pass_time.keys())
+#             test = pass_time[item].__call__()
+#             # print(test)
+#             if test==True: 
+#                 # print('Yeahhhhhhhhhhhhhhhhhhhhhh')
+#                 task_price_network[item] = float('Inf')
+#             # print(task_price_network[item])
+            
+#             # print(task_price_cpu[item])
+#             # print(task_price_queue[item])
+#             # print(task_price_mem[item])
+#             # print(task_price_network[item])
+#             task_price_summary[item] = task_price_cpu[item]*w_cpu +  task_price_mem[item]*w_mem + task_price_queue[item]*w_queue + task_price_network[item]*w_net
+#             # print(task_price_summary[item])
+        
+#         print('Summary cost')
+#         print(task_price_summary)
+#         best_node = min(task_price_summary,key=task_price_summary.get)
+#         print(best_node)
+
+#         # txec = toc(t)
+#         # bottleneck['selectbest'].append(txec)
+#         # print(np.mean(bottleneck['selectbest']))
+#         # print('***************************************************')
+#     else:
+#         print('Task price summary is not ready yet.....') 
+#     return best_node
+
+def predict_best_node(task_name):
     # print('***************************************************')
     print('Select the current best node')
+    print(task_name)
     # t = tic()
     w_net = 1 # Network profiling: longer time, higher price
     w_cpu = 100000 # Resource profiling : larger cpu resource, lower price
@@ -710,17 +907,20 @@ def predict_best_node():
 
     # # I am the source node
     # # print(my_task)
+    # print('--------5')
+    # print(my_task)
+    # print(next_task)
     # print(task_price_net.keys())
-    # print(task_price_net)
-    for (source, dest), price in task_price_net.items():
+    # from next node 
+    for (source, task), price in task_price_net.items():
         # print('***')
         # print(source)
-        if source == my_task:
+        if task == task_name:
             # print('hehehehe')
             # print(source)
             # print(dest)
             # print(task_price_net[source,dest])
-            task_price_network[dest]= float(task_price_net[source,dest])
+            task_price_network[source]= float(task_price_net[source,task])
 
     
     # print('uhmmmmmmm')
@@ -740,8 +940,9 @@ def predict_best_node():
     # print(task_price_queue)
     # print('Network cost')
     # print(task_price_network)
+    # print(my_task_price_net.keys())
+    # print(my_task_price_net)
     # print(task_price_cpu.items())
-    # print(task_price_network)
     if len(task_price_network.keys())>1: #net(node,home) not exist
         #print('------------2')
         task_price_summary = dict()
@@ -756,7 +957,7 @@ def predict_best_node():
             # print(task_price_queue[item])
             # print(task_price_network[item])
 
-            #check time pass
+            # check time pass
             # print('Check passing time------------------')
             # print(pass_time.keys())
             test = pass_time[item].__call__()
@@ -776,6 +977,7 @@ def predict_best_node():
         print('Summary cost')
         print(task_price_summary)
         best_node = min(task_price_summary,key=task_price_summary.get)
+        print('Best node')
         print(best_node)
 
         # txec = toc(t)
@@ -879,43 +1081,89 @@ class Handler(FileSystemEventHandler):
             # print(new_file_name)
             t1 = time.time()
             # while not update_best[first_task,new_file_name]:
-            best_node = predict_best_node()
-            print(best_node)
-            while best_node==-1:
-                # print(update_best[first_task,new_file_name])
-                print('--- waiting for computing node assignment')
-                # request_best_assignment(my_task,first_task,new_file_name)
-                best_node = predict_best_node()
-                print(best_node)
-                time.sleep(1)
-                # request_best_assignment(my_task,first_task,new_file_name)
+            # best_node = predict_best_node()
+            # print(best_node)
+            # while best_node==-1:
+            #     # print(update_best[first_task,new_file_name])
+            #     print('--- waiting for computing node assignment')
+            #     # request_best_assignment(my_task,first_task,new_file_name)
+            #     best_node = predict_best_node()
+            #     print(best_node)
+            #     time.sleep(1)
+            #     # request_best_assignment(my_task,first_task,new_file_name)
                 
-            # print(time.time()-t1)
-            # print('---------- Now what')
-            # print(update_best[first_task,new_file_name])
-            # t1 = time.time()
-            # print(task_node_summary)
-            # print(node_ip_map)
+            # # print(time.time()-t1)
+            # # print('---------- Now what')
+            # # print(update_best[first_task,new_file_name])
+            # # t1 = time.time()
+            # # print(task_node_summary)
+            # # print(node_ip_map)
 
-            # IP = node_ip_map[task_node_summary[first_task,new_file_name]]
-            IP = node_ip_map[best_node]
-            # update_best[first_task] = False
+            # # IP = node_ip_map[task_node_summary[first_task,new_file_name]]
+            # IP = node_ip_map[best_node]
+            # # update_best[first_task] = False
 
-            #new_file_name = new_file_name+"#"+my_task+"#"+first_task+"#"+first_flag
+            # #new_file_name = new_file_name+"#"+my_task+"#"+first_task+"#"+first_flag
             
-            # print(new_file_name)
-            # print(time.time()-t1)
+            # # print(new_file_name)
+            # # print(time.time()-t1)
 
-            # print('^^^^^^^^^^^^^^^^^^^^^^')
-            # print(my_task)
-            # print(first_task)
-            # print(new_file_name)
-            # t1 = time.time()
-            source = event.src_path
-            destination = os.path.join('/centralized_scheduler', 'input', first_task,my_task,new_file_name)
-            transfer_data(IP,username, password,source, destination)
+            # # print('^^^^^^^^^^^^^^^^^^^^^^')
+            # # print(my_task)
+            # # print(first_task)
+            # # print(new_file_name)
+            # # t1 = time.time()
+            # source = event.src_path
+            # destination = os.path.join('/centralized_scheduler', 'input', first_task,my_task,new_file_name)
+            # transfer_data(IP,username, password,source, destination)
             
+def get_taskmap():
+    """Get the task map from ``config.json`` and ``dag.txt`` files.
+    
+    Returns:
+        - dict: tasks - DAG dictionary
+        - list: task_order - (DAG) task list in the order of execution
+        - list: super_tasks 
+        - list: non_tasks - tasks not belong to DAG
+    """
+    configs = json.load(open('centralized_scheduler/config.json'))
+    task_map = configs['taskname_map']
+    execution_map = configs['exec_profiler']
+    tasks_info = open('centralized_scheduler/dag.txt', "r")
 
+    task_order = []#create the  (DAG) task list in the order of execution
+    super_tasks = []
+    tasks = {} #create DAG dictionary
+    count = 0
+    non_tasks = []
+    for line in tasks_info:
+        if count == 0:
+            count += 1
+            continue
+
+        data = line.strip().split(" ")
+        if task_map[data[0]][1] == True and execution_map[data[0]] == False:
+            if data[0] not in super_tasks:
+                super_tasks.append(data[0])
+
+        if task_map[data[0]][1] == False and execution_map[data[0]] == False:
+            if data[0] not in non_tasks:
+                non_tasks.append(data[0])
+
+        if task_map[data[0]][1] == False:
+            continue
+
+        tasks.setdefault(data[0], [])
+        if data[0] not in task_order:
+            task_order.append(data[0])
+        for i in range(3, len(data)):
+            if  data[i] != 'home' and task_map[data[i]][1] == True :
+                tasks[data[0]].extend([data[i]])
+    print("tasks: ", tasks)
+    print("task order", task_order) #task_list
+    print("super tasks", super_tasks)
+    print("non tasks", non_tasks)
+    return tasks, task_order, super_tasks, non_tasks
 
 def main():
     """
@@ -956,6 +1204,15 @@ def main():
         runtime_receiver_log = open(os.path.join(os.path.dirname(__file__), 'runtime_transfer_receiver.txt'), "a")
         #Node_name, Transfer_Type, Source_path , Time_stamp
 
+    
+    global tasks, task_order, super_tasks, non_tasks
+    tasks, task_order, super_tasks, non_tasks = get_taskmap()
+    print('----------- TASKS INFO')
+    print(tasks)
+    print(task_order)
+    print(super_tasks)
+    print(non_tasks)
+
     global FLASK_DOCKER, FLASK_SVC, MONGO_SVC, username, password, ssh_port, num_retries, first_task
 
     FLASK_DOCKER   = int(config['PORT']['FLASK_DOCKER'])
@@ -967,10 +1224,8 @@ def main():
     num_retries = int(config['OTHER']['SSH_RETRY_NUM'])
     first_task  = os.environ['CHILD_NODES']
 
-    global task_node_summary, update_best
+    global manager, update_best
     manager = Manager()
-    task_node_summary = manager.dict()
-    # controllers_id_map = manager.dict()
     update_best = manager.dict()
 
     global task_price_cpu, task_price_mem, task_price_queue, task_price_net,pass_time
@@ -980,6 +1235,9 @@ def main():
     task_price_net = manager.dict()
     pass_time = manager.dict()
 
+    global local_task_node_map, global_task_node_map
+    local_task_node_map = manager.dict()
+    global_task_node_map = manager.dict()
     
     
 
@@ -1037,6 +1295,9 @@ def main():
 
     update_interval = 3
     _thread.start_new_thread(schedule_update_price,(update_interval,))
+    _thread.start_new_thread(schedule_update_assignment,(update_interval,))
+    time.sleep(30)
+    _thread.start_new_thread(schedule_update_global,(update_interval,))
 
     #monitor INPUT folder for the incoming files
     w = Watcher()
@@ -1045,7 +1306,8 @@ def main():
     web_server = MonitorRecv()
     web_server.start()
 
-    
+    time.sleep(30)
+    os.system('python3 evaluate.py')
 
     print("Starting the output monitoring system:")
     observer = Observer()
