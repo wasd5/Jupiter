@@ -1,11 +1,16 @@
  * Starting OpenBSD Secure Shell server sshd
    ...done.
------------------
-ubuntu-2gb-fra1-02-sfo2
-tasks:  {'task2': ['task5', 'task4', 'task6'], 'task3': ['task5', 'task4', 'task6'], 'task1': ['task4'], 'task4': ['task6'], 'task6': [], 'task5': ['task6'], 'task0': ['task1', 'task3', 'task2', 'task4']}
+tasks:  {'task3': ['task5', 'task4', 'task6'], 'task4': ['task6'], 'task6': [], 'task2': ['task5', 'task4', 'task6'], 'task5': ['task6'], 'task1': ['task4'], 'task0': ['task1', 'task3', 'task2', 'task4']}
 task order ['task0', 'task1', 'task2', 'task3', 'task4', 'task5', 'task6']
 super tasks []
 non tasks []
+----------- TASKS INFO
+{'task3': ['task5', 'task4', 'task6'], 'task4': ['task6'], 'task6': [], 'task2': ['task5', 'task4', 'task6'], 'task5': ['task6'], 'task1': ['task4'], 'task0': ['task1', 'task3', 'task2', 'task4']}
+['task0', 'task1', 'task2', 'task3', 'task4', 'task5', 'task6']
+[]
+[]
+SETTTT
+{'task3': {'task5', 'task4', 'task6'}, 'task4': {'task6'}, 'task6': set(), 'task2': {'task5', 'task4', 'task6'}, 'task5': {'task6'}, 'task1': {'task4'}, 'task0': {'task3', 'task1', 'task4', 'task2'}}
 Generating task folders for OUTPUT
 
 Generating task folders for INPUT
@@ -18,1072 +23,950 @@ Flask server started
  * Debug mode: off
  * Running on http://0.0.0.0:8888/ (Press CTRL+C to quit)
 Execution information has already been provided
-10.244.6.89 - - [31/Mar/2019 06:15:04] "GET /update_controller_map?controller_id_map=task0%23node2 HTTP/1.1" 200 -
-10.244.7.138 - - [31/Mar/2019 06:15:04] "GET /update_controller_map?controller_id_map=task2%23node3 HTTP/1.1" 200 -
-10.244.7.139 - - [31/Mar/2019 06:15:04] "GET /update_controller_map?controller_id_map=task1%23node3 HTTP/1.1" 200 -
-10.244.3.216 - - [31/Mar/2019 06:15:05] "GET /update_controller_map?controller_id_map=task6%23node1 HTTP/1.1" 200 -
-10.244.7.140 - - [31/Mar/2019 06:15:05] "GET /update_controller_map?controller_id_map=task4%23node3 HTTP/1.1" 200 -
-10.244.6.90 - - [31/Mar/2019 06:15:05] "GET /update_controller_map?controller_id_map=task5%23node2 HTTP/1.1" 200 -
-10.244.3.217 - - [31/Mar/2019 06:15:06] "GET /update_controller_map?controller_id_map=task3%23node1 HTTP/1.1" 200 -
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
-Received file as input - /centralized_scheduler/input/task0/home/8botnet.ipsum.
+Received pricing info
+Check price updated interval 
+10.244.6.94 - - [04/Jun/2019 15:52:01] "GET /receive_price_info?pricing_info=node6%2313.874070497344295%2345.37069048768708%230%24task0%3A142.05500501492116%24task1%3A138.34171289354182%24task2%3A140.6352712688946%24task3%3A137.47228586992367%24task5%3A138.41719509026026%24task4%3A138.94503218112604%24task6%3A136.8280318129497 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.3.211 - - [04/Jun/2019 15:52:02] "GET /receive_price_info?pricing_info=node3%2330.037361043982592%2354.0896568390527%230%24task3%3A180.9549286504593%24task4%3A180.82652789170768%24task6%3A181.04956458604542%24task0%3A180.5664931778461%24task5%3A180.87216323754535%24task2%3A180.68331129972285%24task1%3A180.8787243769372 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.11.89 - - [04/Jun/2019 15:52:02] "GET /receive_price_info?pricing_info=node12%238.217865765330725%2336.37952679864814%230%24task0%3A171.5863650666811%24task5%3A168.66545722764153%24task6%3A167.633710177534%24task3%3A167.90721996669927%24task4%3A169.08909875758147%24task1%3A168.60488008095047%24task2%3A170.44608041960757 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.8.37 - - [04/Jun/2019 15:52:02] "GET /receive_price_info?pricing_info=node9%239.209512312892334%2334.92216320618066%230%24task3%3A155.83580615877275%24task6%3A155.81894283636356%24task2%3A135.8236898023196%24task1%3A153.71358504511764%24task4%3A150.74406626023176%24task5%3A153.40939735967058%24task0%3A115.6769457562296 HTTP/1.1" 200 -
+-----------------
+Overall price:
+{'cpu': 7.350989859971015, 'memory': 34.816272332206744, 'network': {'task3': '146.7010092283787', 'task4': '146.95882502086332', 'task6': '146.52372787449923', 'task2': '147.2588640290565', 'task5': '146.86603879464917', 'task1': '146.85280528506414', 'task0': '147.51436571720208'}, 'queue': 0}
+Announce my price
+Updated assignment periodically
+Select the current best node
+task3
+Select the current best node
+task4
+Select the current best node
+task6
+Select the current best node
+task2
+Select the current best node
+task5
+Select the current best node
+task1
+Select the current best node
+task0
+Announce my current best computing node 10.111.31.48
+Receive assignment info
+['', 'task0', 'task1', 'task6', 'task3', 'task2', 'task4', 'task5']
+['', 'node9', 'node9', 'node9', 'node9', 'node9', 'node9', 'node9']
+10.244.12.251 - - [04/Jun/2019 15:52:03] "GET /receive_assignment_info?assignment_info=node13%23%3Atask0%3Atask1%3Atask6%3Atask3%3Atask2%3Atask4%3Atask5%23%3Anode9%3Anode9%3Anode9%3Anode9%3Anode9%3Anode9%3Anode9 HTTP/1.1" 200 -
+Announce my current best computing node 10.104.107.255
+Announce my current best computing node 10.106.62.79
+Announce my current best computing node 10.101.153.5
+Received pricing info
+Check price updated interval 
+10.244.15.70 - - [04/Jun/2019 15:52:04] "GET /receive_price_info?pricing_info=node18%237.942877836793818%2335.390342829550974%230%24task3%3A186.66557355367212%24task0%3A190.51020807815559%24task2%3A189.31968884851293%24task4%3A187.90168449174323%24task6%3A185.80590219512726%24task1%3A187.39536790696204%24task5%3A187.45871879483636 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task3', 'task0', 'task2', 'task4', 'task6', 'task1', 'task5']
+['', 'node9', 'node9', 'node9', 'node9', 'node9', 'node9', 'node9']
+10.244.15.70 - - [04/Jun/2019 15:52:04] "GET /receive_assignment_info?assignment_info=node18%23%3Atask3%3Atask0%3Atask2%3Atask4%3Atask6%3Atask1%3Atask5%23%3Anode9%3Anode9%3Anode9%3Anode9%3Anode9%3Anode9%3Anode9 HTTP/1.1" 200 -
+Announce my current best computing node 10.110.133.32
+Announce my current best computing node 10.103.177.107
+Received pricing info
+10.244.12.251 - - [04/Jun/2019 15:52:05] "GET /receive_price_info?pricing_info=node13%237.795509415741175%2334.733751810719255%230%24task0%3A131.08878957364098%24task2%3A131.60688071318572%24task6%3A133.35991422150397%24task3%3A133.1234519775778%24task1%3A132.65736523358726%24task4%3A132.35574045307553%24task5%3A132.6186476082461 HTTP/1.1" 200 -
+Check price updated interval 
+10.244.10.212 - - [04/Jun/2019 15:52:05] "GET /receive_assignment_info?assignment_info=node11%23%3Atask0%3Atask3%3Atask5%3Atask2%3Atask4%3Atask1%3Atask6%23%3Anode13%3Anode13%3Anode13%3Anode13%3Anode13%3Anode13%3Anode13 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task0', 'task3', 'task5', 'task2', 'task4', 'task1', 'task6']
+['', 'node13', 'node13', 'node13', 'node13', 'node13', 'node13', 'node13']
+Received pricing info
+Check price updated interval 
+10.244.10.212 - - [04/Jun/2019 15:52:06] "GET /receive_price_info?pricing_info=node11%237.952148720424918%2334.647271849348144%230%24task0%3A150.17229497398608%24task3%3A148.90498211346315%24task1%3A149.14337993092965%24task2%3A149.77682667060773%24task4%3A149.3093648930091%24task5%3A149.16412163442857%24task6%3A148.615085938316 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task3', 'task2', 'task4', 'task0', 'task1', 'task6', 'task5']
+['', 'node13', 'node13', 'node13', 'node13', 'node13', 'node13', 'node13']
+10.244.14.160 - - [04/Jun/2019 15:52:06] "GET /receive_assignment_info?assignment_info=node15%23%3Atask3%3Atask2%3Atask4%3Atask0%3Atask1%3Atask6%3Atask5%23%3Anode13%3Anode13%3Anode13%3Anode13%3Anode13%3Anode13%3Anode13 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task5', 'task3', 'task0', 'task2', 'task1', 'task6', 'task4']
+['', 'node13', 'node13', 'node13', 'node13', 'node13', 'node13', 'node13']
+10.244.13.190 - - [04/Jun/2019 15:52:06] "GET /receive_assignment_info?assignment_info=node14%23%3Atask5%3Atask3%3Atask0%3Atask2%3Atask1%3Atask6%3Atask4%23%3Anode13%3Anode13%3Anode13%3Anode13%3Anode13%3Anode13%3Anode13 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.4.167 - - [04/Jun/2019 15:52:06] "GET /receive_price_info?pricing_info=node17%237.168662481892808%2335.29541284403669%230%24task0%3A147.62687902396806%24task6%3A146.47182895239305%24task5%3A146.770172596827%24task4%3A146.89331346403324%24task1%3A146.75259501980725%24task2%3A147.29028291898433%24task3%3A146.5507040052369 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.13.190 - - [04/Jun/2019 15:52:07] "GET /receive_price_info?pricing_info=node14%238.619362626750366%2338.99396426846946%230%24task5%3A144.0768117599997%24task3%3A139.37386599803258%24task0%3A162.10919089055812%24task2%3A155.08570207912842%24task4%3A146.70053933730742%24task6%3A135.59515436198544%24task1%3A143.70141202261766 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.14.160 - - [04/Jun/2019 15:52:07] "GET /receive_price_info?pricing_info=node15%236.946280193236711%2338.617681159420265%230%24task3%3A147.02303525239617%24task2%3A147.5880166805907%24task4%3A147.284641706189%24task0%3A147.8454694137867%24task1%3A147.1771678689675%24task6%3A146.87600250899823%24task5%3A147.19059082918412 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task6', 'task0', 'task3', 'task5', 'task4', 'task2', 'task1']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.4.167 - - [04/Jun/2019 15:52:07] "GET /receive_assignment_info?assignment_info=node17%23%3Atask6%3Atask0%3Atask3%3Atask5%3Atask4%3Atask2%3Atask1%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.7.34 - - [04/Jun/2019 15:52:08] "GET /receive_price_info?pricing_info=node8%2311.224271844660212%2343.55447112927947%230%24task5%3A184.1848107838961%24task3%3A183.4916294179524%24task6%3A183.1027233808419%24task2%3A185.81414282925587%24task4%3A184.57226787664257%24task0%3A186.8586522789925%24task1%3A184.1294173107385 HTTP/1.1" 200 -
+Trying to update global assignment
+Not yet fully loaded local information
+Receive assignment info
+['', 'task5', 'task3', 'task0', 'task6', 'task1', 'task2', 'task4']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.5.218 - - [04/Jun/2019 15:52:44] "GET /receive_assignment_info?assignment_info=home%23%3Atask5%3Atask3%3Atask0%3Atask6%3Atask1%3Atask2%3Atask4%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.6.94 - - [04/Jun/2019 15:54:01] "GET /receive_price_info?pricing_info=node6%2313.875108538350235%2345.3712976362759%230%24task0%3A136.78898767398047%24task1%3A134.89922793907178%24task2%3A136.06529616394755%24task3%3A134.4581702866952%24task5%3A134.93754473845078%24task4%3A135.2056008750915%24task6%3A134.13168100889982 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.3.211 - - [04/Jun/2019 15:54:02] "GET /receive_price_info?pricing_info=node3%2330.03795267986479%2354.090439401255445%230%24task3%3A179.60764103517022%24task4%3A180.429676508107%24task6%3A179.01498149506764%24task0%3A182.1657492128632%24task5%3A180.13504957992384%24task2%3A181.3731815061802%24task1%3A180.09291771212457 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+Received pricing info
+Check price updated interval 
+10.244.11.89 - - [04/Jun/2019 15:54:02] "GET /receive_price_info?pricing_info=node12%238.218475639170252%2336.380366618427544%230%24task0%3A168.07371242014642%24task5%3A164.28573285043106%24task6%3A162.9448912621364%24task3%3A163.30048148919593%24task4%3A164.8358681996177%24task1%3A164.2070479961162%24task2%3A166.596353851685 HTTP/1.1" 200 -
+10.244.8.37 - - [04/Jun/2019 15:54:02] "GET /receive_price_info?pricing_info=node9%239.209985528219981%2334.9228654124458%230%24task3%3A148.5912150688105%24task6%3A148.65455144486106%24task2%3A148.27476442960824%24task1%3A148.5018845765178%24task4%3A148.44093505024804%24task5%3A148.4942123346172%24task0%3A148.1404747229873 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task0', 'task5', 'task4', 'task3', 'task6', 'task1', 'task2']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.11.89 - - [04/Jun/2019 15:54:02] "GET /receive_assignment_info?assignment_info=node12%23%3Atask0%3Atask5%3Atask4%3Atask3%3Atask6%3Atask1%3Atask2%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+-----------------
+Overall price:
+{'cpu': 7.3516160154365515, 'memory': 34.81678726483365, 'network': {'task3': '141.34086991864208', 'task4': '141.7670216769328', 'task6': '141.04575240813045', 'task2': '142.258545671132', 'task5': '141.61406167573566', 'task1': '141.5922086421419', 'task0': '142.6734521991888'}, 'queue': 0}
+Announce my price
+Execution of job "push_assignment_map (trigger: interval[0:02:00], next run at: 2019-06-04 15:54:02 UTC)" skipped: maximum number of running instances reached (1)
+Received pricing info
+Check price updated interval 
+10.244.15.70 - - [04/Jun/2019 15:54:04] "GET /receive_price_info?pricing_info=node18%237.9435118186203555%2335.390882778581805%230%24task3%3A179.01460992572606%24task0%3A185.26999381704323%24task2%3A183.33464581836304%24task4%3A181.02751606722444%24task6%3A177.6137739411687%24task1%3A180.20321296097734%24task5%3A180.3063653252455 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.12.251 - - [04/Jun/2019 15:54:05] "GET /receive_price_info?pricing_info=node13%237.796237337192462%2334.73420164013486%230%24task0%3A136.44013597154702%24task2%3A135.28274024302561%24task6%3A132.35912448769278%24task3%3A132.6998515692199%24task1%3A133.41041634917215%24task4%3A133.9032344401684%24task5%3A133.47208537272735 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.10.212 - - [04/Jun/2019 15:54:06] "GET /receive_price_info?pricing_info=node11%237.952629040038595%2334.64785335262904%230%24task0%3A152.54143884496258%24task3%3A148.99189343115185%24task1%3A149.66504135065665%24task2%3A151.4414099128385%24task4%3A150.1322298432498%24task5%3A149.72348874714638%24task6%3A148.16991842671308 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.4.167 - - [04/Jun/2019 15:54:06] "GET /receive_price_info?pricing_info=node17%237.169078630004827%2335.29614085865894%230%24task0%3A143.82463997639195%24task6%3A142.00543369069683%24task5%3A142.4770781440654%24task4%3A142.6713898149415%24task1%3A142.4493243401904%24task2%3A143.29637840507726%24task3%3A142.13024555168604 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.13.190 - - [04/Jun/2019 15:54:07] "GET /receive_price_info?pricing_info=node14%238.619488663772314%2338.99454896285589%230%24task5%3A140.6166361060558%24task3%3A139.77420166776452%24task0%3A143.85801400463095%24task2%3A142.59336184094315%24task4%3A141.08714130664094%24task6%3A139.09818035088207%24task1%3A140.5493473434897 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.14.160 - - [04/Jun/2019 15:54:07] "GET /receive_price_info?pricing_info=node15%236.9473227206946415%2338.618716835504074%230%24task3%3A139.72341409079493%24task2%3A146.845792044594%24task4%3A143.13547344650829%24task0%3A149.7898159677946%24task1%3A141.75772185633966%24task6%3A137.71818775972696%24task5%3A141.93161986411963 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task3', 'task6', 'task2', 'task1', 'task4', 'task5', 'task0']
+['', 'node6', 'node6', 'node6', 'node6', 'node6', 'node6', 'node6']
+10.244.8.37 - - [04/Jun/2019 15:54:08] "GET /receive_assignment_info?assignment_info=node9%23%3Atask3%3Atask6%3Atask2%3Atask1%3Atask4%3Atask5%3Atask0%23%3Anode6%3Anode6%3Anode6%3Anode6%3Anode6%3Anode6%3Anode6 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.7.34 - - [04/Jun/2019 15:54:08] "GET /receive_price_info?pricing_info=node8%2311.224271844660212%2343.55447112927947%230%24task5%3A184.2081071363471%24task3%3A183.67195969964766%24task6%3A183.3713909960931%24task2%3A185.47045474831637%24task4%3A184.50802356189593%24task0%3A186.28129045638207%24task1%3A184.16524281832346 HTTP/1.1" 200 -
+The computing node is not yet available. Sending assignment message to flask server on computing node FAILED!!!
+<urlopen error [Errno 110] Connection timed out>
+Announce my current best computing node 10.98.92.94
+Announce my current best computing node 10.97.9.71
+Announce my current best computing node 10.105.23.183
+Announce my current best computing node 10.104.118.11
+Announce my current best computing node 10.105.83.39
+Announce my current best computing node 10.96.241.134
+Announce my current best computing node 10.96.158.98
+Receive assignment info
+['', 'task5', 'task3', 'task6', 'task1', 'task4', 'task0', 'task2']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.7.34 - - [04/Jun/2019 15:54:15] "GET /receive_assignment_info?assignment_info=node8%23%3Atask5%3Atask3%3Atask6%3Atask1%3Atask4%3Atask0%3Atask2%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Trying to update global assignment
+Not yet fully loaded local information
+Receive assignment info
+['', 'task5', 'task3', 'task0', 'task6', 'task1', 'task2', 'task4']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.5.218 - - [04/Jun/2019 15:54:44] "GET /receive_assignment_info?assignment_info=home%23%3Atask5%3Atask3%3Atask0%3Atask6%3Atask1%3Atask2%3Atask4%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Received pricing info
+10.244.6.94 - - [04/Jun/2019 15:56:01] "GET /receive_price_info?pricing_info=node6%2313.875421686747005%2345.3719036144578%230%24task0%3A136.78898767398047%24task1%3A134.89922793907178%24task2%3A136.06529616394755%24task3%3A134.4581702866952%24task5%3A134.93754473845078%24task4%3A135.2056008750915%24task6%3A134.13168100889982 HTTP/1.1" 200 -
+Check price updated interval 
+Received pricing info
+Check price updated interval 
+10.244.3.211 - - [04/Jun/2019 15:56:02] "GET /receive_price_info?pricing_info=node3%2330.039990352146642%2354.09131693198265%230%24task3%3A179.60764103517022%24task4%3A180.429676508107%24task6%3A179.01498149506764%24task0%3A182.1657492128632%24task5%3A180.13504957992384%24task2%3A181.3731815061802%24task1%3A180.09291771212457 HTTP/1.1" 200 -
+Received pricing info
+Received pricing info
+Check price updated interval 
+10.244.8.37 - - [04/Jun/2019 15:56:02] "GET /receive_price_info?pricing_info=node9%239.210650602409649%2334.92366265060248%230%24task3%3A148.5912150688105%24task6%3A148.65455144486106%24task2%3A148.27476442960824%24task1%3A148.5018845765178%24task4%3A148.44093505024804%24task5%3A148.4942123346172%24task0%3A148.1404747229873 HTTP/1.1" 200 -
+Check price updated interval 
+10.244.11.89 - - [04/Jun/2019 15:56:02] "GET /receive_price_info?pricing_info=node12%238.21879518072286%2336.38120481927726%230%24task0%3A168.07371242014642%24task5%3A164.28573285043106%24task6%3A162.9448912621364%24task3%3A163.30048148919593%24task4%3A164.8358681996177%24task1%3A164.2070479961162%24task2%3A166.596353851685 HTTP/1.1" 200 -
+-----------------
+Overall price:
+{'cpu': 7.351685934489388, 'memory': 34.817822736030905, 'network': {'task3': '141.34086991864208', 'task4': '141.7670216769328', 'task6': '141.04575240813045', 'task2': '142.258545671132', 'task5': '141.61406167573566', 'task1': '141.5922086421419', 'task0': '142.6734521991888'}, 'queue': 0}
+Announce my price
+Updated assignment periodically
+Select the current best node
+task3
+Select the current best node
+task4
+Select the current best node
+task6
+Select the current best node
+task2
+Select the current best node
+task5
+Select the current best node
+task1
+Select the current best node
+task0
+Announce my current best computing node 10.111.31.48
+Receive assignment info
+['', 'task0', 'task1', 'task6', 'task3', 'task2', 'task4', 'task5']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.12.251 - - [04/Jun/2019 15:56:03] "GET /receive_assignment_info?assignment_info=node13%23%3Atask0%3Atask1%3Atask6%3Atask3%3Atask2%3Atask4%3Atask5%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Announce my current best computing node 10.104.107.255
+Announce my current best computing node 10.106.62.79
+Announce my current best computing node 10.101.153.5
+Received pricing info
+Check price updated interval 
+10.244.15.70 - - [04/Jun/2019 15:56:04] "GET /receive_price_info?pricing_info=node18%237.943903614457829%2335.391373493975934%230%24task3%3A179.01460992572606%24task0%3A185.26999381704323%24task2%3A183.33464581836304%24task4%3A181.02751606722444%24task6%3A177.6137739411687%24task1%3A180.20321296097734%24task5%3A180.3063653252455 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task3', 'task0', 'task2', 'task4', 'task6', 'task1', 'task5']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.15.70 - - [04/Jun/2019 15:56:04] "GET /receive_assignment_info?assignment_info=node18%23%3Atask3%3Atask0%3Atask2%3Atask4%3Atask6%3Atask1%3Atask5%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Announce my current best computing node 10.110.133.32
+Announce my current best computing node 10.103.177.107
+Received pricing info
+Check price updated interval 
+10.244.12.251 - - [04/Jun/2019 15:56:05] "GET /receive_price_info?pricing_info=node13%237.796385542168662%2334.73484337349377%230%24task0%3A136.44013597154702%24task2%3A135.28274024302561%24task6%3A132.35912448769278%24task3%3A132.6998515692199%24task1%3A133.41041634917215%24task4%3A133.9032344401684%24task5%3A133.47208537272735 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task0', 'task3', 'task5', 'task2', 'task4', 'task1', 'task6']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.10.212 - - [04/Jun/2019 15:56:05] "GET /receive_assignment_info?assignment_info=node11%23%3Atask0%3Atask3%3Atask5%3Atask2%3Atask4%3Atask1%3Atask6%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.10.212 - - [04/Jun/2019 15:56:06] "GET /receive_price_info?pricing_info=node11%237.953349397590365%2334.648578313253005%230%24task0%3A152.54143884496258%24task3%3A148.99189343115185%24task1%3A149.66504135065665%24task2%3A151.4414099128385%24task4%3A150.1322298432498%24task5%3A149.72348874714638%24task6%3A148.16991842671308 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task3', 'task2', 'task4', 'task0', 'task1', 'task6', 'task5']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.14.160 - - [04/Jun/2019 15:56:06] "GET /receive_assignment_info?assignment_info=node15%23%3Atask3%3Atask2%3Atask4%3Atask0%3Atask1%3Atask6%3Atask5%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task5', 'task3', 'task0', 'task2', 'task1', 'task6', 'task4']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.13.190 - - [04/Jun/2019 15:56:06] "GET /receive_assignment_info?assignment_info=node14%23%3Atask5%3Atask3%3Atask0%3Atask2%3Atask1%3Atask6%3Atask4%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.4.167 - - [04/Jun/2019 15:56:06] "GET /receive_price_info?pricing_info=node17%237.169397590361449%2335.297060240963845%230%24task0%3A143.82463997639195%24task6%3A142.00543369069683%24task5%3A142.4770781440654%24task4%3A142.6713898149415%24task1%3A142.4493243401904%24task2%3A143.29637840507726%24task3%3A142.13024555168604 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.13.190 - - [04/Jun/2019 15:56:07] "GET /receive_price_info?pricing_info=node14%238.620048192771089%2338.99513253012061%230%24task5%3A140.6166361060558%24task3%3A139.77420166776452%24task0%3A143.85801400463095%24task2%3A142.59336184094315%24task4%3A141.08714130664094%24task6%3A139.09818035088207%24task1%3A140.5493473434897 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.14.160 - - [04/Jun/2019 15:56:07] "GET /receive_price_info?pricing_info=node15%236.947807228915659%2338.619614457831304%230%24task3%3A139.72341409079493%24task2%3A146.845792044594%24task4%3A143.13547344650829%24task0%3A149.7898159677946%24task1%3A141.75772185633966%24task6%3A137.71818775972696%24task5%3A141.93161986411963 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task6', 'task0', 'task3', 'task5', 'task4', 'task2', 'task1']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.4.167 - - [04/Jun/2019 15:56:07] "GET /receive_assignment_info?assignment_info=node17%23%3Atask6%3Atask0%3Atask3%3Atask5%3Atask4%3Atask2%3Atask1%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task0', 'task1', 'task2', 'task6', 'task3', 'task5', 'task4']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.6.94 - - [04/Jun/2019 15:56:08] "GET /receive_assignment_info?assignment_info=node6%23%3Atask0%3Atask1%3Atask2%3Atask6%3Atask3%3Atask5%3Atask4%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task3', 'task5', 'task4', 'task6', 'task0', 'task2', 'task1']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.3.211 - - [04/Jun/2019 15:56:08] "GET /receive_assignment_info?assignment_info=node3%23%3Atask3%3Atask5%3Atask4%3Atask6%3Atask0%3Atask2%3Atask1%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.7.34 - - [04/Jun/2019 15:56:08] "GET /receive_price_info?pricing_info=node8%2311.224271844660212%2343.55447112927947%230%24task5%3A184.2081071363471%24task3%3A183.67195969964766%24task6%3A183.3713909960931%24task2%3A185.47045474831637%24task4%3A184.50802356189593%24task0%3A186.28129045638207%24task1%3A184.16524281832346 HTTP/1.1" 200 -
+Trying to update global assignment
+Fully loaded information
+------------
+['task0']
+task0
+[]
+----
+node10
+node17
+----
+node10
+node17
+----
+node10
+node17
+----
+node17
+node10
+{'home': 'home', 'task3': 'node10', 'task4': 'node17', 'task2': 'node10', 'task1': 'node10', 'task0': 'node17'}
+{'task4': True}
+------------
+['task3', 'task1', 'task4', 'task2']
+task3
+['task1', 'task4', 'task2']
+----
+node10
+node17
+----
+node10
+node17
+----
+node10
+node17
+----
+node10
+node17
+----
+node10
+node17
+----
+node17
+node10
+----
+node10
+node17
+----
+node17
+node10
+----
+node10
+node17
+----
+node17
+node10
+{'home': 'home', 'task3': 'node10', 'task4': 'node17', 'task6': 'node17', 'task2': 'node10', 'task5': 'node17', 'task1': 'node10', 'task0': 'node17'}
+{'task5': True, 'task4': True, 'task6': True}
+------------
+['task1', 'task4', 'task2', 'task5', 'task4', 'task6']
+task1
+['task4', 'task2', 'task5', 'task4', 'task6']
+----
+node10
+node17
+----
+node10
+node17
+----
+node10
+node17
+----
+node17
+node10
+{'home': 'home', 'task3': 'node10', 'task4': 'node17', 'task6': 'node17', 'task2': 'node10', 'task5': 'node17', 'task1': 'node10', 'task0': 'node17'}
+{'task5': True, 'task4': True, 'task6': True}
+------------
+['task4', 'task2', 'task5', 'task4', 'task6', 'task4']
+task4
+['task2', 'task5', 'task4', 'task6', 'task4']
+----
+node10
+node17
+----
+node17
+node10
+----
+node10
+node17
+----
+node17
+node10
+{'home': 'home', 'task3': 'node10', 'task4': 'node17', 'task6': 'node17', 'task2': 'node10', 'task5': 'node17', 'task1': 'node10', 'task0': 'node17'}
+{'task5': True, 'task4': True, 'task6': True}
+------------
+['task2', 'task5', 'task4', 'task6', 'task4', 'task6']
+task2
+['task5', 'task4', 'task6', 'task4', 'task6']
+----
+node10
+node17
+----
+node10
+node17
+----
+node10
+node17
+----
+node10
+node17
+----
+node10
+node17
+----
+node17
+node10
+----
+node10
+node17
+----
+node17
+node10
+----
+node10
+node17
+----
+node17
+node10
+{'home': 'home', 'task3': 'node10', 'task4': 'node17', 'task6': 'node17', 'task2': 'node10', 'task5': 'node17', 'task1': 'node10', 'task0': 'node17'}
+{'task5': True, 'task4': True, 'task6': True}
+------------
+['task5', 'task4', 'task6', 'task4', 'task6', 'task5', 'task6']
+task5
+['task4', 'task6', 'task4', 'task6', 'task5', 'task6']
+----
+node10
+node17
+----
+node17
+node10
+----
+node10
+node17
+----
+node17
+node10
+{'home': 'home', 'task3': 'node10', 'task4': 'node17', 'task6': 'node17', 'task2': 'node10', 'task5': 'node17', 'task1': 'node10', 'task0': 'node17'}
+{'task5': True, 'task4': True, 'task6': True}
+------------
+['task4', 'task6', 'task4', 'task6', 'task5', 'task6', 'task6']
+task4
+['task6', 'task4', 'task6', 'task5', 'task6', 'task6']
+{'home': 'home', 'task3': 'node10', 'task4': 'node17', 'task6': 'node17', 'task2': 'node10', 'task5': 'node17', 'task1': 'node10', 'task0': 'node17'}
+{'task5': True, 'task4': True, 'task6': True}
+------------
+['task6', 'task4', 'task6', 'task5', 'task6', 'task6']
+task6
+['task4', 'task6', 'task5', 'task6', 'task6']
+{'home': 'home', 'task3': 'node10', 'task4': 'node17', 'task6': 'node17', 'task2': 'node10', 'task5': 'node17', 'task1': 'node10', 'task0': 'node17'}
+{'task5': True, 'task4': True, 'task6': True}
+{'home': 'home', 'task3': 'node10', 'task4': 'node17', 'task6': 'node17', 'task2': 'node10', 'task5': 'node17', 'task1': 'node10', 'task0': 'node17'}
+Receive assignment info
+['', 'task5', 'task3', 'task0', 'task6', 'task1', 'task2', 'task4']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.5.218 - - [04/Jun/2019 15:56:44] "GET /receive_assignment_info?assignment_info=home%23%3Atask5%3Atask3%3Atask0%3Atask6%3Atask1%3Atask2%3Atask4%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.6.94 - - [04/Jun/2019 15:58:01] "GET /receive_price_info?pricing_info=node6%2313.875974963890245%2345.37255657197879%230%24task0%3A136.78898767398047%24task1%3A134.89922793907178%24task2%3A136.06529616394755%24task3%3A134.4581702866952%24task5%3A134.93754473845078%24task4%3A135.2056008750915%24task6%3A134.13168100889982 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.3.211 - - [04/Jun/2019 15:58:02] "GET /receive_price_info?pricing_info=node3%2330.041783132530117%2354.092192771084356%230%24task3%3A179.60764103517022%24task4%3A180.429676508107%24task6%3A179.01498149506764%24task0%3A182.1657492128632%24task5%3A180.13504957992384%24task2%3A181.3731815061802%24task1%3A180.09291771212457 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.11.89 - - [04/Jun/2019 15:58:02] "GET /receive_price_info?pricing_info=node12%238.219499277804495%2336.3822339913338%230%24task0%3A168.07371242014642%24task5%3A164.28573285043106%24task6%3A162.9448912621364%24task3%3A163.30048148919593%24task4%3A164.8358681996177%24task1%3A164.2070479961162%24task2%3A166.596353851685 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.8.37 - - [04/Jun/2019 15:58:02] "GET /receive_price_info?pricing_info=node9%239.21054405392394%2334.924313914299546%230%24task3%3A148.5912150688105%24task6%3A148.65455144486106%24task2%3A148.27476442960824%24task1%3A148.5018845765178%24task4%3A148.44093505024804%24task5%3A148.4942123346172%24task0%3A148.1404747229873 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task0', 'task5', 'task4', 'task3', 'task6', 'task1', 'task2']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+-----------------
+Overall price:
+{'cpu': 7.3518536350505395, 'memory': 34.818391911410764, 'network': {'task3': '141.34086991864208', 'task4': '141.7670216769328', 'task6': '141.04575240813045', 'task2': '142.258545671132', 'task5': '141.61406167573566', 'task1': '141.5922086421419', 'task0': '142.6734521991888'}, 'queue': 0}
+Announce my price
+10.244.11.89 - - [04/Jun/2019 15:58:02] "GET /receive_assignment_info?assignment_info=node12%23%3Atask0%3Atask5%3Atask4%3Atask3%3Atask6%3Atask1%3Atask2%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Execution of job "push_assignment_map (trigger: interval[0:02:00], next run at: 2019-06-04 15:58:02 UTC)" skipped: maximum number of running instances reached (1)
+Received pricing info
+Check price updated interval 
+10.244.15.70 - - [04/Jun/2019 15:58:04] "GET /receive_price_info?pricing_info=node18%237.9445139557266575%2335.392155919153055%230%24task3%3A179.01460992572606%24task0%3A185.26999381704323%24task2%3A183.33464581836304%24task4%3A181.02751606722444%24task6%3A177.6137739411687%24task1%3A180.20321296097734%24task5%3A180.3063653252455 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.12.251 - - [04/Jun/2019 15:58:05] "GET /receive_price_info?pricing_info=node13%237.796533461723627%2334.73553201733249%230%24task0%3A136.44013597154702%24task2%3A135.28274024302561%24task6%3A132.35912448769278%24task3%3A132.6998515692199%24task1%3A133.41041634917215%24task4%3A133.9032344401684%24task5%3A133.47208537272735 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.10.212 - - [04/Jun/2019 15:58:06] "GET /receive_price_info?pricing_info=node11%237.953635050553687%2334.64925373134328%230%24task0%3A152.54143884496258%24task3%3A148.99189343115185%24task1%3A149.66504135065665%24task2%3A151.4414099128385%24task4%3A150.1322298432498%24task5%3A149.72348874714638%24task6%3A148.16991842671308 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.4.167 - - [04/Jun/2019 15:58:06] "GET /receive_price_info?pricing_info=node17%237.169682386910494%2335.29860442733396%230%24task0%3A143.82463997639195%24task6%3A142.00543369069683%24task5%3A142.4770781440654%24task4%3A142.6713898149415%24task1%3A142.4493243401904%24task2%3A143.29637840507726%24task3%3A142.13024555168604 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.13.190 - - [04/Jun/2019 15:58:07] "GET /receive_price_info?pricing_info=node14%238.62051035146847%2338.99576311988457%230%24task5%3A140.6166361060558%24task3%3A139.77420166776452%24task0%3A143.85801400463095%24task2%3A142.59336184094315%24task4%3A141.08714130664094%24task6%3A139.09818035088207%24task1%3A140.5493473434897 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.14.160 - - [04/Jun/2019 15:58:07] "GET /receive_price_info?pricing_info=node15%236.9480019258545935%2338.62051035146844%230%24task3%3A139.72341409079493%24task2%3A146.845792044594%24task4%3A143.13547344650829%24task0%3A149.7898159677946%24task1%3A141.75772185633966%24task6%3A137.71818775972696%24task5%3A141.93161986411963 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task3', 'task6', 'task2', 'task1', 'task4', 'task5', 'task0']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.8.37 - - [04/Jun/2019 15:58:08] "GET /receive_assignment_info?assignment_info=node9%23%3Atask3%3Atask6%3Atask2%3Atask1%3Atask4%3Atask5%3Atask0%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.7.34 - - [04/Jun/2019 15:58:08] "GET /receive_price_info?pricing_info=node8%2311.224271844660212%2343.55447112927947%230%24task5%3A184.2081071363471%24task3%3A183.67195969964766%24task6%3A183.3713909960931%24task2%3A185.47045474831637%24task4%3A184.50802356189593%24task0%3A186.28129045638207%24task1%3A184.16524281832346 HTTP/1.1" 200 -
+The computing node is not yet available. Sending assignment message to flask server on computing node FAILED!!!
+<urlopen error [Errno 110] Connection timed out>
+Announce my current best computing node 10.98.92.94
+Announce my current best computing node 10.97.9.71
+Announce my current best computing node 10.105.23.183
+Announce my current best computing node 10.104.118.11
+Announce my current best computing node 10.105.83.39
+Announce my current best computing node 10.96.241.134
+Announce my current best computing node 10.96.158.98
+Receive assignment info
+['', 'task5', 'task3', 'task6', 'task1', 'task4', 'task0', 'task2']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.7.34 - - [04/Jun/2019 15:58:15] "GET /receive_assignment_info?assignment_info=node8%23%3Atask5%3Atask3%3Atask6%3Atask1%3Atask4%3Atask0%3Atask2%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Trying to update global assignment
+Fully loaded information
+------------
+['task0']
+task0
+[]
+----
+node10
+node17
+----
+node10
+node17
+----
+node10
+node17
+----
+node17
+node10
+{'home': 'home', 'task3': 'node10', 'task4': 'node17', 'task6': 'node17', 'task2': 'node10', 'task5': 'node17', 'task1': 'node10', 'task0': 'node17'}
+{'task4': True}
+------------
+['task3', 'task1', 'task4', 'task2']
+task3
+['task1', 'task4', 'task2']
+----
+node10
+node17
+----
+node10
+node17
+----
+node10
+node17
+----
+node10
+node17
+----
+node10
+node17
+----
+node17
+node10
+----
+node10
+node17
+----
+node17
+node10
+----
+node10
+node17
+----
+node17
+node10
+{'home': 'home', 'task3': 'node10', 'task4': 'node17', 'task6': 'node17', 'task2': 'node10', 'task5': 'node17', 'task1': 'node10', 'task0': 'node17'}
+{'task5': True, 'task4': True, 'task6': True}
+------------
+['task1', 'task4', 'task2', 'task5', 'task4', 'task6']
+task1
+['task4', 'task2', 'task5', 'task4', 'task6']
+----
+node10
+node17
+----
+node10
+node17
+----
+node10
+node17
+----
+node17
+node10
+{'home': 'home', 'task3': 'node10', 'task4': 'node17', 'task6': 'node17', 'task2': 'node10', 'task5': 'node17', 'task1': 'node10', 'task0': 'node17'}
+{'task5': True, 'task4': True, 'task6': True}
+------------
+['task4', 'task2', 'task5', 'task4', 'task6', 'task4']
+task4
+['task2', 'task5', 'task4', 'task6', 'task4']
+----
+node10
+node17
+----
+node17
+node10
+----
+node10
+node17
+----
+node17
+node10
+{'home': 'home', 'task3': 'node10', 'task4': 'node17', 'task6': 'node17', 'task2': 'node10', 'task5': 'node17', 'task1': 'node10', 'task0': 'node17'}
+{'task5': True, 'task4': True, 'task6': True}
+------------
+['task2', 'task5', 'task4', 'task6', 'task4', 'task6']
+task2
+['task5', 'task4', 'task6', 'task4', 'task6']
+----
+node10
+node17
+----
+node10
+node17
+----
+node10
+node17
+----
+node10
+node17
+----
+node10
+node17
+----
+node17
+node10
+----
+node10
+node17
+----
+node17
+node10
+----
+node10
+node17
+----
+node17
+node10
+{'home': 'home', 'task3': 'node10', 'task4': 'node17', 'task6': 'node17', 'task2': 'node10', 'task5': 'node17', 'task1': 'node10', 'task0': 'node17'}
+{'task5': True, 'task4': True, 'task6': True}
+------------
+['task5', 'task4', 'task6', 'task4', 'task6', 'task5', 'task6']
+task5
+['task4', 'task6', 'task4', 'task6', 'task5', 'task6']
+----
+node10
+node17
+----
+node17
+node10
+----
+node10
+node17
+----
+node17
+node10
+{'home': 'home', 'task3': 'node10', 'task4': 'node17', 'task6': 'node17', 'task2': 'node10', 'task5': 'node17', 'task1': 'node10', 'task0': 'node17'}
+{'task5': True, 'task4': True, 'task6': True}
+------------
+['task4', 'task6', 'task4', 'task6', 'task5', 'task6', 'task6']
+task4
+['task6', 'task4', 'task6', 'task5', 'task6', 'task6']
+{'home': 'home', 'task3': 'node10', 'task4': 'node17', 'task6': 'node17', 'task2': 'node10', 'task5': 'node17', 'task1': 'node10', 'task0': 'node17'}
+{'task5': True, 'task4': True, 'task6': True}
+------------
+['task6', 'task4', 'task6', 'task5', 'task6', 'task6']
+task6
+['task4', 'task6', 'task5', 'task6', 'task6']
+{'home': 'home', 'task3': 'node10', 'task4': 'node17', 'task6': 'node17', 'task2': 'node10', 'task5': 'node17', 'task1': 'node10', 'task0': 'node17'}
+{'task5': True, 'task4': True, 'task6': True}
+{'home': 'home', 'task3': 'node10', 'task4': 'node17', 'task6': 'node17', 'task2': 'node10', 'task5': 'node17', 'task1': 'node10', 'task0': 'node17'}
+Receive assignment info
+['', 'task5', 'task3', 'task0', 'task6', 'task1', 'task2', 'task4']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.5.218 - - [04/Jun/2019 15:58:44] "GET /receive_assignment_info?assignment_info=home%23%3Atask5%3Atask3%3Atask0%3Atask6%3Atask1%3Atask2%3Atask4%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Received file as input - /centralized_scheduler/input/task0/home/1botnet.ipsum.
 -------------------------
 task0
-8botnet.ipsum
+1botnet.ipsum
 /centralized_scheduler/input/task0/home
 /centralized_scheduler/output/task0/home
 -------------------------
-['8botnet_task0.txt']
-{'8botnet_task0.txt'}
-8botnet.ipsum
-8botnet.ipsum_task0
+['1botnet_task0.txt']
+{'1botnet_task0.txt'}
+1botnet.ipsum
+1botnet.ipsum_task0
 -------------------------@@@
 /communication.txt
 -------------------------##
-{'task2': ['task5-37.48', 'task4-31.45', 'task6-42.99'], 'task3': ['task5-2.78', 'task4-19.55', 'task6-5.42'], 'task1': ['task4-51.34'], 'task4': ['task6-67.76'], 'task5': ['task6-53.11'], 'task0': ['task1-21.92', 'task3-6.85', 'task2-54.06', 'task4-66.84']}
-dict_keys(['task2', 'task3', 'task1', 'task4', 'task5', 'task0'])
+{'task3': ['task5-2.78', 'task4-19.55', 'task6-5.42'], 'task4': ['task6-67.76'], 'task2': ['task5-37.48', 'task4-31.45', 'task6-42.99'], 'task5': ['task6-53.11'], 'task1': ['task4-51.34'], 'task0': ['task1-21.92', 'task3-6.85', 'task2-54.06', 'task4-66.84']}
+dict_keys(['task3', 'task4', 'task2', 'task5', 'task1', 'task0'])
 task0
 ['task1-21.92', 'task3-6.85', 'task2-54.06', 'task4-66.84']
 ['task1', 'task3', 'task2', 'task4']
 ['22', '7', '55', '67']
 task1
 0
-/centralized_scheduler/output/task0/home/8botnet.ipsum_task0_task1
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task0/home/8botnet.ipsum_task0_task1 22
+/centralized_scheduler/output/task0/home/1botnet.ipsum_task0_task1
+/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task0/home/1botnet.ipsum_task0_task1 22
 Create file 
 File size 22
 22+0 records in
 22+0 records out
-22528 bytes (23 kB, 22 KiB) copied, 0.00273019 s, 8.3 MB/s
-7+0 records in
-7+0 records out
-7168 bytes (7.2 kB, 7.0 KiB) copied, 0.00088944 s, 8.1 MB/s
-55+0 records in
-55+0 records out
-56320 bytes (56 kB, 55 KiB) copied, 0.00655531 s, 8.6 MB/s
+22528 bytes (23 kB, 22 KiB) copied, 0.00335626 s, 6.7 MB/s
 task3
 1
-/centralized_scheduler/output/task0/home/8botnet.ipsum_task0_task3
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task0/home/8botnet.ipsum_task0_task3 7
+/centralized_scheduler/output/task0/home/1botnet.ipsum_task0_task3
+/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task0/home/1botnet.ipsum_task0_task3 7
 Create file 
 File size 7
+7+0 records in
+7+0 records out
+7168 bytes (7.2 kB, 7.0 KiB) copied, 0.00103647 s, 6.9 MB/s
 task2
 2
-/centralized_scheduler/output/task0/home/8botnet.ipsum_task0_task2
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task0/home/8botnet.ipsum_task0_task2 55
+/centralized_scheduler/output/task0/home/1botnet.ipsum_task0_task2
+/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task0/home/1botnet.ipsum_task0_task2 55
 Create file 
 File size 55
+55+0 records in
+55+0 records out
+56320 bytes (56 kB, 55 KiB) copied, 0.00542628 s, 10.4 MB/s
 task4
 3
-/centralized_scheduler/output/task0/home/8botnet.ipsum_task0_task4
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task0/home/8botnet.ipsum_task0_task4 67
+/centralized_scheduler/output/task0/home/1botnet.ipsum_task0_task4
+/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task0/home/1botnet.ipsum_task0_task4 67
 Create file 
 File size 67
 67+0 records in
 67+0 records out
-68608 bytes (69 kB, 67 KiB) copied, 0.00819272 s, 8.4 MB/s
-Received file as output - /centralized_scheduler/output/task0/home/8botnet.ipsum_task0_task1.
-10.244.7.139 - - [31/Mar/2019 06:25:39] "GET /receive_best_assignment?file_name=8botnet&best_computing_node=node3&home_id=home&task_name=task1 HTTP/1.1" 200 -
---- waiting for computing node assignment
-10.244.3.217 - - [31/Mar/2019 06:25:40] "GET /receive_best_assignment?file_name=8botnet&home_id=home&task_name=task3&best_computing_node=node3 HTTP/1.1" 200 -
---- waiting for computing node assignment
-10.244.7.138 - - [31/Mar/2019 06:25:41] "GET /receive_best_assignment?best_computing_node=node3&file_name=8botnet&task_name=task2&home_id=home HTTP/1.1" 200 -
---- waiting for computing node assignment
-10.244.7.140 - - [31/Mar/2019 06:25:43] "GET /receive_best_assignment?task_name=task4&best_computing_node=node3&home_id=home&file_name=8botnet HTTP/1.1" 200 -
---- waiting for computing node assignment
-Received file as output - /centralized_scheduler/output/task0/home/8botnet.ipsum_task0_task3.
-Received file as output - /centralized_scheduler/output/task0/home/8botnet.ipsum_task0_task2.
-Received file as output - /centralized_scheduler/output/task0/home/8botnet.ipsum_task0_task4.
-Received file as input - /centralized_scheduler/input/task1/home/8botnet.ipsum_task0_task1.
+68608 bytes (69 kB, 67 KiB) copied, 0.00717665 s, 9.6 MB/s
+Received file as output - /centralized_scheduler/output/task0/home/1botnet.ipsum_task0_task1.
+----- next step is not home
+['node10', 'node10', 'node10', 'node17']
+Received file as output - /centralized_scheduler/output/task0/home/1botnet.ipsum_task0_task3.
+----- next step is not home
+['node10', 'node10', 'node10', 'node17']
+Received file as output - /centralized_scheduler/output/task0/home/1botnet.ipsum_task0_task2.
+----- next step is not home
+['node10', 'node10', 'node10', 'node17']
+Received file as output - /centralized_scheduler/output/task0/home/1botnet.ipsum_task0_task4.
+----- next step is not home
+['node10', 'node10', 'node10', 'node17']
+Warning: Permanently added '[10.96.241.134]:5000' (ECDSA) to the list of known hosts.
+data transfer complete
+
+Received file as input - /centralized_scheduler/input/task1/home/1botnet.ipsum_task0_task1.
 -------------------------
 task1
-8botnet.ipsum_task0_task1
+1botnet.ipsum_task0_task1
 /centralized_scheduler/input/task1/home
 /centralized_scheduler/output/task1/home
 -------------------------
-['8botnet_task1.txt']
-{'8botnet_task1.txt'}
-8botnet.ipsum
-8botnet.ipsum_task1
+['1botnet_task1.txt']
+{'1botnet_task1.txt'}
+1botnet.ipsum
+1botnet.ipsum_task1
 -------------------------@@@
 /communication.txt
 -------------------------##
-{'task2': ['task5-37.48', 'task4-31.45', 'task6-42.99'], 'task3': ['task5-2.78', 'task4-19.55', 'task6-5.42'], 'task1': ['task4-51.34'], 'task4': ['task6-67.76'], 'task5': ['task6-53.11'], 'task0': ['task1-21.92', 'task3-6.85', 'task2-54.06', 'task4-66.84']}
-dict_keys(['task2', 'task3', 'task1', 'task4', 'task5', 'task0'])
+{'task3': ['task5-2.78', 'task4-19.55', 'task6-5.42'], 'task4': ['task6-67.76'], 'task2': ['task5-37.48', 'task4-31.45', 'task6-42.99'], 'task5': ['task6-53.11'], 'task1': ['task4-51.34'], 'task0': ['task1-21.92', 'task3-6.85', 'task2-54.06', 'task4-66.84']}
+dict_keys(['task3', 'task4', 'task2', 'task5', 'task1', 'task0'])
 task1
 ['task4-51.34']
 ['task4']
 ['52']
 task4
 0
-/centralized_scheduler/output/task1/home/8botnet.ipsum_task1_task4
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task1/home/8botnet.ipsum_task1_task4 52
+/centralized_scheduler/output/task1/home/1botnet.ipsum_task1_task4
+/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task1/home/1botnet.ipsum_task1_task4 52
 Create file 
 File size 52
 52+0 records in
 52+0 records out
-53248 bytes (53 kB, 52 KiB) copied, 0.00603949 s, 8.8 MB/s
-Received file as input - /centralized_scheduler/input/task3/home/8botnet.ipsum_task0_task3.
-Received file as output - /centralized_scheduler/output/task1/home/8botnet.ipsum_task1_task4.
-10.244.7.140 - - [31/Mar/2019 06:25:48] "GET /receive_best_assignment?task_name=task4&best_computing_node=node3&home_id=home&file_name=8botnet HTTP/1.1" 200 -
---- waiting for computing node assignment
+53248 bytes (53 kB, 52 KiB) copied, 0.00491905 s, 10.8 MB/s
+Received file as input - /centralized_scheduler/input/task3/home/1botnet.ipsum_task0_task3.
+Received file as output - /centralized_scheduler/output/task1/home/1botnet.ipsum_task1_task4.
+----- next step is not home
+['node17']
+data transfer complete
+
 -------------------------
 task3
-8botnet.ipsum_task0_task3
+1botnet.ipsum_task0_task3
 /centralized_scheduler/input/task3/home
 /centralized_scheduler/output/task3/home
 -------------------------
-['8botnet_task3.txt']
-{'8botnet_task3.txt'}
-8botnet.ipsum
-8botnet.ipsum_task3
+['1botnet_task3.txt']
+{'1botnet_task3.txt'}
+1botnet.ipsum
+1botnet.ipsum_task3
 -------------------------@@@
 /communication.txt
 -------------------------##
-{'task2': ['task5-37.48', 'task4-31.45', 'task6-42.99'], 'task3': ['task5-2.78', 'task4-19.55', 'task6-5.42'], 'task1': ['task4-51.34'], 'task4': ['task6-67.76'], 'task5': ['task6-53.11'], 'task0': ['task1-21.92', 'task3-6.85', 'task2-54.06', 'task4-66.84']}
-dict_keys(['task2', 'task3', 'task1', 'task4', 'task5', 'task0'])
+{'task3': ['task5-2.78', 'task4-19.55', 'task6-5.42'], 'task4': ['task6-67.76'], 'task2': ['task5-37.48', 'task4-31.45', 'task6-42.99'], 'task5': ['task6-53.11'], 'task1': ['task4-51.34'], 'task0': ['task1-21.92', 'task3-6.85', 'task2-54.06', 'task4-66.84']}
+dict_keys(['task3', 'task4', 'task2', 'task5', 'task1', 'task0'])
 task3
 ['task5-2.78', 'task4-19.55', 'task6-5.42']
 ['task5', 'task4', 'task6']
 ['3', '20', '6']
 task5
 0
-/centralized_scheduler/output/task3/home/8botnet.ipsum_task3_task5
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task3/home/8botnet.ipsum_task3_task5 3
+/centralized_scheduler/output/task3/home/1botnet.ipsum_task3_task5
+/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task3/home/1botnet.ipsum_task3_task5 3
 Create file 
 File size 3
 3+0 records in
 3+0 records out
-3072 bytes (3.1 kB, 3.0 KiB) copied, 0.000550232 s, 5.6 MB/s
+3072 bytes (3.1 kB, 3.0 KiB) copied, 0.000426119 s, 7.2 MB/s
 task4
 1
-/centralized_scheduler/output/task3/home/8botnet.ipsum_task3_task4
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task3/home/8botnet.ipsum_task3_task4 20
+/centralized_scheduler/output/task3/home/1botnet.ipsum_task3_task4
+/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task3/home/1botnet.ipsum_task3_task4 20
 Create file 
 File size 20
 20+0 records in
 20+0 records out
-20480 bytes (20 kB, 20 KiB) copied, 0.00230842 s, 8.9 MB/s
+20480 bytes (20 kB, 20 KiB) copied, 0.00287242 s, 7.1 MB/s
 task6
 2
-/centralized_scheduler/output/task3/home/8botnet.ipsum_task3_task6
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task3/home/8botnet.ipsum_task3_task6 6
+/centralized_scheduler/output/task3/home/1botnet.ipsum_task3_task6
+/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task3/home/1botnet.ipsum_task3_task6 6
 Create file 
 File size 6
 6+0 records in
 6+0 records out
-6144 bytes (6.1 kB, 6.0 KiB) copied, 0.000800908 s, 7.7 MB/s
-Received file as input - /centralized_scheduler/input/task2/home/8botnet.ipsum_task0_task2.
-Received file as output - /centralized_scheduler/output/task3/home/8botnet.ipsum_task3_task5.
-10.244.6.90 - - [31/Mar/2019 06:25:51] "GET /receive_best_assignment?task_name=task5&home_id=home&best_computing_node=node3&file_name=8botnet HTTP/1.1" 200 -
---- waiting for computing node assignment
-10.244.7.140 - - [31/Mar/2019 06:25:52] "GET /receive_best_assignment?task_name=task4&best_computing_node=node3&home_id=home&file_name=8botnet HTTP/1.1" 200 -
+6144 bytes (6.1 kB, 6.0 KiB) copied, 0.000743037 s, 8.3 MB/s
+Received file as input - /centralized_scheduler/input/task2/home/1botnet.ipsum_task0_task2.
+Received file as output - /centralized_scheduler/output/task3/home/1botnet.ipsum_task3_task5.
+----- next step is not home
+['node17', 'node17', 'node17']
+Received file as output - /centralized_scheduler/output/task3/home/1botnet.ipsum_task3_task4.
+----- next step is not home
+['node17', 'node17', 'node17']
+Received file as output - /centralized_scheduler/output/task3/home/1botnet.ipsum_task3_task6.
+----- next step is not home
+['node17', 'node17', 'node17']
+data transfer complete
+
+data transfer complete
+
+data transfer complete
+
 -------------------------
 task2
-8botnet.ipsum_task0_task2
+1botnet.ipsum_task0_task2
 /centralized_scheduler/input/task2/home
 /centralized_scheduler/output/task2/home
 -------------------------
-['8botnet_task2.txt']
-{'8botnet_task2.txt'}
-8botnet.ipsum
-8botnet.ipsum_task2
+['1botnet_task2.txt']
+{'1botnet_task2.txt'}
+1botnet.ipsum
+1botnet.ipsum_task2
 -------------------------@@@
 /communication.txt
 -------------------------##
-{'task2': ['task5-37.48', 'task4-31.45', 'task6-42.99'], 'task3': ['task5-2.78', 'task4-19.55', 'task6-5.42'], 'task1': ['task4-51.34'], 'task4': ['task6-67.76'], 'task5': ['task6-53.11'], 'task0': ['task1-21.92', 'task3-6.85', 'task2-54.06', 'task4-66.84']}
-dict_keys(['task2', 'task3', 'task1', 'task4', 'task5', 'task0'])
+{'task3': ['task5-2.78', 'task4-19.55', 'task6-5.42'], 'task4': ['task6-67.76'], 'task2': ['task5-37.48', 'task4-31.45', 'task6-42.99'], 'task5': ['task6-53.11'], 'task1': ['task4-51.34'], 'task0': ['task1-21.92', 'task3-6.85', 'task2-54.06', 'task4-66.84']}
+dict_keys(['task3', 'task4', 'task2', 'task5', 'task1', 'task0'])
 task2
 ['task5-37.48', 'task4-31.45', 'task6-42.99']
 ['task5', 'task4', 'task6']
 ['38', '32', '43']
 task5
 0
-/centralized_scheduler/output/task2/home/8botnet.ipsum_task2_task5
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task2/home/8botnet.ipsum_task2_task5 38
+/centralized_scheduler/output/task2/home/1botnet.ipsum_task2_task5
+/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task2/home/1botnet.ipsum_task2_task5 38
 Create file 
 File size 38
 38+0 records in
 38+0 records out
-38912 bytes (39 kB, 38 KiB) copied, 0.00454483 s, 8.6 MB/s
+38912 bytes (39 kB, 38 KiB) copied, 0.00521886 s, 7.5 MB/s
 task4
 1
-/centralized_scheduler/output/task2/home/8botnet.ipsum_task2_task4
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task2/home/8botnet.ipsum_task2_task4 32
+/centralized_scheduler/output/task2/home/1botnet.ipsum_task2_task4
+/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task2/home/1botnet.ipsum_task2_task4 32
 Create file 
 File size 32
 32+0 records in
 32+0 records out
-32768 bytes (33 kB, 32 KiB) copied, 0.00396609 s, 8.3 MB/s
+32768 bytes (33 kB, 32 KiB) copied, 0.0041212 s, 8.0 MB/s
 task6
 2
-/centralized_scheduler/output/task2/home/8botnet.ipsum_task2_task6
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task2/home/8botnet.ipsum_task2_task6 43
+/centralized_scheduler/output/task2/home/1botnet.ipsum_task2_task6
+/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task2/home/1botnet.ipsum_task2_task6 43
 Create file 
 File size 43
 43+0 records in
 43+0 records out
-44032 bytes (44 kB, 43 KiB) copied, 0.00621293 s, 7.1 MB/s
-Received file as input - /centralized_scheduler/input/task4/home/8botnet.ipsum_task0_task4.
---- waiting for computing node assignment
-Received file as input - /centralized_scheduler/input/task4/home/8botnet.ipsum_task1_task4.
-10.244.3.216 - - [31/Mar/2019 06:25:54] "GET /receive_best_assignment?task_name=task6&home_id=home&file_name=8botnet&best_computing_node=node3 HTTP/1.1" 200 -
---- waiting for computing node assignment
-Received file as output - /centralized_scheduler/output/task3/home/8botnet.ipsum_task3_task4.
-Received file as output - /centralized_scheduler/output/task3/home/8botnet.ipsum_task3_task6.
-Received file as output - /centralized_scheduler/output/task2/home/8botnet.ipsum_task2_task5.
-Received file as output - /centralized_scheduler/output/task2/home/8botnet.ipsum_task2_task4.
-Received file as output - /centralized_scheduler/output/task2/home/8botnet.ipsum_task2_task6.
-Received file as input - /centralized_scheduler/input/task5/home/8botnet.ipsum_task3_task5.
-Received file as input - /centralized_scheduler/input/task4/home/8botnet.ipsum_task3_task4.
-Received file as input - /centralized_scheduler/input/task6/home/8botnet.ipsum_task3_task6.
-Received file as input - /centralized_scheduler/input/task5/home/8botnet.ipsum_task2_task5.
--------------------------
-task5
-['8botnet.ipsum_task3_task5', '8botnet.ipsum_task2_task5']
-/centralized_scheduler/input/task5/home
-/centralized_scheduler/output/task5/home
--------------------------
-['8botnet_task5.txt', '8botnet_task5.txt']
-{'8botnet_task5.txt'}
-8botnet.ipsum
-8botnet.ipsum_task5
--------------------------@@@
-/communication.txt
--------------------------##
-{'task2': ['task5-37.48', 'task4-31.45', 'task6-42.99'], 'task3': ['task5-2.78', 'task4-19.55', 'task6-5.42'], 'task1': ['task4-51.34'], 'task4': ['task6-67.76'], 'task5': ['task6-53.11'], 'task0': ['task1-21.92', 'task3-6.85', 'task2-54.06', 'task4-66.84']}
-dict_keys(['task2', 'task3', 'task1', 'task4', 'task5', 'task0'])
-task5
-['task6-53.11']
-['task6']
-['54']
-task6
-0
-/centralized_scheduler/output/task5/home/8botnet.ipsum_task5_task6
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task5/home/8botnet.ipsum_task5_task6 54
-Create file 
-File size 54
-54+0 records in
-54+0 records out
-55296 bytes (55 kB, 54 KiB) copied, 0.00513352 s, 10.8 MB/s
-Received file as input - /centralized_scheduler/input/task4/home/8botnet.ipsum_task2_task4.
-Received file as output - /centralized_scheduler/output/task5/home/8botnet.ipsum_task5_task6.
-10.244.3.216 - - [31/Mar/2019 06:26:00] "GET /receive_best_assignment?task_name=task6&home_id=home&file_name=8botnet&best_computing_node=node3 HTTP/1.1" 200 -
---- waiting for computing node assignment
--------------------------
-task4
-['8botnet.ipsum_task0_task4', '8botnet.ipsum_task1_task4', '8botnet.ipsum_task3_task4', '8botnet.ipsum_task2_task4']
-/centralized_scheduler/input/task4/home
-/centralized_scheduler/output/task4/home
--------------------------
-['8botnet_task4.txt', '8botnet_task4.txt', '8botnet_task4.txt', '8botnet_task4.txt']
-{'8botnet_task4.txt'}
-8botnet.ipsum
-8botnet.ipsum_task4
--------------------------@@@
-/communication.txt
--------------------------##
-{'task2': ['task5-37.48', 'task4-31.45', 'task6-42.99'], 'task3': ['task5-2.78', 'task4-19.55', 'task6-5.42'], 'task1': ['task4-51.34'], 'task4': ['task6-67.76'], 'task5': ['task6-53.11'], 'task0': ['task1-21.92', 'task3-6.85', 'task2-54.06', 'task4-66.84']}
-dict_keys(['task2', 'task3', 'task1', 'task4', 'task5', 'task0'])
-task4
-['task6-67.76']
-['task6']
-['68']
-task6
-0
-/centralized_scheduler/output/task4/home/8botnet.ipsum_task4_task6
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task4/home/8botnet.ipsum_task4_task6 68
-Create file 
-File size 68
-68+0 records in
-68+0 records out
-69632 bytes (70 kB, 68 KiB) copied, 0.0118059 s, 5.9 MB/s
-Received file as input - /centralized_scheduler/input/task6/home/8botnet.ipsum_task2_task6.
-Received file as input - /centralized_scheduler/input/task6/home/8botnet.ipsum_task5_task6.
-Received file as output - /centralized_scheduler/output/task4/home/8botnet.ipsum_task4_task6.
-Received file as input - /centralized_scheduler/input/task6/home/8botnet.ipsum_task4_task6.
--------------------------
-task6
-['8botnet.ipsum_task3_task6', '8botnet.ipsum_task2_task6', '8botnet.ipsum_task5_task6', '8botnet.ipsum_task4_task6']
-/centralized_scheduler/input/task6/home
-/centralized_scheduler/output/task6/home
--------------------------
-['8botnet_task6.txt', '8botnet_task6.txt', '8botnet_task6.txt', '8botnet_task6.txt']
-{'8botnet_task6.txt'}
-8botnet.ipsum
-8botnet.ipsum_task6
--------------------------@@@
-/communication.txt
--------------------------##
-{'task2': ['task5-37.48', 'task4-31.45', 'task6-42.99'], 'task3': ['task5-2.78', 'task4-19.55', 'task6-5.42'], 'task1': ['task4-51.34'], 'task4': ['task6-67.76'], 'task5': ['task6-53.11'], 'task0': ['task1-21.92', 'task3-6.85', 'task2-54.06', 'task4-66.84']}
-dict_keys(['task2', 'task3', 'task1', 'task4', 'task5', 'task0'])
-task6
-/centralized_scheduler/output/task6/home/8botnet.ipsum_task6_task6
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task6/home/8botnet.ipsum_task6_task6 18
-Create file 
-File size 18
-18+0 records in
-18+0 records out
-18432 bytes (18 kB, 18 KiB) copied, 0.00212155 s, 8.7 MB/s
-Received file as output - /centralized_scheduler/output/task6/home/8botnet.ipsum_task6_task6.
------ next step is home
-Warning: Permanently added '[10.110.116.186]:5000' (ECDSA) to the list of known hosts.
+44032 bytes (44 kB, 43 KiB) copied, 0.00518136 s, 8.5 MB/s
+Received file as output - /centralized_scheduler/output/task2/home/1botnet.ipsum_task2_task5.
+----- next step is not home
+['node17', 'node17', 'node17']
+Received file as output - /centralized_scheduler/output/task2/home/1botnet.ipsum_task2_task4.
+----- next step is not home
+['node17', 'node17', 'node17']
+Received file as output - /centralized_scheduler/output/task2/home/1botnet.ipsum_task2_task6.
+----- next step is not home
+['node17', 'node17', 'node17']
 data transfer complete
 
-Received file as input - /centralized_scheduler/input/task0/home/9botnet.ipsum.
--------------------------
+data transfer complete
+
+data transfer complete
+
+Received pricing info
+Check price updated interval 
+10.244.6.94 - - [04/Jun/2019 16:00:01] "GET /receive_price_info?pricing_info=node6%2313.876623376623394%2345.37335257335254%230%24task0%3A136.78898767398047%24task1%3A134.89922793907178%24task2%3A136.06529616394755%24task3%3A134.4581702866952%24task5%3A134.93754473845078%24task4%3A135.2056008750915%24task6%3A134.13168100889982 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.3.211 - - [04/Jun/2019 16:00:02] "GET /receive_price_info?pricing_info=node3%2330.04309099662975%2354.093066923447296%230%24task3%3A179.60764103517022%24task4%3A180.429676508107%24task6%3A179.01498149506764%24task0%3A182.1657492128632%24task5%3A180.13504957992384%24task2%3A181.3731815061802%24task1%3A180.09291771212457 HTTP/1.1" 200 -
+10.244.11.89 - - [04/Jun/2019 16:00:02] "GET /receive_price_info?pricing_info=node12%238.21991341991339%2336.38316498316512%230%24task0%3A168.07371242014642%24task5%3A164.28573285043106%24task6%3A162.9448912621364%24task3%3A163.30048148919593%24task4%3A164.8358681996177%24task1%3A164.2070479961162%24task2%3A166.596353851685 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+Received pricing info
+Check price updated interval 
+10.244.8.37 - - [04/Jun/2019 16:00:02] "GET /receive_price_info?pricing_info=node9%239.21091871091872%2334.92515632515641%230%24task3%3A148.5912150688105%24task6%3A148.65455144486106%24task2%3A148.27476442960824%24task1%3A148.5018845765178%24task4%3A148.44093505024804%24task5%3A148.4942123346172%24task0%3A148.1404747229873 HTTP/1.1" 200 -
+-----------------
+Overall price:
+{'cpu': 7.35449735449734, 'memory': 34.819240019240105, 'network': {'task3': '141.34086991864208', 'task4': '141.7670216769328', 'task6': '141.04575240813045', 'task2': '142.258545671132', 'task5': '141.61406167573566', 'task1': '141.5922086421419', 'task0': '142.6734521991888'}, 'queue': 0}
+Announce my price
+Updated assignment periodically
+Select the current best node
+task3
+Select the current best node
+task4
+Select the current best node
+task6
+Select the current best node
+task2
+Select the current best node
+task5
+Select the current best node
+task1
+Select the current best node
 task0
-9botnet.ipsum
-/centralized_scheduler/input/task0/home
-/centralized_scheduler/output/task0/home
--------------------------
-['9botnet_task0.txt']
-{'9botnet_task0.txt'}
-9botnet.ipsum
-9botnet.ipsum_task0
--------------------------@@@
-/communication.txt
--------------------------##
-{'task2': ['task5-37.48', 'task4-31.45', 'task6-42.99'], 'task3': ['task5-2.78', 'task4-19.55', 'task6-5.42'], 'task1': ['task4-51.34'], 'task4': ['task6-67.76'], 'task5': ['task6-53.11'], 'task0': ['task1-21.92', 'task3-6.85', 'task2-54.06', 'task4-66.84']}
-dict_keys(['task2', 'task3', 'task1', 'task4', 'task5', 'task0'])
-task0
-['task1-21.92', 'task3-6.85', 'task2-54.06', 'task4-66.84']
-['task1', 'task3', 'task2', 'task4']
-['22', '7', '55', '67']
-task1
-0
-/centralized_scheduler/output/task0/home/9botnet.ipsum_task0_task1
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task0/home/9botnet.ipsum_task0_task1 22
-Create file 
-File size 22
-task3
-1
-/centralized_scheduler/output/task0/home/9botnet.ipsum_task0_task3
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task0/home/9botnet.ipsum_task0_task3 7
-Create file 
-File size 7
-task2
-2
-/centralized_scheduler/output/task0/home/9botnet.ipsum_task0_task2
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task0/home/9botnet.ipsum_task0_task2 55
-Create file 
-File size 55
-task4
-3
-/centralized_scheduler/output/task0/home/9botnet.ipsum_task0_task4
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task0/home/9botnet.ipsum_task0_task4 67
-Create file 
-File size 67
-22+0 records in
-22+0 records out
-22528 bytes (23 kB, 22 KiB) copied, 0.00363765 s, 6.2 MB/s
-7+0 records in
-7+0 records out
-7168 bytes (7.2 kB, 7.0 KiB) copied, 0.00107802 s, 6.6 MB/s
-55+0 records in
-55+0 records out
-56320 bytes (56 kB, 55 KiB) copied, 0.00551269 s, 10.2 MB/s
-67+0 records in
-67+0 records out
-68608 bytes (69 kB, 67 KiB) copied, 0.00855716 s, 8.0 MB/s
-Received file as output - /centralized_scheduler/output/task0/home/9botnet.ipsum_task0_task1.
-10.244.7.139 - - [31/Mar/2019 06:26:44] "GET /receive_best_assignment?file_name=9botnet&best_computing_node=node3&home_id=home&task_name=task1 HTTP/1.1" 200 -
---- waiting for computing node assignment
-10.244.3.217 - - [31/Mar/2019 06:26:45] "GET /receive_best_assignment?file_name=9botnet&home_id=home&task_name=task3&best_computing_node=node3 HTTP/1.1" 200 -
---- waiting for computing node assignment
-10.244.7.138 - - [31/Mar/2019 06:26:47] "GET /receive_best_assignment?best_computing_node=node3&file_name=9botnet&task_name=task2&home_id=home HTTP/1.1" 200 -
---- waiting for computing node assignment
-10.244.7.140 - - [31/Mar/2019 06:26:48] "GET /receive_best_assignment?task_name=task4&best_computing_node=node3&home_id=home&file_name=9botnet HTTP/1.1" 200 -
---- waiting for computing node assignment
-Received file as output - /centralized_scheduler/output/task0/home/9botnet.ipsum_task0_task3.
-Received file as output - /centralized_scheduler/output/task0/home/9botnet.ipsum_task0_task2.
-Received file as output - /centralized_scheduler/output/task0/home/9botnet.ipsum_task0_task4.
-Received file as input - /centralized_scheduler/input/task1/home/9botnet.ipsum_task0_task1.
--------------------------
-task1
-9botnet.ipsum_task0_task1
-/centralized_scheduler/input/task1/home
-/centralized_scheduler/output/task1/home
--------------------------
-['9botnet_task1.txt']
-{'9botnet_task1.txt'}
-9botnet.ipsum
-9botnet.ipsum_task1
--------------------------@@@
-/communication.txt
--------------------------##
-{'task2': ['task5-37.48', 'task4-31.45', 'task6-42.99'], 'task3': ['task5-2.78', 'task4-19.55', 'task6-5.42'], 'task1': ['task4-51.34'], 'task4': ['task6-67.76'], 'task5': ['task6-53.11'], 'task0': ['task1-21.92', 'task3-6.85', 'task2-54.06', 'task4-66.84']}
-dict_keys(['task2', 'task3', 'task1', 'task4', 'task5', 'task0'])
-task1
-['task4-51.34']
-['task4']
-['52']
-task4
-0
-/centralized_scheduler/output/task1/home/9botnet.ipsum_task1_task4
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task1/home/9botnet.ipsum_task1_task4 52
-Create file 
-File size 52
-52+0 records in
-52+0 records out
-53248 bytes (53 kB, 52 KiB) copied, 0.00717586 s, 7.4 MB/s
-Received file as input - /centralized_scheduler/input/task3/home/9botnet.ipsum_task0_task3.
-Received file as output - /centralized_scheduler/output/task1/home/9botnet.ipsum_task1_task4.
-10.244.7.140 - - [31/Mar/2019 06:26:54] "GET /receive_best_assignment?task_name=task4&best_computing_node=node3&home_id=home&file_name=9botnet HTTP/1.1" 200 -
---- waiting for computing node assignment
--------------------------
-task3
-9botnet.ipsum_task0_task3
-/centralized_scheduler/input/task3/home
-/centralized_scheduler/output/task3/home
--------------------------
-['9botnet_task3.txt']
-{'9botnet_task3.txt'}
-9botnet.ipsum
-9botnet.ipsum_task3
--------------------------@@@
-/communication.txt
--------------------------##
-{'task2': ['task5-37.48', 'task4-31.45', 'task6-42.99'], 'task3': ['task5-2.78', 'task4-19.55', 'task6-5.42'], 'task1': ['task4-51.34'], 'task4': ['task6-67.76'], 'task5': ['task6-53.11'], 'task0': ['task1-21.92', 'task3-6.85', 'task2-54.06', 'task4-66.84']}
-dict_keys(['task2', 'task3', 'task1', 'task4', 'task5', 'task0'])
-task3
-['task5-2.78', 'task4-19.55', 'task6-5.42']
-['task5', 'task4', 'task6']
-['3', '20', '6']
-task5
-0
-/centralized_scheduler/output/task3/home/9botnet.ipsum_task3_task5
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task3/home/9botnet.ipsum_task3_task5 3
-Create file 
-File size 3
-3+0 records in
-3+0 records out
-3072 bytes (3.1 kB, 3.0 KiB) copied, 0.000401672 s, 7.6 MB/s
-task4
-1
-/centralized_scheduler/output/task3/home/9botnet.ipsum_task3_task4
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task3/home/9botnet.ipsum_task3_task4 20
-Create file 
-File size 20
-20+0 records in
-20+0 records out
-20480 bytes (20 kB, 20 KiB) copied, 0.00214869 s, 9.5 MB/s
-task6
-2
-/centralized_scheduler/output/task3/home/9botnet.ipsum_task3_task6
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task3/home/9botnet.ipsum_task3_task6 6
-Create file 
-File size 6
-6+0 records in
-6+0 records out
-6144 bytes (6.1 kB, 6.0 KiB) copied, 0.00096522 s, 6.4 MB/s
-Received file as input - /centralized_scheduler/input/task2/home/9botnet.ipsum_task0_task2.
-Received file as output - /centralized_scheduler/output/task3/home/9botnet.ipsum_task3_task5.
-10.244.6.90 - - [31/Mar/2019 06:26:56] "GET /receive_best_assignment?task_name=task5&home_id=home&best_computing_node=node3&file_name=9botnet HTTP/1.1" 200 -
---- waiting for computing node assignment
-10.244.7.140 - - [31/Mar/2019 06:26:58] "GET /receive_best_assignment?task_name=task4&best_computing_node=node3&home_id=home&file_name=9botnet HTTP/1.1" 200 -
--------------------------
-task2
-9botnet.ipsum_task0_task2
-/centralized_scheduler/input/task2/home
-/centralized_scheduler/output/task2/home
--------------------------
-['9botnet_task2.txt']
-{'9botnet_task2.txt'}
-9botnet.ipsum
-9botnet.ipsum_task2
--------------------------@@@
-/communication.txt
--------------------------##
-{'task2': ['task5-37.48', 'task4-31.45', 'task6-42.99'], 'task3': ['task5-2.78', 'task4-19.55', 'task6-5.42'], 'task1': ['task4-51.34'], 'task4': ['task6-67.76'], 'task5': ['task6-53.11'], 'task0': ['task1-21.92', 'task3-6.85', 'task2-54.06', 'task4-66.84']}
-dict_keys(['task2', 'task3', 'task1', 'task4', 'task5', 'task0'])
-task2
-['task5-37.48', 'task4-31.45', 'task6-42.99']
-['task5', 'task4', 'task6']
-['38', '32', '43']
-task5
-0
-/centralized_scheduler/output/task2/home/9botnet.ipsum_task2_task5
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task2/home/9botnet.ipsum_task2_task5 38
-Create file 
-File size 38
---- waiting for computing node assignment
-38+0 records in
-38+0 records out
-38912 bytes (39 kB, 38 KiB) copied, 0.00433007 s, 9.0 MB/s
-task4
-1
-/centralized_scheduler/output/task2/home/9botnet.ipsum_task2_task4
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task2/home/9botnet.ipsum_task2_task4 32
-Create file 
-File size 32
-32+0 records in
-32+0 records out
-32768 bytes (33 kB, 32 KiB) copied, 0.00476961 s, 6.9 MB/s
-43+0 records in
-43+0 records out
-44032 bytes (44 kB, 43 KiB) copied, 0.00491463 s, 9.0 MB/s
-task6
-2
-/centralized_scheduler/output/task2/home/9botnet.ipsum_task2_task6
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task2/home/9botnet.ipsum_task2_task6 43
-Create file 
-File size 43
-Received file as input - /centralized_scheduler/input/task4/home/9botnet.ipsum_task0_task4.
-Received file as input - /centralized_scheduler/input/task4/home/9botnet.ipsum_task1_task4.
-10.244.3.216 - - [31/Mar/2019 06:26:59] "GET /receive_best_assignment?task_name=task6&home_id=home&file_name=9botnet&best_computing_node=node3 HTTP/1.1" 200 -
---- waiting for computing node assignment
-Received file as output - /centralized_scheduler/output/task3/home/9botnet.ipsum_task3_task4.
-Received file as output - /centralized_scheduler/output/task3/home/9botnet.ipsum_task3_task6.
-Received file as output - /centralized_scheduler/output/task2/home/9botnet.ipsum_task2_task5.
-Received file as output - /centralized_scheduler/output/task2/home/9botnet.ipsum_task2_task4.
-Received file as output - /centralized_scheduler/output/task2/home/9botnet.ipsum_task2_task6.
-Received file as input - /centralized_scheduler/input/task5/home/9botnet.ipsum_task3_task5.
-Received file as input - /centralized_scheduler/input/task4/home/9botnet.ipsum_task3_task4.
-Received file as input - /centralized_scheduler/input/task6/home/9botnet.ipsum_task3_task6.
-10.244.3.216 - - [31/Mar/2019 06:27:02] "GET /receive_best_assignment?task_name=task6&home_id=home&file_name=9botnet&best_computing_node=node3 HTTP/1.1" 200 -
---- waiting for computing node assignment
-Received file as input - /centralized_scheduler/input/task5/home/9botnet.ipsum_task2_task5.
--------------------------
-task5
-['9botnet.ipsum_task3_task5', '9botnet.ipsum_task2_task5']
-/centralized_scheduler/input/task5/home
-/centralized_scheduler/output/task5/home
--------------------------
-['9botnet_task5.txt', '9botnet_task5.txt']
-{'9botnet_task5.txt'}
-9botnet.ipsum
-9botnet.ipsum_task5
--------------------------@@@
-/communication.txt
--------------------------##
-{'task2': ['task5-37.48', 'task4-31.45', 'task6-42.99'], 'task3': ['task5-2.78', 'task4-19.55', 'task6-5.42'], 'task1': ['task4-51.34'], 'task4': ['task6-67.76'], 'task5': ['task6-53.11'], 'task0': ['task1-21.92', 'task3-6.85', 'task2-54.06', 'task4-66.84']}
-dict_keys(['task2', 'task3', 'task1', 'task4', 'task5', 'task0'])
-task5
-['task6-53.11']
-['task6']
-['54']
-task6
-0
-/centralized_scheduler/output/task5/home/9botnet.ipsum_task5_task6
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task5/home/9botnet.ipsum_task5_task6 54
-Create file 
-File size 54
-Received file as input - /centralized_scheduler/input/task4/home/9botnet.ipsum_task2_task4.
-54+0 records in
-54+0 records out
-55296 bytes (55 kB, 54 KiB) copied, 0.00708235 s, 7.8 MB/s
-Received file as output - /centralized_scheduler/output/task5/home/9botnet.ipsum_task5_task6.
-10.244.3.216 - - [31/Mar/2019 06:27:07] "GET /receive_best_assignment?task_name=task6&home_id=home&file_name=9botnet&best_computing_node=node3 HTTP/1.1" 200 -
---- waiting for computing node assignment
--------------------------
-task4
-['9botnet.ipsum_task0_task4', '9botnet.ipsum_task1_task4', '9botnet.ipsum_task3_task4', '9botnet.ipsum_task2_task4']
-/centralized_scheduler/input/task4/home
-/centralized_scheduler/output/task4/home
--------------------------
-['9botnet_task4.txt', '9botnet_task4.txt', '9botnet_task4.txt', '9botnet_task4.txt']
-{'9botnet_task4.txt'}
-9botnet.ipsum
-9botnet.ipsum_task4
--------------------------@@@
-/communication.txt
--------------------------##
-{'task2': ['task5-37.48', 'task4-31.45', 'task6-42.99'], 'task3': ['task5-2.78', 'task4-19.55', 'task6-5.42'], 'task1': ['task4-51.34'], 'task4': ['task6-67.76'], 'task5': ['task6-53.11'], 'task0': ['task1-21.92', 'task3-6.85', 'task2-54.06', 'task4-66.84']}
-dict_keys(['task2', 'task3', 'task1', 'task4', 'task5', 'task0'])
-task4
-['task6-67.76']
-['task6']
-['68']
-task6
-0
-/centralized_scheduler/output/task4/home/9botnet.ipsum_task4_task6
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task4/home/9botnet.ipsum_task4_task6 68
-Create file 
-File size 68
-68+0 records in
-68+0 records out
-69632 bytes (70 kB, 68 KiB) copied, 0.00874193 s, 8.0 MB/s
-Received file as input - /centralized_scheduler/input/task6/home/9botnet.ipsum_task2_task6.
-Received file as output - /centralized_scheduler/output/task4/home/9botnet.ipsum_task4_task6.
-Received file as input - /centralized_scheduler/input/task6/home/9botnet.ipsum_task5_task6.
-Received file as input - /centralized_scheduler/input/task6/home/9botnet.ipsum_task4_task6.
--------------------------
-task6
-['9botnet.ipsum_task3_task6', '9botnet.ipsum_task2_task6', '9botnet.ipsum_task5_task6', '9botnet.ipsum_task4_task6']
-/centralized_scheduler/input/task6/home
-/centralized_scheduler/output/task6/home
--------------------------
-['9botnet_task6.txt', '9botnet_task6.txt', '9botnet_task6.txt', '9botnet_task6.txt']
-{'9botnet_task6.txt'}
-9botnet.ipsum
-9botnet.ipsum_task6
--------------------------@@@
-/communication.txt
--------------------------##
-{'task2': ['task5-37.48', 'task4-31.45', 'task6-42.99'], 'task3': ['task5-2.78', 'task4-19.55', 'task6-5.42'], 'task1': ['task4-51.34'], 'task4': ['task6-67.76'], 'task5': ['task6-53.11'], 'task0': ['task1-21.92', 'task3-6.85', 'task2-54.06', 'task4-66.84']}
-dict_keys(['task2', 'task3', 'task1', 'task4', 'task5', 'task0'])
-task6
-/centralized_scheduler/output/task6/home/9botnet.ipsum_task6_task6
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task6/home/9botnet.ipsum_task6_task6 9
-Create file 
-File size 9
-9+0 records in
-9+0 records out
-9216 bytes (9.2 kB, 9.0 KiB) copied, 0.00119274 s, 7.7 MB/s
-Received file as output - /centralized_scheduler/output/task6/home/9botnet.ipsum_task6_task6.
------ next step is home
-data transfer complete
-
-Received file as input - /centralized_scheduler/input/task0/home/10botnet.ipsum.
--------------------------
-task0
-10botnet.ipsum
-/centralized_scheduler/input/task0/home
-/centralized_scheduler/output/task0/home
--------------------------
-['10botnet_task0.txt']
-{'10botnet_task0.txt'}
-10botnet.ipsum
-10botnet.ipsum_task0
--------------------------@@@
-/communication.txt
--------------------------##
-{'task2': ['task5-37.48', 'task4-31.45', 'task6-42.99'], 'task3': ['task5-2.78', 'task4-19.55', 'task6-5.42'], 'task1': ['task4-51.34'], 'task4': ['task6-67.76'], 'task5': ['task6-53.11'], 'task0': ['task1-21.92', 'task3-6.85', 'task2-54.06', 'task4-66.84']}
-dict_keys(['task2', 'task3', 'task1', 'task4', 'task5', 'task0'])
-task0
-['task1-21.92', 'task3-6.85', 'task2-54.06', 'task4-66.84']
-['task1', 'task3', 'task2', 'task4']
-['22', '7', '55', '67']
-task1
-0
-/centralized_scheduler/output/task0/home/10botnet.ipsum_task0_task1
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task0/home/10botnet.ipsum_task0_task1 22
-Create file 
-File size 22
-22+0 records in
-22+0 records out
-22528 bytes (23 kB, 22 KiB) copied, 0.00270383 s, 8.3 MB/s
-task3
-1
-/centralized_scheduler/output/task0/home/10botnet.ipsum_task0_task3
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task0/home/10botnet.ipsum_task0_task3 7
-Create file 
-File size 7
-7+0 records in
-7+0 records out
-7168 bytes (7.2 kB, 7.0 KiB) copied, 0.000859898 s, 8.3 MB/s
-task2
-2
-/centralized_scheduler/output/task0/home/10botnet.ipsum_task0_task2
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task0/home/10botnet.ipsum_task0_task2 55
-Create file 
-File size 55
-55+0 records in
-55+0 records out
-56320 bytes (56 kB, 55 KiB) copied, 0.00659888 s, 8.5 MB/s
-task4
-3
-/centralized_scheduler/output/task0/home/10botnet.ipsum_task0_task4
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task0/home/10botnet.ipsum_task0_task4 67
-Create file 
-File size 67
-67+0 records in
-67+0 records out
-68608 bytes (69 kB, 67 KiB) copied, 0.0080324 s, 8.5 MB/s
-Received file as output - /centralized_scheduler/output/task0/home/10botnet.ipsum_task0_task1.
-10.244.7.139 - - [31/Mar/2019 06:27:56] "GET /receive_best_assignment?file_name=10botnet&best_computing_node=node3&home_id=home&task_name=task1 HTTP/1.1" 200 -
---- waiting for computing node assignment
-10.244.3.217 - - [31/Mar/2019 06:27:58] "GET /receive_best_assignment?file_name=10botnet&home_id=home&task_name=task3&best_computing_node=node3 HTTP/1.1" 200 -
---- waiting for computing node assignment
-10.244.7.138 - - [31/Mar/2019 06:27:59] "GET /receive_best_assignment?best_computing_node=node3&file_name=10botnet&task_name=task2&home_id=home HTTP/1.1" 200 -
---- waiting for computing node assignment
-10.244.7.140 - - [31/Mar/2019 06:28:00] "GET /receive_best_assignment?task_name=task4&best_computing_node=node3&home_id=home&file_name=10botnet HTTP/1.1" 200 -
---- waiting for computing node assignment
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
-Received file as output - /centralized_scheduler/output/task0/home/10botnet.ipsum_task0_task3.
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
-Received file as output - /centralized_scheduler/output/task0/home/10botnet.ipsum_task0_task2.
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
-Received file as output - /centralized_scheduler/output/task0/home/10botnet.ipsum_task0_task4.
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
-Received file as input - /centralized_scheduler/input/task1/home/10botnet.ipsum_task0_task1.
--------------------------
-task1
-10botnet.ipsum_task0_task1
-/centralized_scheduler/input/task1/home
-/centralized_scheduler/output/task1/home
--------------------------
-['10botnet_task1.txt']
-{'10botnet_task1.txt'}
-10botnet.ipsum
-10botnet.ipsum_task1
--------------------------@@@
-/communication.txt
--------------------------##
-{'task2': ['task5-37.48', 'task4-31.45', 'task6-42.99'], 'task3': ['task5-2.78', 'task4-19.55', 'task6-5.42'], 'task1': ['task4-51.34'], 'task4': ['task6-67.76'], 'task5': ['task6-53.11'], 'task0': ['task1-21.92', 'task3-6.85', 'task2-54.06', 'task4-66.84']}
-dict_keys(['task2', 'task3', 'task1', 'task4', 'task5', 'task0'])
-task1
-['task4-51.34']
-['task4']
-['52']
-task4
-0
-/centralized_scheduler/output/task1/home/10botnet.ipsum_task1_task4
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task1/home/10botnet.ipsum_task1_task4 52
-Create file 
-File size 52
-52+0 records in
-52+0 records out
-53248 bytes (53 kB, 52 KiB) copied, 0.00611348 s, 8.7 MB/s
-Received file as input - /centralized_scheduler/input/task3/home/10botnet.ipsum_task0_task3.
-Received file as output - /centralized_scheduler/output/task1/home/10botnet.ipsum_task1_task4.
-10.244.7.140 - - [31/Mar/2019 06:28:06] "GET /receive_best_assignment?task_name=task4&best_computing_node=node2&home_id=home&file_name=10botnet HTTP/1.1" 200 -
---- waiting for computing node assignment
-Warning: Permanently added '[10.96.180.223]:5000' (ECDSA) to the list of known hosts.
--------------------------
-task3
-10botnet.ipsum_task0_task3
-/centralized_scheduler/input/task3/home
-/centralized_scheduler/output/task3/home
--------------------------
-['10botnet_task3.txt']
-{'10botnet_task3.txt'}
-10botnet.ipsum
-10botnet.ipsum_task3
--------------------------@@@
-/communication.txt
--------------------------##
-{'task2': ['task5-37.48', 'task4-31.45', 'task6-42.99'], 'task3': ['task5-2.78', 'task4-19.55', 'task6-5.42'], 'task1': ['task4-51.34'], 'task4': ['task6-67.76'], 'task5': ['task6-53.11'], 'task0': ['task1-21.92', 'task3-6.85', 'task2-54.06', 'task4-66.84']}
-dict_keys(['task2', 'task3', 'task1', 'task4', 'task5', 'task0'])
-task3
-['task5-2.78', 'task4-19.55', 'task6-5.42']
-['task5', 'task4', 'task6']
-['3', '20', '6']
-task5
-0
-/centralized_scheduler/output/task3/home/10botnet.ipsum_task3_task5
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task3/home/10botnet.ipsum_task3_task5 3
-Create file 
-File size 3
-3+0 records in
-3+0 records out
-3072 bytes (3.1 kB, 3.0 KiB) copied, 0.000417967 s, 7.3 MB/s
-task4
-1
-/centralized_scheduler/output/task3/home/10botnet.ipsum_task3_task4
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task3/home/10botnet.ipsum_task3_task4 20
-Create file 
-File size 20
-20+0 records in
-20+0 records out
-20480 bytes (20 kB, 20 KiB) copied, 0.00237217 s, 8.6 MB/s
-task6
-2
-/centralized_scheduler/output/task3/home/10botnet.ipsum_task3_task6
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task3/home/10botnet.ipsum_task3_task6 6
-Create file 
-File size 6
-6+0 records in
-6+0 records out
-6144 bytes (6.1 kB, 6.0 KiB) copied, 0.000829683 s, 7.4 MB/s
-Received file as input - /centralized_scheduler/input/task2/home/10botnet.ipsum_task0_task2.
-data transfer complete
-
-Received file as output - /centralized_scheduler/output/task3/home/10botnet.ipsum_task3_task5.
-10.244.6.90 - - [31/Mar/2019 06:28:09] "GET /receive_best_assignment?task_name=task5&home_id=home&best_computing_node=node2&file_name=10botnet HTTP/1.1" 200 -
---- waiting for computing node assignment
--------------------------
-task2
-10botnet.ipsum_task0_task2
-/centralized_scheduler/input/task2/home
-/centralized_scheduler/output/task2/home
--------------------------
-['10botnet_task2.txt']
-{'10botnet_task2.txt'}
-10botnet.ipsum
-10botnet.ipsum_task2
--------------------------@@@
-/communication.txt
--------------------------##
-{'task2': ['task5-37.48', 'task4-31.45', 'task6-42.99'], 'task3': ['task5-2.78', 'task4-19.55', 'task6-5.42'], 'task1': ['task4-51.34'], 'task4': ['task6-67.76'], 'task5': ['task6-53.11'], 'task0': ['task1-21.92', 'task3-6.85', 'task2-54.06', 'task4-66.84']}
-dict_keys(['task2', 'task3', 'task1', 'task4', 'task5', 'task0'])
-task2
-['task5-37.48', 'task4-31.45', 'task6-42.99']
-['task5', 'task4', 'task6']
-['38', '32', '43']
-task5
-0
-/centralized_scheduler/output/task2/home/10botnet.ipsum_task2_task5
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task2/home/10botnet.ipsum_task2_task5 38
-Create file 
-File size 38
-38+0 records in
-38+0 records out
-38912 bytes (39 kB, 38 KiB) copied, 0.00430302 s, 9.0 MB/s
-task4
-1
-/centralized_scheduler/output/task2/home/10botnet.ipsum_task2_task4
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task2/home/10botnet.ipsum_task2_task4 32
-Create file 
-File size 32
-32+0 records in
-32+0 records out
-32768 bytes (33 kB, 32 KiB) copied, 0.00366446 s, 8.9 MB/s
-task6
-2
-/centralized_scheduler/output/task2/home/10botnet.ipsum_task2_task6
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task2/home/10botnet.ipsum_task2_task6 43
-Create file 
-File size 43
-43+0 records in
-43+0 records out
-44032 bytes (44 kB, 43 KiB) copied, 0.0048467 s, 9.1 MB/s
-Received file as input - /centralized_scheduler/input/task4/home/10botnet.ipsum_task0_task4.
-10.244.7.140 - - [31/Mar/2019 06:28:10] "GET /receive_best_assignment?task_name=task4&best_computing_node=node2&home_id=home&file_name=10botnet HTTP/1.1" 200 -
---- waiting for computing node assignment
-10.244.3.216 - - [31/Mar/2019 06:28:12] "GET /receive_best_assignment?task_name=task6&home_id=home&file_name=10botnet&best_computing_node=node2 HTTP/1.1" 200 -
---- waiting for computing node assignment
-Received file as output - /centralized_scheduler/output/task3/home/10botnet.ipsum_task3_task4.
-Received file as output - /centralized_scheduler/output/task3/home/10botnet.ipsum_task3_task6.
-data transfer complete
-
-data transfer complete
-
-data transfer complete
-
-Received file as output - /centralized_scheduler/output/task2/home/10botnet.ipsum_task2_task5.
-Received file as output - /centralized_scheduler/output/task2/home/10botnet.ipsum_task2_task4.
-Received file as output - /centralized_scheduler/output/task2/home/10botnet.ipsum_task2_task6.
-data transfer complete
-
-data transfer complete
-
-data transfer complete
-
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
- Retrieve all input information: 
------ Get updated resource profile information
-Retrieve network information info
+Announce my current best computing node 10.111.31.48
+Receive assignment info
+['', 'task0', 'task1', 'task6', 'task3', 'task2', 'task4', 'task5']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.12.251 - - [04/Jun/2019 16:00:03] "GET /receive_assignment_info?assignment_info=node13%23%3Atask0%3Atask1%3Atask6%3Atask3%3Atask2%3Atask4%3Atask5%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Announce my current best computing node 10.104.107.255
+Announce my current best computing node 10.106.62.79
+Announce my current best computing node 10.101.153.5
+Received pricing info
+Check price updated interval 
+10.244.15.70 - - [04/Jun/2019 16:00:04] "GET /receive_price_info?pricing_info=node18%237.944877344877342%2335.392544492544516%230%24task3%3A179.01460992572606%24task0%3A185.26999381704323%24task2%3A183.33464581836304%24task4%3A181.02751606722444%24task6%3A177.6137739411687%24task1%3A180.20321296097734%24task5%3A180.3063653252455 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task3', 'task0', 'task2', 'task4', 'task6', 'task1', 'task5']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.15.70 - - [04/Jun/2019 16:00:04] "GET /receive_assignment_info?assignment_info=node18%23%3Atask3%3Atask0%3Atask2%3Atask4%3Atask6%3Atask1%3Atask5%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Announce my current best computing node 10.110.133.32
+Announce my current best computing node 10.103.177.107
+Received pricing info
+Check price updated interval 
+10.244.12.251 - - [04/Jun/2019 16:00:05] "GET /receive_price_info?pricing_info=node13%237.796536796536784%2334.73612313612293%230%24task0%3A136.44013597154702%24task2%3A135.28274024302561%24task6%3A132.35912448769278%24task3%3A132.6998515692199%24task1%3A133.41041634917215%24task4%3A133.9032344401684%24task5%3A133.47208537272735 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task0', 'task3', 'task5', 'task2', 'task4', 'task1', 'task6']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.10.212 - - [04/Jun/2019 16:00:05] "GET /receive_assignment_info?assignment_info=node11%23%3Atask0%3Atask3%3Atask5%3Atask2%3Atask4%3Atask1%3Atask6%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.10.212 - - [04/Jun/2019 16:00:06] "GET /receive_price_info?pricing_info=node11%237.954256854256858%2334.64997594997594%230%24task0%3A152.54143884496258%24task3%3A148.99189343115185%24task1%3A149.66504135065665%24task2%3A151.4414099128385%24task4%3A150.1322298432498%24task5%3A149.72348874714638%24task6%3A148.16991842671308 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task3', 'task2', 'task4', 'task0', 'task1', 'task6', 'task5']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.14.160 - - [04/Jun/2019 16:00:06] "GET /receive_assignment_info?assignment_info=node15%23%3Atask3%3Atask2%3Atask4%3Atask0%3Atask1%3Atask6%3Atask5%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task5', 'task3', 'task0', 'task2', 'task1', 'task6', 'task4']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.13.190 - - [04/Jun/2019 16:00:06] "GET /receive_assignment_info?assignment_info=node14%23%3Atask5%3Atask3%3Atask0%3Atask2%3Atask1%3Atask6%3Atask4%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.4.167 - - [04/Jun/2019 16:00:06] "GET /receive_price_info?pricing_info=node17%237.170466570466573%2335.299182299182284%230%24task0%3A143.82463997639195%24task6%3A142.00543369069683%24task5%3A142.4770781440654%24task4%3A142.6713898149415%24task1%3A142.4493243401904%24task2%3A143.29637840507726%24task3%3A142.13024555168604 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.13.190 - - [04/Jun/2019 16:00:07] "GET /receive_price_info?pricing_info=node14%238.621115921115926%2338.99639249639262%230%24task5%3A140.6166361060558%24task3%3A139.77420166776452%24task0%3A143.85801400463095%24task2%3A142.59336184094315%24task4%3A141.08714130664094%24task6%3A139.09818035088207%24task1%3A140.5493473434897 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.14.160 - - [04/Jun/2019 16:00:07] "GET /receive_price_info?pricing_info=node15%236.948484848484844%2338.621500721500695%230%24task3%3A139.72341409079493%24task2%3A146.845792044594%24task4%3A143.13547344650829%24task0%3A149.7898159677946%24task1%3A141.75772185633966%24task6%3A137.71818775972696%24task5%3A141.93161986411963 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task6', 'task0', 'task3', 'task5', 'task4', 'task2', 'task1']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.4.167 - - [04/Jun/2019 16:00:07] "GET /receive_assignment_info?assignment_info=node17%23%3Atask6%3Atask0%3Atask3%3Atask5%3Atask4%3Atask2%3Atask1%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task0', 'task1', 'task2', 'task6', 'task3', 'task5', 'task4']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.6.94 - - [04/Jun/2019 16:00:08] "GET /receive_assignment_info?assignment_info=node6%23%3Atask0%3Atask1%3Atask2%3Atask6%3Atask3%3Atask5%3Atask4%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task3', 'task5', 'task4', 'task6', 'task0', 'task2', 'task1']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.3.211 - - [04/Jun/2019 16:00:08] "GET /receive_assignment_info?assignment_info=node3%23%3Atask3%3Atask5%3Atask4%3Atask6%3Atask0%3Atask2%3Atask1%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.7.34 - - [04/Jun/2019 16:00:08] "GET /receive_price_info?pricing_info=node8%2311.224271844660212%2343.55447112927947%230%24task5%3A184.2081071363471%24task3%3A183.67195969964766%24task6%3A183.3713909960931%24task2%3A185.47045474831637%24task4%3A184.50802356189593%24task0%3A186.28129045638207%24task1%3A184.16524281832346 HTTP/1.1" 200 -
