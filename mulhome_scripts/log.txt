@@ -1,972 +1,858 @@
  * Starting OpenBSD Secure Shell server sshd
    ...done.
-tasks:  {'task3': ['task5', 'task4', 'task6'], 'task4': ['task6'], 'task6': [], 'task2': ['task5', 'task4', 'task6'], 'task5': ['task6'], 'task1': ['task4'], 'task0': ['task1', 'task3', 'task2', 'task4']}
+Installing and starting mongodb
+Start MongoDB.
+about to fork child process, waiting until server is ready for connections.
+forked process: 32
+child process started successfully, parent exiting
+Starting the scheduler
+tasks:  {'task0': ['task1', 'task3', 'task2', 'task4'], 'task3': ['task5', 'task4', 'task6'], 'task6': [], 'task2': ['task5', 'task4', 'task6'], 'task1': ['task4'], 'task4': ['task6'], 'task5': ['task6']}
 task order ['task0', 'task1', 'task2', 'task3', 'task4', 'task5', 'task6']
 super tasks []
 non tasks []
 ----------- TASKS INFO
-{'task3': ['task5', 'task4', 'task6'], 'task4': ['task6'], 'task6': [], 'task2': ['task5', 'task4', 'task6'], 'task5': ['task6'], 'task1': ['task4'], 'task0': ['task1', 'task3', 'task2', 'task4']}
+{'task0': ['task1', 'task3', 'task2', 'task4'], 'task3': ['task5', 'task4', 'task6'], 'task6': [], 'task2': ['task5', 'task4', 'task6'], 'task1': ['task4'], 'task4': ['task6'], 'task5': ['task6']}
 ['task0', 'task1', 'task2', 'task3', 'task4', 'task5', 'task6']
 []
 []
+TASK:  task0
+DAG:  {'task0': ['1', 'false', 'task1', 'task3', 'task2', 'task4'], 'task3': ['1', 'false', 'task5', 'task4', 'task6'], 'task6': ['4', 'false', 'home'], 'task2': ['1', 'false', 'task5', 'task4', 'task6'], 'task1': ['1', 'false', 'task4'], 'task4': ['4', 'false', 'task6'], 'task5': ['2', 'false', 'task6']}
+HOSTS:  {'home': ['home', 'ubuntu-2gb-fra1-02-sfo2']}
 SETTTT
-{'task3': {'task5', 'task4', 'task6'}, 'task4': {'task6'}, 'task6': set(), 'task2': {'task5', 'task4', 'task6'}, 'task5': {'task6'}, 'task1': {'task4'}, 'task0': {'task3', 'task1', 'task4', 'task2'}}
-Generating task folders for OUTPUT
-
-Generating task folders for INPUT
-
+{'task0': {'task2', 'task3', 'task1', 'task4'}, 'task3': {'task6', 'task4', 'task5'}, 'task6': {'home'}, 'task2': {'task6', 'task4', 'task5'}, 'task1': {'task4'}, 'task4': {'task6'}, 'task5': {'task6'}}
+Last and next
+{'task0': ['home'], 'task3': ['task0'], 'task6': ['task3', 'task2', 'task4', 'task5'], 'home': ['task6'], 'task2': ['task0'], 'task1': ['task0'], 'task4': ['task0', 'task3', 'task2', 'task1'], 'task5': ['task3', 'task2']}
+{'task0': ['task1', 'task3', 'task2', 'task4'], 'task3': ['task5', 'task4', 'task6'], 'task6': ['home'], 'home': ['task0'], 'task2': ['task5', 'task4', 'task6'], 'task1': ['task4'], 'task4': ['task6'], 'task5': ['task6']}
 Flask server started
- * Serving Flask app "compute" (lazy loading)
+ * Serving Flask app "scheduler" (lazy loading)
  * Environment: production
    WARNING: Do not use the development server in a production environment.
    Use a production WSGI server instead.
  * Debug mode: off
  * Running on http://0.0.0.0:8888/ (Press CTRL+C to quit)
-Execution information has already been provided
+Recieved request for number of output files. Current done: 0
+10.244.0.0 - - [10/Jun/2019 22:33:01] "GET / HTTP/1.1" 200 -
+Receive assignment info
+['', 'task2', 'task1', 'task4', 'task3', 'task5', 'task0', 'task6']
+['', 'node9', 'node9', 'node9', 'node9', 'node9', 'node9', 'node9']
+10.244.15.88 - - [10/Jun/2019 22:33:26] "GET /receive_assignment_info?assignment_info=node18%23%3Atask2%3Atask1%3Atask4%3Atask3%3Atask5%3Atask0%3Atask6%23%3Anode9%3Anode9%3Anode9%3Anode9%3Anode9%3Anode9%3Anode9 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task0', 'task1', 'task6', 'task4', 'task5', 'task3', 'task2']
+['', 'node9', 'node9', 'node9', 'node9', 'node9', 'node9', 'node9']
+10.244.7.58 - - [10/Jun/2019 22:33:26] "GET /receive_assignment_info?assignment_info=node8%23%3Atask0%3Atask1%3Atask6%3Atask4%3Atask5%3Atask3%3Atask2%23%3Anode9%3Anode9%3Anode9%3Anode9%3Anode9%3Anode9%3Anode9 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task0', 'task1', 'task3', 'task2', 'task5', 'task4', 'task6']
+['', 'node9', 'node9', 'node9', 'node9', 'node9', 'node9', 'node9']
+10.244.6.111 - - [10/Jun/2019 22:33:27] "GET /receive_assignment_info?assignment_info=node6%23%3Atask0%3Atask1%3Atask3%3Atask2%3Atask5%3Atask4%3Atask6%23%3Anode9%3Anode9%3Anode9%3Anode9%3Anode9%3Anode9%3Anode9 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task1', 'task3', 'task5', 'task6', 'task0', 'task2', 'task4']
+['', 'node18', 'node18', 'node18', 'node18', 'node18', 'node18', 'node18']
+10.244.14.177 - - [10/Jun/2019 22:33:27] "GET /receive_assignment_info?assignment_info=node15%23%3Atask1%3Atask3%3Atask5%3Atask6%3Atask0%3Atask2%3Atask4%23%3Anode18%3Anode18%3Anode18%3Anode18%3Anode18%3Anode18%3Anode18 HTTP/1.1" 200 -
 Received pricing info
 Check price updated interval 
-10.244.6.94 - - [04/Jun/2019 15:52:01] "GET /receive_price_info?pricing_info=node6%2313.874070497344295%2345.37069048768708%230%24task0%3A142.05500501492116%24task1%3A138.34171289354182%24task2%3A140.6352712688946%24task3%3A137.47228586992367%24task5%3A138.41719509026026%24task4%3A138.94503218112604%24task6%3A136.8280318129497 HTTP/1.1" 200 -
+10.244.6.111 - - [10/Jun/2019 22:33:27] "GET /receive_price_info?pricing_info=node6%2312.694999999999999%2336.769999999999996%230%24task0%3A140.39081963540107%24task1%3A140.12350406468664%24task3%3A140.0636883313949%24task2%3A140.28632366751137%24task5%3A140.12874620051363%24task4%3A140.16562379066426%24task6%3A140.01747774985242 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task2', 'task3', 'task4', 'task5', 'task6', 'task0', 'task1']
+['', 'node8', 'node8', 'node8', 'node8', 'node8', 'node8', 'node8']
+10.244.12.15 - - [10/Jun/2019 22:33:27] "GET /receive_assignment_info?assignment_info=node13%23%3Atask2%3Atask3%3Atask4%3Atask5%3Atask6%3Atask0%3Atask1%23%3Anode8%3Anode8%3Anode8%3Anode8%3Anode8%3Anode8%3Anode8 HTTP/1.1" 200 -
 Received pricing info
 Check price updated interval 
-10.244.3.211 - - [04/Jun/2019 15:52:02] "GET /receive_price_info?pricing_info=node3%2330.037361043982592%2354.0896568390527%230%24task3%3A180.9549286504593%24task4%3A180.82652789170768%24task6%3A181.04956458604542%24task0%3A180.5664931778461%24task5%3A180.87216323754535%24task2%3A180.68331129972285%24task1%3A180.8787243769372 HTTP/1.1" 200 -
+10.244.7.58 - - [10/Jun/2019 22:33:27] "GET /receive_price_info?pricing_info=node8%2313.785000000000005%2337.06999999999998%230%24task0%3A189.4091623565611%24task1%3A186.59743221567433%24task6%3A185.22106238220047%24task4%3A187.0543200489838%24task5%3A186.65459520569064%24task3%3A185.93898975047742%24task2%3A188.3342181590788 HTTP/1.1" 200 -
 Received pricing info
 Check price updated interval 
-10.244.11.89 - - [04/Jun/2019 15:52:02] "GET /receive_price_info?pricing_info=node12%238.217865765330725%2336.37952679864814%230%24task0%3A171.5863650666811%24task5%3A168.66545722764153%24task6%3A167.633710177534%24task3%3A167.90721996669927%24task4%3A169.08909875758147%24task1%3A168.60488008095047%24task2%3A170.44608041960757 HTTP/1.1" 200 -
+10.244.11.114 - - [10/Jun/2019 22:33:27] "GET /receive_price_info?pricing_info=node12%2315.020000000000001%2338.404999999999994%230%24task4%3A170.88831301889726%24task1%3A170.17896496593684%24task6%3A168.009983370689%24task3%3A169.11851398031854%24task5%3A170.2689059011697%24task2%3A172.7586109699177%24task0%3A174.19464368965978 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task5', 'task6', 'task2', 'task4', 'task3', 'task0', 'task1']
+['', 'node9', 'node9', 'node9', 'node9', 'node9', 'node9', 'node9']
+10.244.9.6 - - [10/Jun/2019 22:33:28] "GET /receive_assignment_info?assignment_info=node10%23%3Atask5%3Atask6%3Atask2%3Atask4%3Atask3%3Atask0%3Atask1%23%3Anode9%3Anode9%3Anode9%3Anode9%3Anode9%3Anode9%3Anode9 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task1', 'task2', 'task6', 'task3', 'task0', 'task4', 'task5']
+['', 'node9', 'node9', 'node9', 'node9', 'node9', 'node9', 'node9']
+10.244.10.230 - - [10/Jun/2019 22:33:28] "GET /receive_assignment_info?assignment_info=node11%23%3Atask1%3Atask2%3Atask6%3Atask3%3Atask0%3Atask4%3Atask5%23%3Anode9%3Anode9%3Anode9%3Anode9%3Anode9%3Anode9%3Anode9 HTTP/1.1" 200 -
 Received pricing info
 Check price updated interval 
-10.244.8.37 - - [04/Jun/2019 15:52:02] "GET /receive_price_info?pricing_info=node9%239.209512312892334%2334.92216320618066%230%24task3%3A155.83580615877275%24task6%3A155.81894283636356%24task2%3A135.8236898023196%24task1%3A153.71358504511764%24task4%3A150.74406626023176%24task5%3A153.40939735967058%24task0%3A115.6769457562296 HTTP/1.1" 200 -
------------------
+10.244.8.55 - - [10/Jun/2019 22:33:28] "GET /receive_price_info?pricing_info=node9%2315.595000000000004%2336.84000000000001%230%24task3%3A149.4912681380812%24task4%3A150.06602425257347%24task1%3A150.26703237944474%24task6%3A148.78083294191322%24task0%3A145.9468946983183%24task2%3A147.82116656924723%24task5%3A150.33437494936183 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.15.88 - - [10/Jun/2019 22:33:28] "GET /receive_price_info?pricing_info=node18%2314.790000000000001%2340.69999999999999%230%24task2%3A192.08151670416294%24task5%3A190.8829654570012%24task3%3A190.37286068633333%24task1%3A190.84220623122638%24task4%3A191.16804066966856%24task0%3A192.8495260831236%24task6%3A189.9842877059627 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task6', 'task2', 'task3', 'task5', 'task4', 'task0', 'task1']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.13.206 - - [10/Jun/2019 22:33:29] "GET /receive_assignment_info?assignment_info=node14%23%3Atask6%3Atask2%3Atask3%3Atask5%3Atask4%3Atask0%3Atask1%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+10.244.12.15 - - [10/Jun/2019 22:33:30] "GET /receive_price_info?pricing_info=node13%2314.444999999999999%2336.71%230%24task2%3A133.0597724591724%24task6%3A132.03176709632328%24task4%3A132.62289872529533%24task5%3A132.48711977702146%24task0%3A133.4292124167591%24task1%3A132.46772810448792%24task3%3A132.24481946548602 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+Received pricing info
+Check price updated interval 
+10.244.14.177 - - [10/Jun/2019 22:33:30] "GET /receive_price_info?pricing_info=node15%2313.254999999999995%2341.35%230%24task1%3A147.4557113816324%24task3%3A146.97919054877002%24task5%3A147.4970934156151%24task6%3A146.75088117073844%24task0%3A149.49364323574696%24task2%3A148.71393617640132%24task4%3A147.78652322389084 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.13.206 - - [10/Jun/2019 22:33:30] "GET /receive_price_info?pricing_info=node14%2315.175000000000002%2336.56000000000001%230%24task6%3A150.57113208898934%24task2%3A149.70223554642354%24task3%3A150.37451354746702%24task5%3A150.17184778777926%24task4%3A150.05931111802866%24task0%3A149.40622835127598%24task1%3A150.1879804933143 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.10.230 - - [10/Jun/2019 22:33:30] "GET /receive_price_info?pricing_info=node11%2314.609999999999994%2336.930000000000014%230%24task1%3A168.5504446155981%24task2%3A169.72005115638942%24task6%3A167.79807555843303%24task3%3A168.10717268958527%24task0%3A170.44423302196626%24task4%3A168.8580736423768%24task5%3A168.5889311821846 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.9.6 - - [10/Jun/2019 22:33:30] "GET /receive_price_info?pricing_info=node10%2312.195%2336.865%230%24task5%3A139.411539398905%24task6%3A136.89089687251544%24task2%3A142.68980607501155%24task4%3A140.1921617915487%24task3%3A138.01334799939733%24task0%3A144.78526756443836%24task1%3A139.29988331842736 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task1', 'task2', 'task5', 'task3', 'task0', 'task4', 'task6']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.3.26 - - [10/Jun/2019 22:33:38] "GET /receive_assignment_info?assignment_info=node3%23%3Atask1%3Atask2%3Atask5%3Atask3%3Atask0%3Atask4%3Atask6%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.3.26 - - [10/Jun/2019 22:33:38] "GET /receive_price_info?pricing_info=node3%2315.945000000000004%2356.525%230%24task1%3A167.09206972285835%24task2%3A166.70053011458936%24task5%3A167.0790778812297%24task3%3A167.24222865174326%24task0%3A166.4615451443946%24task4%3A166.98842823510677%24task6%3A167.36071047367838 HTTP/1.1" 200 -
+Recieved request for number of output files. Current done: 0
+10.244.0.0 - - [10/Jun/2019 22:34:02] "GET / HTTP/1.1" 200 -
 Overall price:
-{'cpu': 7.350989859971015, 'memory': 34.816272332206744, 'network': {'task3': '146.7010092283787', 'task4': '146.95882502086332', 'task6': '146.52372787449923', 'task2': '147.2588640290565', 'task5': '146.86603879464917', 'task1': '146.85280528506414', 'task0': '147.51436571720208'}, 'queue': 0}
-Announce my price
+{'network': {'node9': 143.27450695127715, 'node6': 138.6166601849601, 'node8': 1213.2991598668773, 'node11': 3365.7484453614447, 'node18': 1119.4814850652901, 'node12': 2468.4024063847664, 'node3': 2490.7828156470982, 'node15': 2865.176527945877, 'node13': 137.7067507227394, 'node10': 3285.70796690072, 'node14': 3040.229170969443}, 'queue': -1, 'memory': -1, 'cpu': -1}
 Updated assignment periodically
 Select the current best node
-task3
+node10
 Select the current best node
-task4
+node10
 Select the current best node
-task6
+node10
 Select the current best node
-task2
+node10
 Select the current best node
-task5
+node10
 Select the current best node
-task1
+node10
 Select the current best node
-task0
-Announce my current best computing node 10.111.31.48
-Receive assignment info
-['', 'task0', 'task1', 'task6', 'task3', 'task2', 'task4', 'task5']
-['', 'node9', 'node9', 'node9', 'node9', 'node9', 'node9', 'node9']
-10.244.12.251 - - [04/Jun/2019 15:52:03] "GET /receive_assignment_info?assignment_info=node13%23%3Atask0%3Atask1%3Atask6%3Atask3%3Atask2%3Atask4%3Atask5%23%3Anode9%3Anode9%3Anode9%3Anode9%3Anode9%3Anode9%3Anode9 HTTP/1.1" 200 -
-Announce my current best computing node 10.104.107.255
-Announce my current best computing node 10.106.62.79
-Announce my current best computing node 10.101.153.5
-Received pricing info
-Check price updated interval 
-10.244.15.70 - - [04/Jun/2019 15:52:04] "GET /receive_price_info?pricing_info=node18%237.942877836793818%2335.390342829550974%230%24task3%3A186.66557355367212%24task0%3A190.51020807815559%24task2%3A189.31968884851293%24task4%3A187.90168449174323%24task6%3A185.80590219512726%24task1%3A187.39536790696204%24task5%3A187.45871879483636 HTTP/1.1" 200 -
-Receive assignment info
-['', 'task3', 'task0', 'task2', 'task4', 'task6', 'task1', 'task5']
-['', 'node9', 'node9', 'node9', 'node9', 'node9', 'node9', 'node9']
-10.244.15.70 - - [04/Jun/2019 15:52:04] "GET /receive_assignment_info?assignment_info=node18%23%3Atask3%3Atask0%3Atask2%3Atask4%3Atask6%3Atask1%3Atask5%23%3Anode9%3Anode9%3Anode9%3Anode9%3Anode9%3Anode9%3Anode9 HTTP/1.1" 200 -
-Announce my current best computing node 10.110.133.32
-Announce my current best computing node 10.103.177.107
-Received pricing info
-10.244.12.251 - - [04/Jun/2019 15:52:05] "GET /receive_price_info?pricing_info=node13%237.795509415741175%2334.733751810719255%230%24task0%3A131.08878957364098%24task2%3A131.60688071318572%24task6%3A133.35991422150397%24task3%3A133.1234519775778%24task1%3A132.65736523358726%24task4%3A132.35574045307553%24task5%3A132.6186476082461 HTTP/1.1" 200 -
-Check price updated interval 
-10.244.10.212 - - [04/Jun/2019 15:52:05] "GET /receive_assignment_info?assignment_info=node11%23%3Atask0%3Atask3%3Atask5%3Atask2%3Atask4%3Atask1%3Atask6%23%3Anode13%3Anode13%3Anode13%3Anode13%3Anode13%3Anode13%3Anode13 HTTP/1.1" 200 -
-Receive assignment info
-['', 'task0', 'task3', 'task5', 'task2', 'task4', 'task1', 'task6']
-['', 'node13', 'node13', 'node13', 'node13', 'node13', 'node13', 'node13']
-Received pricing info
-Check price updated interval 
-10.244.10.212 - - [04/Jun/2019 15:52:06] "GET /receive_price_info?pricing_info=node11%237.952148720424918%2334.647271849348144%230%24task0%3A150.17229497398608%24task3%3A148.90498211346315%24task1%3A149.14337993092965%24task2%3A149.77682667060773%24task4%3A149.3093648930091%24task5%3A149.16412163442857%24task6%3A148.615085938316 HTTP/1.1" 200 -
-Receive assignment info
-['', 'task3', 'task2', 'task4', 'task0', 'task1', 'task6', 'task5']
-['', 'node13', 'node13', 'node13', 'node13', 'node13', 'node13', 'node13']
-10.244.14.160 - - [04/Jun/2019 15:52:06] "GET /receive_assignment_info?assignment_info=node15%23%3Atask3%3Atask2%3Atask4%3Atask0%3Atask1%3Atask6%3Atask5%23%3Anode13%3Anode13%3Anode13%3Anode13%3Anode13%3Anode13%3Anode13 HTTP/1.1" 200 -
-Receive assignment info
-['', 'task5', 'task3', 'task0', 'task2', 'task1', 'task6', 'task4']
-['', 'node13', 'node13', 'node13', 'node13', 'node13', 'node13', 'node13']
-10.244.13.190 - - [04/Jun/2019 15:52:06] "GET /receive_assignment_info?assignment_info=node14%23%3Atask5%3Atask3%3Atask0%3Atask2%3Atask1%3Atask6%3Atask4%23%3Anode13%3Anode13%3Anode13%3Anode13%3Anode13%3Anode13%3Anode13 HTTP/1.1" 200 -
-Received pricing info
-Check price updated interval 
-10.244.4.167 - - [04/Jun/2019 15:52:06] "GET /receive_price_info?pricing_info=node17%237.168662481892808%2335.29541284403669%230%24task0%3A147.62687902396806%24task6%3A146.47182895239305%24task5%3A146.770172596827%24task4%3A146.89331346403324%24task1%3A146.75259501980725%24task2%3A147.29028291898433%24task3%3A146.5507040052369 HTTP/1.1" 200 -
-Received pricing info
-Check price updated interval 
-10.244.13.190 - - [04/Jun/2019 15:52:07] "GET /receive_price_info?pricing_info=node14%238.619362626750366%2338.99396426846946%230%24task5%3A144.0768117599997%24task3%3A139.37386599803258%24task0%3A162.10919089055812%24task2%3A155.08570207912842%24task4%3A146.70053933730742%24task6%3A135.59515436198544%24task1%3A143.70141202261766 HTTP/1.1" 200 -
-Received pricing info
-Check price updated interval 
-10.244.14.160 - - [04/Jun/2019 15:52:07] "GET /receive_price_info?pricing_info=node15%236.946280193236711%2338.617681159420265%230%24task3%3A147.02303525239617%24task2%3A147.5880166805907%24task4%3A147.284641706189%24task0%3A147.8454694137867%24task1%3A147.1771678689675%24task6%3A146.87600250899823%24task5%3A147.19059082918412 HTTP/1.1" 200 -
-Receive assignment info
-['', 'task6', 'task0', 'task3', 'task5', 'task4', 'task2', 'task1']
-['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
-10.244.4.167 - - [04/Jun/2019 15:52:07] "GET /receive_assignment_info?assignment_info=node17%23%3Atask6%3Atask0%3Atask3%3Atask5%3Atask4%3Atask2%3Atask1%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
-Received pricing info
-Check price updated interval 
-10.244.7.34 - - [04/Jun/2019 15:52:08] "GET /receive_price_info?pricing_info=node8%2311.224271844660212%2343.55447112927947%230%24task5%3A184.1848107838961%24task3%3A183.4916294179524%24task6%3A183.1027233808419%24task2%3A185.81414282925587%24task4%3A184.57226787664257%24task0%3A186.8586522789925%24task1%3A184.1294173107385 HTTP/1.1" 200 -
+node10
+Announce my current best computing node 10.104.144.181
 Trying to update global assignment
+11
+79
+84
 Not yet fully loaded local information
+Announce my current best computing node 10.110.227.217
+Announce my current best computing node 10.111.109.22
+Announce my current best computing node 10.104.60.85
+Announce my current best computing node 10.101.109.236
+Announce my current best computing node 10.97.67.66
+Announce my current best computing node 10.103.107.190
+Announce my current best computing node 10.111.64.1
+Announce my current best computing node 10.96.138.69
+Announce my current best computing node 10.97.215.194
+Announce my current best computing node 10.97.253.111
+Recieved request for number of output files. Current done: 0
+10.244.0.0 - - [10/Jun/2019 22:35:03] "GET / HTTP/1.1" 200 -
+10.244.8.55 - - [10/Jun/2019 22:35:25] "GET /receive_assignment_info?assignment_info=node9%23%3Atask5%3Atask3%3Atask4%3Atask1%3Atask6%3Atask2%3Atask0%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
 Receive assignment info
-['', 'task5', 'task3', 'task0', 'task6', 'task1', 'task2', 'task4']
+['', 'task5', 'task3', 'task4', 'task1', 'task6', 'task2', 'task0']
 ['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
-10.244.5.218 - - [04/Jun/2019 15:52:44] "GET /receive_assignment_info?assignment_info=home%23%3Atask5%3Atask3%3Atask0%3Atask6%3Atask1%3Atask2%3Atask4%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
-Received pricing info
-Check price updated interval 
-10.244.6.94 - - [04/Jun/2019 15:54:01] "GET /receive_price_info?pricing_info=node6%2313.875108538350235%2345.3712976362759%230%24task0%3A136.78898767398047%24task1%3A134.89922793907178%24task2%3A136.06529616394755%24task3%3A134.4581702866952%24task5%3A134.93754473845078%24task4%3A135.2056008750915%24task6%3A134.13168100889982 HTTP/1.1" 200 -
-Received pricing info
-Check price updated interval 
-10.244.3.211 - - [04/Jun/2019 15:54:02] "GET /receive_price_info?pricing_info=node3%2330.03795267986479%2354.090439401255445%230%24task3%3A179.60764103517022%24task4%3A180.429676508107%24task6%3A179.01498149506764%24task0%3A182.1657492128632%24task5%3A180.13504957992384%24task2%3A181.3731815061802%24task1%3A180.09291771212457 HTTP/1.1" 200 -
-Received pricing info
-Check price updated interval 
-Received pricing info
-Check price updated interval 
-10.244.11.89 - - [04/Jun/2019 15:54:02] "GET /receive_price_info?pricing_info=node12%238.218475639170252%2336.380366618427544%230%24task0%3A168.07371242014642%24task5%3A164.28573285043106%24task6%3A162.9448912621364%24task3%3A163.30048148919593%24task4%3A164.8358681996177%24task1%3A164.2070479961162%24task2%3A166.596353851685 HTTP/1.1" 200 -
-10.244.8.37 - - [04/Jun/2019 15:54:02] "GET /receive_price_info?pricing_info=node9%239.209985528219981%2334.9228654124458%230%24task3%3A148.5912150688105%24task6%3A148.65455144486106%24task2%3A148.27476442960824%24task1%3A148.5018845765178%24task4%3A148.44093505024804%24task5%3A148.4942123346172%24task0%3A148.1404747229873 HTTP/1.1" 200 -
 Receive assignment info
-['', 'task0', 'task5', 'task4', 'task3', 'task6', 'task1', 'task2']
+['', 'task4', 'task1', 'task6', 'task3', 'task5', 'task2', 'task0']
 ['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
-10.244.11.89 - - [04/Jun/2019 15:54:02] "GET /receive_assignment_info?assignment_info=node12%23%3Atask0%3Atask5%3Atask4%3Atask3%3Atask6%3Atask1%3Atask2%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
------------------
+10.244.11.114 - - [10/Jun/2019 22:35:27] "GET /receive_assignment_info?assignment_info=node12%23%3Atask4%3Atask1%3Atask6%3Atask3%3Atask5%3Atask2%3Atask0%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.6.111 - - [10/Jun/2019 22:35:27] "GET /receive_price_info?pricing_info=node6%2312.25%2337.32727272727272%230%24task0%3A140.39081963540107%24task1%3A140.12350406468664%24task3%3A140.0636883313949%24task2%3A140.28632366751137%24task5%3A140.12874620051363%24task4%3A140.16562379066426%24task6%3A140.01747774985242 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.7.58 - - [10/Jun/2019 22:35:27] "GET /receive_price_info?pricing_info=node8%2313.41363636363637%2337.59545454545453%230%24task0%3A189.4091623565611%24task1%3A186.59743221567433%24task6%3A185.22106238220047%24task4%3A187.0543200489838%24task5%3A186.65459520569064%24task3%3A185.93898975047742%24task2%3A188.3342181590788 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.11.114 - - [10/Jun/2019 22:35:27] "GET /receive_price_info?pricing_info=node12%2314.636363636363638%2338.9590909090909%230%24task4%3A170.88831301889726%24task1%3A170.17896496593684%24task6%3A168.009983370689%24task3%3A169.11851398031854%24task5%3A170.2689059011697%24task2%3A172.7586109699177%24task0%3A174.19464368965978 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.8.55 - - [10/Jun/2019 22:35:28] "GET /receive_price_info?pricing_info=node9%2315.19545454545455%2337.37727272727273%230%24task3%3A149.4912681380812%24task4%3A150.06602425257347%24task1%3A150.26703237944474%24task6%3A148.78083294191322%24task0%3A145.9468946983183%24task2%3A147.82116656924723%24task5%3A150.33437494936183 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.15.88 - - [10/Jun/2019 22:35:28] "GET /receive_price_info?pricing_info=node18%2314.363636363636363%2341.245454545454535%230%24task2%3A192.08151670416294%24task5%3A190.8829654570012%24task3%3A190.37286068633333%24task1%3A190.84220623122638%24task4%3A191.16804066966856%24task0%3A192.8495260831236%24task6%3A189.9842877059627 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.12.15 - - [10/Jun/2019 22:35:30] "GET /receive_price_info?pricing_info=node13%2314.04090909090909%2337.23636363636364%230%24task2%3A133.0597724591724%24task6%3A132.03176709632328%24task4%3A132.62289872529533%24task5%3A132.48711977702146%24task0%3A133.4292124167591%24task1%3A132.46772810448792%24task3%3A132.24481946548602 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.14.177 - - [10/Jun/2019 22:35:30] "GET /receive_price_info?pricing_info=node15%2312.786363636363632%2341.89545454545455%230%24task1%3A147.4557113816324%24task3%3A146.97919054877002%24task5%3A147.4970934156151%24task6%3A146.75088117073844%24task0%3A149.49364323574696%24task2%3A148.71393617640132%24task4%3A147.78652322389084 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.13.206 - - [10/Jun/2019 22:35:30] "GET /receive_price_info?pricing_info=node14%2314.613043478260874%2337.321739130434786%230%24task6%3A150.57113208898934%24task2%3A149.70223554642354%24task3%3A150.37451354746702%24task5%3A150.17184778777926%24task4%3A150.05931111802866%24task0%3A149.40622835127598%24task1%3A150.1879804933143 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.10.230 - - [10/Jun/2019 22:35:30] "GET /receive_price_info?pricing_info=node11%2313.978260869565213%2337.67391304347827%230%24task1%3A168.5504446155981%24task2%3A169.72005115638942%24task6%3A167.79807555843303%24task3%3A168.10717268958527%24task0%3A170.44423302196626%24task4%3A168.8580736423768%24task5%3A168.5889311821846 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.9.6 - - [10/Jun/2019 22:35:30] "GET /receive_price_info?pricing_info=node10%2311.772727272727273%2337.39090909090909%230%24task5%3A139.411539398905%24task6%3A136.89089687251544%24task2%3A142.68980607501155%24task4%3A140.1921617915487%24task3%3A138.01334799939733%24task0%3A144.78526756443836%24task1%3A139.29988331842736 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.3.26 - - [10/Jun/2019 22:35:38] "GET /receive_price_info?pricing_info=node3%2315.522727272727275%2357.24545454545454%230%24task1%3A167.09206972285835%24task2%3A166.70053011458936%24task5%3A167.0790778812297%24task3%3A167.24222865174326%24task0%3A166.4615451443946%24task4%3A166.98842823510677%24task6%3A167.36071047367838 HTTP/1.1" 200 -
+Recieved request for number of output files. Current done: 0
+10.244.0.0 - - [10/Jun/2019 22:36:04] "GET / HTTP/1.1" 200 -
+Updated assignment periodically
+Select the current best node
 Overall price:
-{'cpu': 7.3516160154365515, 'memory': 34.81678726483365, 'network': {'task3': '141.34086991864208', 'task4': '141.7670216769328', 'task6': '141.04575240813045', 'task2': '142.258545671132', 'task5': '141.61406167573566', 'task1': '141.5922086421419', 'task0': '142.6734521991888'}, 'queue': 0}
-Announce my price
-Execution of job "push_assignment_map (trigger: interval[0:02:00], next run at: 2019-06-04 15:54:02 UTC)" skipped: maximum number of running instances reached (1)
-Received pricing info
-Check price updated interval 
-10.244.15.70 - - [04/Jun/2019 15:54:04] "GET /receive_price_info?pricing_info=node18%237.9435118186203555%2335.390882778581805%230%24task3%3A179.01460992572606%24task0%3A185.26999381704323%24task2%3A183.33464581836304%24task4%3A181.02751606722444%24task6%3A177.6137739411687%24task1%3A180.20321296097734%24task5%3A180.3063653252455 HTTP/1.1" 200 -
-Received pricing info
-Check price updated interval 
-10.244.12.251 - - [04/Jun/2019 15:54:05] "GET /receive_price_info?pricing_info=node13%237.796237337192462%2334.73420164013486%230%24task0%3A136.44013597154702%24task2%3A135.28274024302561%24task6%3A132.35912448769278%24task3%3A132.6998515692199%24task1%3A133.41041634917215%24task4%3A133.9032344401684%24task5%3A133.47208537272735 HTTP/1.1" 200 -
-Received pricing info
-Check price updated interval 
-10.244.10.212 - - [04/Jun/2019 15:54:06] "GET /receive_price_info?pricing_info=node11%237.952629040038595%2334.64785335262904%230%24task0%3A152.54143884496258%24task3%3A148.99189343115185%24task1%3A149.66504135065665%24task2%3A151.4414099128385%24task4%3A150.1322298432498%24task5%3A149.72348874714638%24task6%3A148.16991842671308 HTTP/1.1" 200 -
-Received pricing info
-Check price updated interval 
-10.244.4.167 - - [04/Jun/2019 15:54:06] "GET /receive_price_info?pricing_info=node17%237.169078630004827%2335.29614085865894%230%24task0%3A143.82463997639195%24task6%3A142.00543369069683%24task5%3A142.4770781440654%24task4%3A142.6713898149415%24task1%3A142.4493243401904%24task2%3A143.29637840507726%24task3%3A142.13024555168604 HTTP/1.1" 200 -
-Received pricing info
-Check price updated interval 
-10.244.13.190 - - [04/Jun/2019 15:54:07] "GET /receive_price_info?pricing_info=node14%238.619488663772314%2338.99454896285589%230%24task5%3A140.6166361060558%24task3%3A139.77420166776452%24task0%3A143.85801400463095%24task2%3A142.59336184094315%24task4%3A141.08714130664094%24task6%3A139.09818035088207%24task1%3A140.5493473434897 HTTP/1.1" 200 -
-Received pricing info
-Check price updated interval 
-10.244.14.160 - - [04/Jun/2019 15:54:07] "GET /receive_price_info?pricing_info=node15%236.9473227206946415%2338.618716835504074%230%24task3%3A139.72341409079493%24task2%3A146.845792044594%24task4%3A143.13547344650829%24task0%3A149.7898159677946%24task1%3A141.75772185633966%24task6%3A137.71818775972696%24task5%3A141.93161986411963 HTTP/1.1" 200 -
+{'network': {'node9': 143.27450695127715, 'node6': 138.6166601849601, 'node8': 1213.2991598668773, 'node11': 3365.7484453614447, 'node18': 1119.4814850652901, 'node12': 2468.4024063847664, 'node3': 2490.7828156470982, 'node15': 2865.176527945877, 'node13': 137.7067507227394, 'node10': 3285.70796690072, 'node14': 3040.229170969443}, 'queue': -1, 'memory': -1, 'cpu': -1}
+node10
+Select the current best node
+node10
+Select the current best node
+node10
+Select the current best node
+node10
+Select the current best node
+node10
+Select the current best node
+node10
+Select the current best node
+node10
+Announce my current best computing node 10.104.144.181
+Trying to update global assignment
+11
+95
+84
+Fully loaded information
+Announce my current best computing node 10.110.227.217
+Announce my current best computing node 10.111.109.22
+Announce my current best computing node 10.104.60.85
+Announce my current best computing node 10.101.109.236
+Announce my current best computing node 10.97.67.66
+Announce my current best computing node 10.103.107.190
+Announce my current best computing node 10.111.64.1
+Announce my current best computing node 10.96.138.69
+Announce my current best computing node 10.97.215.194
+Announce my current best computing node 10.97.253.111
+Recieved request for number of output files. Current done: 0
+10.244.0.0 - - [10/Jun/2019 22:37:05] "GET / HTTP/1.1" 200 -
 Receive assignment info
-['', 'task3', 'task6', 'task2', 'task1', 'task4', 'task5', 'task0']
+['', 'task2', 'task1', 'task4', 'task3', 'task5', 'task0', 'task6']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.15.88 - - [10/Jun/2019 22:37:26] "GET /receive_assignment_info?assignment_info=node18%23%3Atask2%3Atask1%3Atask4%3Atask3%3Atask5%3Atask0%3Atask6%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task0', 'task1', 'task6', 'task4', 'task5', 'task3', 'task2']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.7.58 - - [10/Jun/2019 22:37:26] "GET /receive_assignment_info?assignment_info=node8%23%3Atask0%3Atask1%3Atask6%3Atask4%3Atask5%3Atask3%3Atask2%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task0', 'task1', 'task3', 'task2', 'task5', 'task4', 'task6']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.6.111 - - [10/Jun/2019 22:37:27] "GET /receive_assignment_info?assignment_info=node6%23%3Atask0%3Atask1%3Atask3%3Atask2%3Atask5%3Atask4%3Atask6%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task1', 'task3', 'task5', 'task6', 'task0', 'task2', 'task4']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.14.177 - - [10/Jun/2019 22:37:27] "GET /receive_assignment_info?assignment_info=node15%23%3Atask1%3Atask3%3Atask5%3Atask6%3Atask0%3Atask2%3Atask4%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.6.111 - - [10/Jun/2019 22:37:27] "GET /receive_price_info?pricing_info=node6%2311.862499999999999%2337.8125%230%24task0%3A140.39081963540107%24task1%3A140.12350406468664%24task3%3A140.0636883313949%24task2%3A140.28632366751137%24task5%3A140.12874620051363%24task4%3A140.16562379066426%24task6%3A140.01747774985242 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task2', 'task3', 'task4', 'task5', 'task6', 'task0', 'task1']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.12.15 - - [10/Jun/2019 22:37:27] "GET /receive_assignment_info?assignment_info=node13%23%3Atask2%3Atask3%3Atask4%3Atask5%3Atask6%3Atask0%3Atask1%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.7.58 - - [10/Jun/2019 22:37:27] "GET /receive_price_info?pricing_info=node8%2312.968000000000007%2338.25199999999999%230%24task0%3A189.4091623565611%24task1%3A186.59743221567433%24task6%3A185.22106238220047%24task4%3A187.0543200489838%24task5%3A186.65459520569064%24task3%3A185.93898975047742%24task2%3A188.3342181590788 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.11.114 - - [10/Jun/2019 22:37:27] "GET /receive_price_info?pricing_info=node12%2314.270833333333336%2339.44583333333332%230%24task4%3A170.88831301889726%24task1%3A170.17896496593684%24task6%3A168.009983370689%24task3%3A169.11851398031854%24task5%3A170.2689059011697%24task2%3A172.7586109699177%24task0%3A174.19464368965978 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task5', 'task6', 'task2', 'task4', 'task3', 'task0', 'task1']
 ['', 'node6', 'node6', 'node6', 'node6', 'node6', 'node6', 'node6']
-10.244.8.37 - - [04/Jun/2019 15:54:08] "GET /receive_assignment_info?assignment_info=node9%23%3Atask3%3Atask6%3Atask2%3Atask1%3Atask4%3Atask5%3Atask0%23%3Anode6%3Anode6%3Anode6%3Anode6%3Anode6%3Anode6%3Anode6 HTTP/1.1" 200 -
-Received pricing info
-Check price updated interval 
-10.244.7.34 - - [04/Jun/2019 15:54:08] "GET /receive_price_info?pricing_info=node8%2311.224271844660212%2343.55447112927947%230%24task5%3A184.2081071363471%24task3%3A183.67195969964766%24task6%3A183.3713909960931%24task2%3A185.47045474831637%24task4%3A184.50802356189593%24task0%3A186.28129045638207%24task1%3A184.16524281832346 HTTP/1.1" 200 -
-The computing node is not yet available. Sending assignment message to flask server on computing node FAILED!!!
-<urlopen error [Errno 110] Connection timed out>
-Announce my current best computing node 10.98.92.94
-Announce my current best computing node 10.97.9.71
-Announce my current best computing node 10.105.23.183
-Announce my current best computing node 10.104.118.11
-Announce my current best computing node 10.105.83.39
-Announce my current best computing node 10.96.241.134
-Announce my current best computing node 10.96.158.98
+10.244.9.6 - - [10/Jun/2019 22:37:28] "GET /receive_assignment_info?assignment_info=node10%23%3Atask5%3Atask6%3Atask2%3Atask4%3Atask3%3Atask0%3Atask1%23%3Anode6%3Anode6%3Anode6%3Anode6%3Anode6%3Anode6%3Anode6 HTTP/1.1" 200 -
 Receive assignment info
-['', 'task5', 'task3', 'task6', 'task1', 'task4', 'task0', 'task2']
+['', 'task1', 'task2', 'task6', 'task3', 'task0', 'task4', 'task5']
 ['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
-10.244.7.34 - - [04/Jun/2019 15:54:15] "GET /receive_assignment_info?assignment_info=node8%23%3Atask5%3Atask3%3Atask6%3Atask1%3Atask4%3Atask0%3Atask2%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
-Trying to update global assignment
-Not yet fully loaded local information
+Received pricing info
+Check price updated interval 
+10.244.8.55 - - [10/Jun/2019 22:37:28] "GET /receive_price_info?pricing_info=node9%2314.866666666666672%2337.8375%230%24task3%3A149.4912681380812%24task4%3A150.06602425257347%24task1%3A150.26703237944474%24task6%3A148.78083294191322%24task0%3A145.9468946983183%24task2%3A147.82116656924723%24task5%3A150.33437494936183 HTTP/1.1" 200 -
+10.244.10.230 - - [10/Jun/2019 22:37:28] "GET /receive_assignment_info?assignment_info=node11%23%3Atask1%3Atask2%3Atask6%3Atask3%3Atask0%3Atask4%3Atask5%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.15.88 - - [10/Jun/2019 22:37:28] "GET /receive_price_info?pricing_info=node18%2314.0375%2341.712499999999984%230%24task2%3A192.08151670416294%24task5%3A190.8829654570012%24task3%3A190.37286068633333%24task1%3A190.84220623122638%24task4%3A191.16804066966856%24task0%3A192.8495260831236%24task6%3A189.9842877059627 HTTP/1.1" 200 -
 Receive assignment info
-['', 'task5', 'task3', 'task0', 'task6', 'task1', 'task2', 'task4']
+['', 'task6', 'task2', 'task3', 'task5', 'task4', 'task0', 'task1']
 ['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
-10.244.5.218 - - [04/Jun/2019 15:54:44] "GET /receive_assignment_info?assignment_info=home%23%3Atask5%3Atask3%3Atask0%3Atask6%3Atask1%3Atask2%3Atask4%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
-Received pricing info
-10.244.6.94 - - [04/Jun/2019 15:56:01] "GET /receive_price_info?pricing_info=node6%2313.875421686747005%2345.3719036144578%230%24task0%3A136.78898767398047%24task1%3A134.89922793907178%24task2%3A136.06529616394755%24task3%3A134.4581702866952%24task5%3A134.93754473845078%24task4%3A135.2056008750915%24task6%3A134.13168100889982 HTTP/1.1" 200 -
-Check price updated interval 
+10.244.13.206 - - [10/Jun/2019 22:37:29] "GET /receive_assignment_info?assignment_info=node14%23%3Atask6%3Atask2%3Atask3%3Atask5%3Atask4%3Atask0%3Atask1%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
 Received pricing info
 Check price updated interval 
-10.244.3.211 - - [04/Jun/2019 15:56:02] "GET /receive_price_info?pricing_info=node3%2330.039990352146642%2354.09131693198265%230%24task3%3A179.60764103517022%24task4%3A180.429676508107%24task6%3A179.01498149506764%24task0%3A182.1657492128632%24task5%3A180.13504957992384%24task2%3A181.3731815061802%24task1%3A180.09291771212457 HTTP/1.1" 200 -
-Received pricing info
+10.244.12.15 - - [10/Jun/2019 22:37:30] "GET /receive_price_info?pricing_info=node13%2313.666666666666666%2337.68750000000001%230%24task2%3A133.0597724591724%24task6%3A132.03176709632328%24task4%3A132.62289872529533%24task5%3A132.48711977702146%24task0%3A133.4292124167591%24task1%3A132.46772810448792%24task3%3A132.24481946548602 HTTP/1.1" 200 -
 Received pricing info
 Check price updated interval 
-10.244.8.37 - - [04/Jun/2019 15:56:02] "GET /receive_price_info?pricing_info=node9%239.210650602409649%2334.92366265060248%230%24task3%3A148.5912150688105%24task6%3A148.65455144486106%24task2%3A148.27476442960824%24task1%3A148.5018845765178%24task4%3A148.44093505024804%24task5%3A148.4942123346172%24task0%3A148.1404747229873 HTTP/1.1" 200 -
+10.244.14.177 - - [10/Jun/2019 22:37:30] "GET /receive_price_info?pricing_info=node15%2312.215999999999998%2342.556000000000004%230%24task1%3A147.4557113816324%24task3%3A146.97919054877002%24task5%3A147.4970934156151%24task6%3A146.75088117073844%24task0%3A149.49364323574696%24task2%3A148.71393617640132%24task4%3A147.78652322389084 HTTP/1.1" 200 -
+Received pricing info
 Check price updated interval 
-10.244.11.89 - - [04/Jun/2019 15:56:02] "GET /receive_price_info?pricing_info=node12%238.21879518072286%2336.38120481927726%230%24task0%3A168.07371242014642%24task5%3A164.28573285043106%24task6%3A162.9448912621364%24task3%3A163.30048148919593%24task4%3A164.8358681996177%24task1%3A164.2070479961162%24task2%3A166.596353851685 HTTP/1.1" 200 -
------------------
+10.244.13.206 - - [10/Jun/2019 22:37:30] "GET /receive_price_info?pricing_info=node14%2314.324000000000003%2337.736000000000004%230%24task6%3A150.57113208898934%24task2%3A149.70223554642354%24task3%3A150.37451354746702%24task5%3A150.17184778777926%24task4%3A150.05931111802866%24task0%3A149.40622835127598%24task1%3A150.1879804933143 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.10.230 - - [10/Jun/2019 22:37:30] "GET /receive_price_info?pricing_info=node11%2313.587999999999996%2338.08800000000001%230%24task1%3A168.5504446155981%24task2%3A169.72005115638942%24task6%3A167.79807555843303%24task3%3A168.10717268958527%24task0%3A170.44423302196626%24task4%3A168.8580736423768%24task5%3A168.5889311821846 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.9.6 - - [10/Jun/2019 22:37:30] "GET /receive_price_info?pricing_info=node10%2311.264000000000001%2338.047999999999995%230%24task5%3A139.411539398905%24task6%3A136.89089687251544%24task2%3A142.68980607501155%24task4%3A140.1921617915487%24task3%3A138.01334799939733%24task0%3A144.78526756443836%24task1%3A139.29988331842736 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task1', 'task2', 'task5', 'task3', 'task0', 'task4', 'task6']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.3.26 - - [10/Jun/2019 22:37:38] "GET /receive_assignment_info?assignment_info=node3%23%3Atask1%3Atask2%3Atask5%3Atask3%3Atask0%3Atask4%3Atask6%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.3.26 - - [10/Jun/2019 22:37:38] "GET /receive_price_info?pricing_info=node3%2315.15%2357.86666666666665%230%24task1%3A167.09206972285835%24task2%3A166.70053011458936%24task5%3A167.0790778812297%24task3%3A167.24222865174326%24task0%3A166.4615451443946%24task4%3A166.98842823510677%24task6%3A167.36071047367838 HTTP/1.1" 200 -
+10.244.0.0 - - [10/Jun/2019 22:38:05] "GET / HTTP/1.1" 200 -
+Recieved request for number of output files. Current done: 0
 Overall price:
-{'cpu': 7.351685934489388, 'memory': 34.817822736030905, 'network': {'task3': '141.34086991864208', 'task4': '141.7670216769328', 'task6': '141.04575240813045', 'task2': '142.258545671132', 'task5': '141.61406167573566', 'task1': '141.5922086421419', 'task0': '142.6734521991888'}, 'queue': 0}
-Announce my price
+{'network': {'node9': 143.27450695127715, 'node6': 138.6166601849601, 'node8': 1213.2991598668773, 'node11': 3365.7484453614447, 'node18': 1119.4814850652901, 'node12': 2468.4024063847664, 'node3': 2490.7828156470982, 'node15': 2865.176527945877, 'node13': 137.7067507227394, 'node10': 3285.70796690072, 'node14': 3040.229170969443}, 'queue': -1, 'memory': -1, 'cpu': -1}
 Updated assignment periodically
 Select the current best node
-task3
+node10
 Select the current best node
-task4
+node10
 Select the current best node
-task6
+node10
 Select the current best node
-task2
+node10
 Select the current best node
-task5
+node10
 Select the current best node
-task1
+node10
 Select the current best node
-task0
-Announce my current best computing node 10.111.31.48
-Receive assignment info
-['', 'task0', 'task1', 'task6', 'task3', 'task2', 'task4', 'task5']
-['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
-10.244.12.251 - - [04/Jun/2019 15:56:03] "GET /receive_assignment_info?assignment_info=node13%23%3Atask0%3Atask1%3Atask6%3Atask3%3Atask2%3Atask4%3Atask5%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
-Announce my current best computing node 10.104.107.255
-Announce my current best computing node 10.106.62.79
-Announce my current best computing node 10.101.153.5
-Received pricing info
-Check price updated interval 
-10.244.15.70 - - [04/Jun/2019 15:56:04] "GET /receive_price_info?pricing_info=node18%237.943903614457829%2335.391373493975934%230%24task3%3A179.01460992572606%24task0%3A185.26999381704323%24task2%3A183.33464581836304%24task4%3A181.02751606722444%24task6%3A177.6137739411687%24task1%3A180.20321296097734%24task5%3A180.3063653252455 HTTP/1.1" 200 -
-Receive assignment info
-['', 'task3', 'task0', 'task2', 'task4', 'task6', 'task1', 'task5']
-['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
-10.244.15.70 - - [04/Jun/2019 15:56:04] "GET /receive_assignment_info?assignment_info=node18%23%3Atask3%3Atask0%3Atask2%3Atask4%3Atask6%3Atask1%3Atask5%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
-Announce my current best computing node 10.110.133.32
-Announce my current best computing node 10.103.177.107
-Received pricing info
-Check price updated interval 
-10.244.12.251 - - [04/Jun/2019 15:56:05] "GET /receive_price_info?pricing_info=node13%237.796385542168662%2334.73484337349377%230%24task0%3A136.44013597154702%24task2%3A135.28274024302561%24task6%3A132.35912448769278%24task3%3A132.6998515692199%24task1%3A133.41041634917215%24task4%3A133.9032344401684%24task5%3A133.47208537272735 HTTP/1.1" 200 -
-Receive assignment info
-['', 'task0', 'task3', 'task5', 'task2', 'task4', 'task1', 'task6']
-['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
-10.244.10.212 - - [04/Jun/2019 15:56:05] "GET /receive_assignment_info?assignment_info=node11%23%3Atask0%3Atask3%3Atask5%3Atask2%3Atask4%3Atask1%3Atask6%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
-Received pricing info
-Check price updated interval 
-10.244.10.212 - - [04/Jun/2019 15:56:06] "GET /receive_price_info?pricing_info=node11%237.953349397590365%2334.648578313253005%230%24task0%3A152.54143884496258%24task3%3A148.99189343115185%24task1%3A149.66504135065665%24task2%3A151.4414099128385%24task4%3A150.1322298432498%24task5%3A149.72348874714638%24task6%3A148.16991842671308 HTTP/1.1" 200 -
-Receive assignment info
-['', 'task3', 'task2', 'task4', 'task0', 'task1', 'task6', 'task5']
-['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
-10.244.14.160 - - [04/Jun/2019 15:56:06] "GET /receive_assignment_info?assignment_info=node15%23%3Atask3%3Atask2%3Atask4%3Atask0%3Atask1%3Atask6%3Atask5%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
-Receive assignment info
-['', 'task5', 'task3', 'task0', 'task2', 'task1', 'task6', 'task4']
-['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
-10.244.13.190 - - [04/Jun/2019 15:56:06] "GET /receive_assignment_info?assignment_info=node14%23%3Atask5%3Atask3%3Atask0%3Atask2%3Atask1%3Atask6%3Atask4%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
-Received pricing info
-Check price updated interval 
-10.244.4.167 - - [04/Jun/2019 15:56:06] "GET /receive_price_info?pricing_info=node17%237.169397590361449%2335.297060240963845%230%24task0%3A143.82463997639195%24task6%3A142.00543369069683%24task5%3A142.4770781440654%24task4%3A142.6713898149415%24task1%3A142.4493243401904%24task2%3A143.29637840507726%24task3%3A142.13024555168604 HTTP/1.1" 200 -
-Received pricing info
-Check price updated interval 
-10.244.13.190 - - [04/Jun/2019 15:56:07] "GET /receive_price_info?pricing_info=node14%238.620048192771089%2338.99513253012061%230%24task5%3A140.6166361060558%24task3%3A139.77420166776452%24task0%3A143.85801400463095%24task2%3A142.59336184094315%24task4%3A141.08714130664094%24task6%3A139.09818035088207%24task1%3A140.5493473434897 HTTP/1.1" 200 -
-Received pricing info
-Check price updated interval 
-10.244.14.160 - - [04/Jun/2019 15:56:07] "GET /receive_price_info?pricing_info=node15%236.947807228915659%2338.619614457831304%230%24task3%3A139.72341409079493%24task2%3A146.845792044594%24task4%3A143.13547344650829%24task0%3A149.7898159677946%24task1%3A141.75772185633966%24task6%3A137.71818775972696%24task5%3A141.93161986411963 HTTP/1.1" 200 -
-Receive assignment info
-['', 'task6', 'task0', 'task3', 'task5', 'task4', 'task2', 'task1']
-['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
-10.244.4.167 - - [04/Jun/2019 15:56:07] "GET /receive_assignment_info?assignment_info=node17%23%3Atask6%3Atask0%3Atask3%3Atask5%3Atask4%3Atask2%3Atask1%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
-Receive assignment info
-['', 'task0', 'task1', 'task2', 'task6', 'task3', 'task5', 'task4']
-['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
-10.244.6.94 - - [04/Jun/2019 15:56:08] "GET /receive_assignment_info?assignment_info=node6%23%3Atask0%3Atask1%3Atask2%3Atask6%3Atask3%3Atask5%3Atask4%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
-Receive assignment info
-['', 'task3', 'task5', 'task4', 'task6', 'task0', 'task2', 'task1']
-['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
-10.244.3.211 - - [04/Jun/2019 15:56:08] "GET /receive_assignment_info?assignment_info=node3%23%3Atask3%3Atask5%3Atask4%3Atask6%3Atask0%3Atask2%3Atask1%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
-Received pricing info
-Check price updated interval 
-10.244.7.34 - - [04/Jun/2019 15:56:08] "GET /receive_price_info?pricing_info=node8%2311.224271844660212%2343.55447112927947%230%24task5%3A184.2081071363471%24task3%3A183.67195969964766%24task6%3A183.3713909960931%24task2%3A185.47045474831637%24task4%3A184.50802356189593%24task0%3A186.28129045638207%24task1%3A184.16524281832346 HTTP/1.1" 200 -
+node10
+Announce my current best computing node 10.104.144.181
 Trying to update global assignment
+11
+95
+84
 Fully loaded information
-------------
-['task0']
-task0
-[]
-----
-node10
-node17
-----
-node10
-node17
-----
-node10
-node17
-----
-node17
-node10
-{'home': 'home', 'task3': 'node10', 'task4': 'node17', 'task2': 'node10', 'task1': 'node10', 'task0': 'node17'}
-{'task4': True}
-------------
-['task3', 'task1', 'task4', 'task2']
-task3
-['task1', 'task4', 'task2']
-----
-node10
-node17
-----
-node10
-node17
-----
-node10
-node17
-----
-node10
-node17
-----
-node10
-node17
-----
-node17
-node10
-----
-node10
-node17
-----
-node17
-node10
-----
-node10
-node17
-----
-node17
-node10
-{'home': 'home', 'task3': 'node10', 'task4': 'node17', 'task6': 'node17', 'task2': 'node10', 'task5': 'node17', 'task1': 'node10', 'task0': 'node17'}
-{'task5': True, 'task4': True, 'task6': True}
-------------
-['task1', 'task4', 'task2', 'task5', 'task4', 'task6']
-task1
-['task4', 'task2', 'task5', 'task4', 'task6']
-----
-node10
-node17
-----
-node10
-node17
-----
-node10
-node17
-----
-node17
-node10
-{'home': 'home', 'task3': 'node10', 'task4': 'node17', 'task6': 'node17', 'task2': 'node10', 'task5': 'node17', 'task1': 'node10', 'task0': 'node17'}
-{'task5': True, 'task4': True, 'task6': True}
-------------
-['task4', 'task2', 'task5', 'task4', 'task6', 'task4']
-task4
-['task2', 'task5', 'task4', 'task6', 'task4']
-----
-node10
-node17
-----
-node17
-node10
-----
-node10
-node17
-----
-node17
-node10
-{'home': 'home', 'task3': 'node10', 'task4': 'node17', 'task6': 'node17', 'task2': 'node10', 'task5': 'node17', 'task1': 'node10', 'task0': 'node17'}
-{'task5': True, 'task4': True, 'task6': True}
-------------
-['task2', 'task5', 'task4', 'task6', 'task4', 'task6']
-task2
-['task5', 'task4', 'task6', 'task4', 'task6']
-----
-node10
-node17
-----
-node10
-node17
-----
-node10
-node17
-----
-node10
-node17
-----
-node10
-node17
-----
-node17
-node10
-----
-node10
-node17
-----
-node17
-node10
-----
-node10
-node17
-----
-node17
-node10
-{'home': 'home', 'task3': 'node10', 'task4': 'node17', 'task6': 'node17', 'task2': 'node10', 'task5': 'node17', 'task1': 'node10', 'task0': 'node17'}
-{'task5': True, 'task4': True, 'task6': True}
-------------
-['task5', 'task4', 'task6', 'task4', 'task6', 'task5', 'task6']
-task5
-['task4', 'task6', 'task4', 'task6', 'task5', 'task6']
-----
-node10
-node17
-----
-node17
-node10
-----
-node10
-node17
-----
-node17
-node10
-{'home': 'home', 'task3': 'node10', 'task4': 'node17', 'task6': 'node17', 'task2': 'node10', 'task5': 'node17', 'task1': 'node10', 'task0': 'node17'}
-{'task5': True, 'task4': True, 'task6': True}
-------------
-['task4', 'task6', 'task4', 'task6', 'task5', 'task6', 'task6']
-task4
-['task6', 'task4', 'task6', 'task5', 'task6', 'task6']
-{'home': 'home', 'task3': 'node10', 'task4': 'node17', 'task6': 'node17', 'task2': 'node10', 'task5': 'node17', 'task1': 'node10', 'task0': 'node17'}
-{'task5': True, 'task4': True, 'task6': True}
-------------
-['task6', 'task4', 'task6', 'task5', 'task6', 'task6']
-task6
-['task4', 'task6', 'task5', 'task6', 'task6']
-{'home': 'home', 'task3': 'node10', 'task4': 'node17', 'task6': 'node17', 'task2': 'node10', 'task5': 'node17', 'task1': 'node10', 'task0': 'node17'}
-{'task5': True, 'task4': True, 'task6': True}
-{'home': 'home', 'task3': 'node10', 'task4': 'node17', 'task6': 'node17', 'task2': 'node10', 'task5': 'node17', 'task1': 'node10', 'task0': 'node17'}
+Announce my current best computing node 10.110.227.217
+Announce my current best computing node 10.111.109.22
+Announce my current best computing node 10.104.60.85
+Announce my current best computing node 10.101.109.236
+Announce my current best computing node 10.97.67.66
+Announce my current best computing node 10.103.107.190
+Announce my current best computing node 10.111.64.1
+Announce my current best computing node 10.96.138.69
+Announce my current best computing node 10.97.215.194
+Announce my current best computing node 10.97.253.111
+Recieved request for number of output files. Current done: 0
+10.244.0.0 - - [10/Jun/2019 22:39:06] "GET / HTTP/1.1" 200 -
 Receive assignment info
-['', 'task5', 'task3', 'task0', 'task6', 'task1', 'task2', 'task4']
+['', 'task5', 'task3', 'task4', 'task1', 'task6', 'task2', 'task0']
 ['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
-10.244.5.218 - - [04/Jun/2019 15:56:44] "GET /receive_assignment_info?assignment_info=home%23%3Atask5%3Atask3%3Atask0%3Atask6%3Atask1%3Atask2%3Atask4%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
-Received pricing info
-Check price updated interval 
-10.244.6.94 - - [04/Jun/2019 15:58:01] "GET /receive_price_info?pricing_info=node6%2313.875974963890245%2345.37255657197879%230%24task0%3A136.78898767398047%24task1%3A134.89922793907178%24task2%3A136.06529616394755%24task3%3A134.4581702866952%24task5%3A134.93754473845078%24task4%3A135.2056008750915%24task6%3A134.13168100889982 HTTP/1.1" 200 -
-Received pricing info
-Check price updated interval 
-10.244.3.211 - - [04/Jun/2019 15:58:02] "GET /receive_price_info?pricing_info=node3%2330.041783132530117%2354.092192771084356%230%24task3%3A179.60764103517022%24task4%3A180.429676508107%24task6%3A179.01498149506764%24task0%3A182.1657492128632%24task5%3A180.13504957992384%24task2%3A181.3731815061802%24task1%3A180.09291771212457 HTTP/1.1" 200 -
-Received pricing info
-Check price updated interval 
-10.244.11.89 - - [04/Jun/2019 15:58:02] "GET /receive_price_info?pricing_info=node12%238.219499277804495%2336.3822339913338%230%24task0%3A168.07371242014642%24task5%3A164.28573285043106%24task6%3A162.9448912621364%24task3%3A163.30048148919593%24task4%3A164.8358681996177%24task1%3A164.2070479961162%24task2%3A166.596353851685 HTTP/1.1" 200 -
-Received pricing info
-Check price updated interval 
-10.244.8.37 - - [04/Jun/2019 15:58:02] "GET /receive_price_info?pricing_info=node9%239.21054405392394%2334.924313914299546%230%24task3%3A148.5912150688105%24task6%3A148.65455144486106%24task2%3A148.27476442960824%24task1%3A148.5018845765178%24task4%3A148.44093505024804%24task5%3A148.4942123346172%24task0%3A148.1404747229873 HTTP/1.1" 200 -
+10.244.8.55 - - [10/Jun/2019 22:39:25] "GET /receive_assignment_info?assignment_info=node9%23%3Atask5%3Atask3%3Atask4%3Atask1%3Atask6%3Atask2%3Atask0%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
 Receive assignment info
-['', 'task0', 'task5', 'task4', 'task3', 'task6', 'task1', 'task2']
+['', 'task4', 'task1', 'task6', 'task3', 'task5', 'task2', 'task0']
 ['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
------------------
+10.244.11.114 - - [10/Jun/2019 22:39:27] "GET /receive_assignment_info?assignment_info=node12%23%3Atask4%3Atask1%3Atask6%3Atask3%3Atask5%3Atask2%3Atask0%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+10.244.6.111 - - [10/Jun/2019 22:39:27] "GET /receive_price_info?pricing_info=node6%2311.418518518518518%2338.403703703703705%230%24task0%3A140.39081963540107%24task1%3A140.12350406468664%24task3%3A140.0636883313949%24task2%3A140.28632366751137%24task5%3A140.12874620051363%24task4%3A140.16562379066426%24task6%3A140.01747774985242 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+Received pricing info
+Check price updated interval 
+10.244.7.58 - - [10/Jun/2019 22:39:27] "GET /receive_price_info?pricing_info=node8%2312.703703703703708%2338.6148148148148%230%24task0%3A189.4091623565611%24task1%3A186.59743221567433%24task6%3A185.22106238220047%24task4%3A187.0543200489838%24task5%3A186.65459520569064%24task3%3A185.93898975047742%24task2%3A188.3342181590788 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.11.114 - - [10/Jun/2019 22:39:27] "GET /receive_price_info?pricing_info=node12%2313.80740740740741%2340.03333333333332%230%24task4%3A170.88831301889726%24task1%3A170.17896496593684%24task6%3A168.009983370689%24task3%3A169.11851398031854%24task5%3A170.2689059011697%24task2%3A172.7586109699177%24task0%3A174.19464368965978 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.8.55 - - [10/Jun/2019 22:39:28] "GET /receive_price_info?pricing_info=node9%2314.433333333333339%2338.39999999999999%230%24task3%3A149.4912681380812%24task4%3A150.06602425257347%24task1%3A150.26703237944474%24task6%3A148.78083294191322%24task0%3A145.9468946983183%24task2%3A147.82116656924723%24task5%3A150.33437494936183 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.15.88 - - [10/Jun/2019 22:39:28] "GET /receive_price_info?pricing_info=node18%2313.607407407407406%2342.29259259259259%230%24task2%3A192.08151670416294%24task5%3A190.8829654570012%24task3%3A190.37286068633333%24task1%3A190.84220623122638%24task4%3A191.16804066966856%24task0%3A192.8495260831236%24task6%3A189.9842877059627 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.12.15 - - [10/Jun/2019 22:39:30] "GET /receive_price_info?pricing_info=node13%2313.26296296296296%2338.24074074074075%230%24task2%3A133.0597724591724%24task6%3A132.03176709632328%24task4%3A132.62289872529533%24task5%3A132.48711977702146%24task0%3A133.4292124167591%24task1%3A132.46772810448792%24task3%3A132.24481946548602 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.14.177 - - [10/Jun/2019 22:39:30] "GET /receive_price_info?pricing_info=node15%2311.914814814814813%2342.914814814814825%230%24task1%3A147.4557113816324%24task3%3A146.97919054877002%24task5%3A147.4970934156151%24task6%3A146.75088117073844%24task0%3A149.49364323574696%24task2%3A148.71393617640132%24task4%3A147.78652322389084 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.13.206 - - [10/Jun/2019 22:39:30] "GET /receive_price_info?pricing_info=node14%2314.074074074074076%2338.092592592592595%230%24task6%3A150.57113208898934%24task2%3A149.70223554642354%24task3%3A150.37451354746702%24task5%3A150.17184778777926%24task4%3A150.05931111802866%24task0%3A149.40622835127598%24task1%3A150.1879804933143 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.10.230 - - [10/Jun/2019 22:39:30] "GET /receive_price_info?pricing_info=node11%2313.288888888888884%2338.44814814814816%230%24task1%3A168.5504446155981%24task2%3A169.72005115638942%24task6%3A167.79807555843303%24task3%3A168.10717268958527%24task0%3A170.44423302196626%24task4%3A168.8580736423768%24task5%3A168.5889311821846 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.9.6 - - [10/Jun/2019 22:39:30] "GET /receive_price_info?pricing_info=node10%2311.033333333333335%2338.4074074074074%230%24task5%3A139.411539398905%24task6%3A136.89089687251544%24task2%3A142.68980607501155%24task4%3A140.1921617915487%24task3%3A138.01334799939733%24task0%3A144.78526756443836%24task1%3A139.29988331842736 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.3.26 - - [10/Jun/2019 22:39:38] "GET /receive_price_info?pricing_info=node3%2314.648148148148149%2358.51851851851851%230%24task1%3A167.09206972285835%24task2%3A166.70053011458936%24task5%3A167.0790778812297%24task3%3A167.24222865174326%24task0%3A166.4615451443946%24task4%3A166.98842823510677%24task6%3A167.36071047367838 HTTP/1.1" 200 -
 Overall price:
-{'cpu': 7.3518536350505395, 'memory': 34.818391911410764, 'network': {'task3': '141.34086991864208', 'task4': '141.7670216769328', 'task6': '141.04575240813045', 'task2': '142.258545671132', 'task5': '141.61406167573566', 'task1': '141.5922086421419', 'task0': '142.6734521991888'}, 'queue': 0}
-Announce my price
-10.244.11.89 - - [04/Jun/2019 15:58:02] "GET /receive_assignment_info?assignment_info=node12%23%3Atask0%3Atask5%3Atask4%3Atask3%3Atask6%3Atask1%3Atask2%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
-Execution of job "push_assignment_map (trigger: interval[0:02:00], next run at: 2019-06-04 15:58:02 UTC)" skipped: maximum number of running instances reached (1)
-Received pricing info
-Check price updated interval 
-10.244.15.70 - - [04/Jun/2019 15:58:04] "GET /receive_price_info?pricing_info=node18%237.9445139557266575%2335.392155919153055%230%24task3%3A179.01460992572606%24task0%3A185.26999381704323%24task2%3A183.33464581836304%24task4%3A181.02751606722444%24task6%3A177.6137739411687%24task1%3A180.20321296097734%24task5%3A180.3063653252455 HTTP/1.1" 200 -
-Received pricing info
-Check price updated interval 
-10.244.12.251 - - [04/Jun/2019 15:58:05] "GET /receive_price_info?pricing_info=node13%237.796533461723627%2334.73553201733249%230%24task0%3A136.44013597154702%24task2%3A135.28274024302561%24task6%3A132.35912448769278%24task3%3A132.6998515692199%24task1%3A133.41041634917215%24task4%3A133.9032344401684%24task5%3A133.47208537272735 HTTP/1.1" 200 -
-Received pricing info
-Check price updated interval 
-10.244.10.212 - - [04/Jun/2019 15:58:06] "GET /receive_price_info?pricing_info=node11%237.953635050553687%2334.64925373134328%230%24task0%3A152.54143884496258%24task3%3A148.99189343115185%24task1%3A149.66504135065665%24task2%3A151.4414099128385%24task4%3A150.1322298432498%24task5%3A149.72348874714638%24task6%3A148.16991842671308 HTTP/1.1" 200 -
-Received pricing info
-Check price updated interval 
-10.244.4.167 - - [04/Jun/2019 15:58:06] "GET /receive_price_info?pricing_info=node17%237.169682386910494%2335.29860442733396%230%24task0%3A143.82463997639195%24task6%3A142.00543369069683%24task5%3A142.4770781440654%24task4%3A142.6713898149415%24task1%3A142.4493243401904%24task2%3A143.29637840507726%24task3%3A142.13024555168604 HTTP/1.1" 200 -
-Received pricing info
-Check price updated interval 
-10.244.13.190 - - [04/Jun/2019 15:58:07] "GET /receive_price_info?pricing_info=node14%238.62051035146847%2338.99576311988457%230%24task5%3A140.6166361060558%24task3%3A139.77420166776452%24task0%3A143.85801400463095%24task2%3A142.59336184094315%24task4%3A141.08714130664094%24task6%3A139.09818035088207%24task1%3A140.5493473434897 HTTP/1.1" 200 -
-Received pricing info
-Check price updated interval 
-10.244.14.160 - - [04/Jun/2019 15:58:07] "GET /receive_price_info?pricing_info=node15%236.9480019258545935%2338.62051035146844%230%24task3%3A139.72341409079493%24task2%3A146.845792044594%24task4%3A143.13547344650829%24task0%3A149.7898159677946%24task1%3A141.75772185633966%24task6%3A137.71818775972696%24task5%3A141.93161986411963 HTTP/1.1" 200 -
-Receive assignment info
-['', 'task3', 'task6', 'task2', 'task1', 'task4', 'task5', 'task0']
-['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
-10.244.8.37 - - [04/Jun/2019 15:58:08] "GET /receive_assignment_info?assignment_info=node9%23%3Atask3%3Atask6%3Atask2%3Atask1%3Atask4%3Atask5%3Atask0%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
-Received pricing info
-Check price updated interval 
-10.244.7.34 - - [04/Jun/2019 15:58:08] "GET /receive_price_info?pricing_info=node8%2311.224271844660212%2343.55447112927947%230%24task5%3A184.2081071363471%24task3%3A183.67195969964766%24task6%3A183.3713909960931%24task2%3A185.47045474831637%24task4%3A184.50802356189593%24task0%3A186.28129045638207%24task1%3A184.16524281832346 HTTP/1.1" 200 -
-The computing node is not yet available. Sending assignment message to flask server on computing node FAILED!!!
-<urlopen error [Errno 110] Connection timed out>
-Announce my current best computing node 10.98.92.94
-Announce my current best computing node 10.97.9.71
-Announce my current best computing node 10.105.23.183
-Announce my current best computing node 10.104.118.11
-Announce my current best computing node 10.105.83.39
-Announce my current best computing node 10.96.241.134
-Announce my current best computing node 10.96.158.98
-Receive assignment info
-['', 'task5', 'task3', 'task6', 'task1', 'task4', 'task0', 'task2']
-['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
-10.244.7.34 - - [04/Jun/2019 15:58:15] "GET /receive_assignment_info?assignment_info=node8%23%3Atask5%3Atask3%3Atask6%3Atask1%3Atask4%3Atask0%3Atask2%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
-Trying to update global assignment
-Fully loaded information
-------------
-['task0']
-task0
-[]
-----
-node10
-node17
-----
-node10
-node17
-----
-node10
-node17
-----
-node17
-node10
-{'home': 'home', 'task3': 'node10', 'task4': 'node17', 'task6': 'node17', 'task2': 'node10', 'task5': 'node17', 'task1': 'node10', 'task0': 'node17'}
-{'task4': True}
-------------
-['task3', 'task1', 'task4', 'task2']
-task3
-['task1', 'task4', 'task2']
-----
-node10
-node17
-----
-node10
-node17
-----
-node10
-node17
-----
-node10
-node17
-----
-node10
-node17
-----
-node17
-node10
-----
-node10
-node17
-----
-node17
-node10
-----
-node10
-node17
-----
-node17
-node10
-{'home': 'home', 'task3': 'node10', 'task4': 'node17', 'task6': 'node17', 'task2': 'node10', 'task5': 'node17', 'task1': 'node10', 'task0': 'node17'}
-{'task5': True, 'task4': True, 'task6': True}
-------------
-['task1', 'task4', 'task2', 'task5', 'task4', 'task6']
-task1
-['task4', 'task2', 'task5', 'task4', 'task6']
-----
-node10
-node17
-----
-node10
-node17
-----
-node10
-node17
-----
-node17
-node10
-{'home': 'home', 'task3': 'node10', 'task4': 'node17', 'task6': 'node17', 'task2': 'node10', 'task5': 'node17', 'task1': 'node10', 'task0': 'node17'}
-{'task5': True, 'task4': True, 'task6': True}
-------------
-['task4', 'task2', 'task5', 'task4', 'task6', 'task4']
-task4
-['task2', 'task5', 'task4', 'task6', 'task4']
-----
-node10
-node17
-----
-node17
-node10
-----
-node10
-node17
-----
-node17
-node10
-{'home': 'home', 'task3': 'node10', 'task4': 'node17', 'task6': 'node17', 'task2': 'node10', 'task5': 'node17', 'task1': 'node10', 'task0': 'node17'}
-{'task5': True, 'task4': True, 'task6': True}
-------------
-['task2', 'task5', 'task4', 'task6', 'task4', 'task6']
-task2
-['task5', 'task4', 'task6', 'task4', 'task6']
-----
-node10
-node17
-----
-node10
-node17
-----
-node10
-node17
-----
-node10
-node17
-----
-node10
-node17
-----
-node17
-node10
-----
-node10
-node17
-----
-node17
-node10
-----
-node10
-node17
-----
-node17
-node10
-{'home': 'home', 'task3': 'node10', 'task4': 'node17', 'task6': 'node17', 'task2': 'node10', 'task5': 'node17', 'task1': 'node10', 'task0': 'node17'}
-{'task5': True, 'task4': True, 'task6': True}
-------------
-['task5', 'task4', 'task6', 'task4', 'task6', 'task5', 'task6']
-task5
-['task4', 'task6', 'task4', 'task6', 'task5', 'task6']
-----
-node10
-node17
-----
-node17
-node10
-----
-node10
-node17
-----
-node17
-node10
-{'home': 'home', 'task3': 'node10', 'task4': 'node17', 'task6': 'node17', 'task2': 'node10', 'task5': 'node17', 'task1': 'node10', 'task0': 'node17'}
-{'task5': True, 'task4': True, 'task6': True}
-------------
-['task4', 'task6', 'task4', 'task6', 'task5', 'task6', 'task6']
-task4
-['task6', 'task4', 'task6', 'task5', 'task6', 'task6']
-{'home': 'home', 'task3': 'node10', 'task4': 'node17', 'task6': 'node17', 'task2': 'node10', 'task5': 'node17', 'task1': 'node10', 'task0': 'node17'}
-{'task5': True, 'task4': True, 'task6': True}
-------------
-['task6', 'task4', 'task6', 'task5', 'task6', 'task6']
-task6
-['task4', 'task6', 'task5', 'task6', 'task6']
-{'home': 'home', 'task3': 'node10', 'task4': 'node17', 'task6': 'node17', 'task2': 'node10', 'task5': 'node17', 'task1': 'node10', 'task0': 'node17'}
-{'task5': True, 'task4': True, 'task6': True}
-{'home': 'home', 'task3': 'node10', 'task4': 'node17', 'task6': 'node17', 'task2': 'node10', 'task5': 'node17', 'task1': 'node10', 'task0': 'node17'}
-Receive assignment info
-['', 'task5', 'task3', 'task0', 'task6', 'task1', 'task2', 'task4']
-['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
-10.244.5.218 - - [04/Jun/2019 15:58:44] "GET /receive_assignment_info?assignment_info=home%23%3Atask5%3Atask3%3Atask0%3Atask6%3Atask1%3Atask2%3Atask4%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
-Received file as input - /centralized_scheduler/input/task0/home/1botnet.ipsum.
--------------------------
-task0
-1botnet.ipsum
-/centralized_scheduler/input/task0/home
-/centralized_scheduler/output/task0/home
--------------------------
-['1botnet_task0.txt']
-{'1botnet_task0.txt'}
-1botnet.ipsum
-1botnet.ipsum_task0
--------------------------@@@
-/communication.txt
--------------------------##
-{'task3': ['task5-2.78', 'task4-19.55', 'task6-5.42'], 'task4': ['task6-67.76'], 'task2': ['task5-37.48', 'task4-31.45', 'task6-42.99'], 'task5': ['task6-53.11'], 'task1': ['task4-51.34'], 'task0': ['task1-21.92', 'task3-6.85', 'task2-54.06', 'task4-66.84']}
-dict_keys(['task3', 'task4', 'task2', 'task5', 'task1', 'task0'])
-task0
-['task1-21.92', 'task3-6.85', 'task2-54.06', 'task4-66.84']
-['task1', 'task3', 'task2', 'task4']
-['22', '7', '55', '67']
-task1
-0
-/centralized_scheduler/output/task0/home/1botnet.ipsum_task0_task1
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task0/home/1botnet.ipsum_task0_task1 22
-Create file 
-File size 22
-22+0 records in
-22+0 records out
-22528 bytes (23 kB, 22 KiB) copied, 0.00335626 s, 6.7 MB/s
-task3
-1
-/centralized_scheduler/output/task0/home/1botnet.ipsum_task0_task3
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task0/home/1botnet.ipsum_task0_task3 7
-Create file 
-File size 7
-7+0 records in
-7+0 records out
-7168 bytes (7.2 kB, 7.0 KiB) copied, 0.00103647 s, 6.9 MB/s
-task2
-2
-/centralized_scheduler/output/task0/home/1botnet.ipsum_task0_task2
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task0/home/1botnet.ipsum_task0_task2 55
-Create file 
-File size 55
-55+0 records in
-55+0 records out
-56320 bytes (56 kB, 55 KiB) copied, 0.00542628 s, 10.4 MB/s
-task4
-3
-/centralized_scheduler/output/task0/home/1botnet.ipsum_task0_task4
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task0/home/1botnet.ipsum_task0_task4 67
-Create file 
-File size 67
-67+0 records in
-67+0 records out
-68608 bytes (69 kB, 67 KiB) copied, 0.00717665 s, 9.6 MB/s
-Received file as output - /centralized_scheduler/output/task0/home/1botnet.ipsum_task0_task1.
------ next step is not home
-['node10', 'node10', 'node10', 'node17']
-Received file as output - /centralized_scheduler/output/task0/home/1botnet.ipsum_task0_task3.
------ next step is not home
-['node10', 'node10', 'node10', 'node17']
-Received file as output - /centralized_scheduler/output/task0/home/1botnet.ipsum_task0_task2.
------ next step is not home
-['node10', 'node10', 'node10', 'node17']
-Received file as output - /centralized_scheduler/output/task0/home/1botnet.ipsum_task0_task4.
------ next step is not home
-['node10', 'node10', 'node10', 'node17']
-Warning: Permanently added '[10.96.241.134]:5000' (ECDSA) to the list of known hosts.
-data transfer complete
-
-Received file as input - /centralized_scheduler/input/task1/home/1botnet.ipsum_task0_task1.
--------------------------
-task1
-1botnet.ipsum_task0_task1
-/centralized_scheduler/input/task1/home
-/centralized_scheduler/output/task1/home
--------------------------
-['1botnet_task1.txt']
-{'1botnet_task1.txt'}
-1botnet.ipsum
-1botnet.ipsum_task1
--------------------------@@@
-/communication.txt
--------------------------##
-{'task3': ['task5-2.78', 'task4-19.55', 'task6-5.42'], 'task4': ['task6-67.76'], 'task2': ['task5-37.48', 'task4-31.45', 'task6-42.99'], 'task5': ['task6-53.11'], 'task1': ['task4-51.34'], 'task0': ['task1-21.92', 'task3-6.85', 'task2-54.06', 'task4-66.84']}
-dict_keys(['task3', 'task4', 'task2', 'task5', 'task1', 'task0'])
-task1
-['task4-51.34']
-['task4']
-['52']
-task4
-0
-/centralized_scheduler/output/task1/home/1botnet.ipsum_task1_task4
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task1/home/1botnet.ipsum_task1_task4 52
-Create file 
-File size 52
-52+0 records in
-52+0 records out
-53248 bytes (53 kB, 52 KiB) copied, 0.00491905 s, 10.8 MB/s
-Received file as input - /centralized_scheduler/input/task3/home/1botnet.ipsum_task0_task3.
-Received file as output - /centralized_scheduler/output/task1/home/1botnet.ipsum_task1_task4.
------ next step is not home
-['node17']
-data transfer complete
-
--------------------------
-task3
-1botnet.ipsum_task0_task3
-/centralized_scheduler/input/task3/home
-/centralized_scheduler/output/task3/home
--------------------------
-['1botnet_task3.txt']
-{'1botnet_task3.txt'}
-1botnet.ipsum
-1botnet.ipsum_task3
--------------------------@@@
-/communication.txt
--------------------------##
-{'task3': ['task5-2.78', 'task4-19.55', 'task6-5.42'], 'task4': ['task6-67.76'], 'task2': ['task5-37.48', 'task4-31.45', 'task6-42.99'], 'task5': ['task6-53.11'], 'task1': ['task4-51.34'], 'task0': ['task1-21.92', 'task3-6.85', 'task2-54.06', 'task4-66.84']}
-dict_keys(['task3', 'task4', 'task2', 'task5', 'task1', 'task0'])
-task3
-['task5-2.78', 'task4-19.55', 'task6-5.42']
-['task5', 'task4', 'task6']
-['3', '20', '6']
-task5
-0
-/centralized_scheduler/output/task3/home/1botnet.ipsum_task3_task5
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task3/home/1botnet.ipsum_task3_task5 3
-Create file 
-File size 3
-3+0 records in
-3+0 records out
-3072 bytes (3.1 kB, 3.0 KiB) copied, 0.000426119 s, 7.2 MB/s
-task4
-1
-/centralized_scheduler/output/task3/home/1botnet.ipsum_task3_task4
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task3/home/1botnet.ipsum_task3_task4 20
-Create file 
-File size 20
-20+0 records in
-20+0 records out
-20480 bytes (20 kB, 20 KiB) copied, 0.00287242 s, 7.1 MB/s
-task6
-2
-/centralized_scheduler/output/task3/home/1botnet.ipsum_task3_task6
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task3/home/1botnet.ipsum_task3_task6 6
-Create file 
-File size 6
-6+0 records in
-6+0 records out
-6144 bytes (6.1 kB, 6.0 KiB) copied, 0.000743037 s, 8.3 MB/s
-Received file as input - /centralized_scheduler/input/task2/home/1botnet.ipsum_task0_task2.
-Received file as output - /centralized_scheduler/output/task3/home/1botnet.ipsum_task3_task5.
------ next step is not home
-['node17', 'node17', 'node17']
-Received file as output - /centralized_scheduler/output/task3/home/1botnet.ipsum_task3_task4.
------ next step is not home
-['node17', 'node17', 'node17']
-Received file as output - /centralized_scheduler/output/task3/home/1botnet.ipsum_task3_task6.
------ next step is not home
-['node17', 'node17', 'node17']
-data transfer complete
-
-data transfer complete
-
-data transfer complete
-
--------------------------
-task2
-1botnet.ipsum_task0_task2
-/centralized_scheduler/input/task2/home
-/centralized_scheduler/output/task2/home
--------------------------
-['1botnet_task2.txt']
-{'1botnet_task2.txt'}
-1botnet.ipsum
-1botnet.ipsum_task2
--------------------------@@@
-/communication.txt
--------------------------##
-{'task3': ['task5-2.78', 'task4-19.55', 'task6-5.42'], 'task4': ['task6-67.76'], 'task2': ['task5-37.48', 'task4-31.45', 'task6-42.99'], 'task5': ['task6-53.11'], 'task1': ['task4-51.34'], 'task0': ['task1-21.92', 'task3-6.85', 'task2-54.06', 'task4-66.84']}
-dict_keys(['task3', 'task4', 'task2', 'task5', 'task1', 'task0'])
-task2
-['task5-37.48', 'task4-31.45', 'task6-42.99']
-['task5', 'task4', 'task6']
-['38', '32', '43']
-task5
-0
-/centralized_scheduler/output/task2/home/1botnet.ipsum_task2_task5
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task2/home/1botnet.ipsum_task2_task5 38
-Create file 
-File size 38
-38+0 records in
-38+0 records out
-38912 bytes (39 kB, 38 KiB) copied, 0.00521886 s, 7.5 MB/s
-task4
-1
-/centralized_scheduler/output/task2/home/1botnet.ipsum_task2_task4
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task2/home/1botnet.ipsum_task2_task4 32
-Create file 
-File size 32
-32+0 records in
-32+0 records out
-32768 bytes (33 kB, 32 KiB) copied, 0.0041212 s, 8.0 MB/s
-task6
-2
-/centralized_scheduler/output/task2/home/1botnet.ipsum_task2_task6
-/centralized_scheduler/generate_random_files.sh /centralized_scheduler/output/task2/home/1botnet.ipsum_task2_task6 43
-Create file 
-File size 43
-43+0 records in
-43+0 records out
-44032 bytes (44 kB, 43 KiB) copied, 0.00518136 s, 8.5 MB/s
-Received file as output - /centralized_scheduler/output/task2/home/1botnet.ipsum_task2_task5.
------ next step is not home
-['node17', 'node17', 'node17']
-Received file as output - /centralized_scheduler/output/task2/home/1botnet.ipsum_task2_task4.
------ next step is not home
-['node17', 'node17', 'node17']
-Received file as output - /centralized_scheduler/output/task2/home/1botnet.ipsum_task2_task6.
------ next step is not home
-['node17', 'node17', 'node17']
-data transfer complete
-
-data transfer complete
-
-data transfer complete
-
-Received pricing info
-Check price updated interval 
-10.244.6.94 - - [04/Jun/2019 16:00:01] "GET /receive_price_info?pricing_info=node6%2313.876623376623394%2345.37335257335254%230%24task0%3A136.78898767398047%24task1%3A134.89922793907178%24task2%3A136.06529616394755%24task3%3A134.4581702866952%24task5%3A134.93754473845078%24task4%3A135.2056008750915%24task6%3A134.13168100889982 HTTP/1.1" 200 -
-Received pricing info
-Check price updated interval 
-10.244.3.211 - - [04/Jun/2019 16:00:02] "GET /receive_price_info?pricing_info=node3%2330.04309099662975%2354.093066923447296%230%24task3%3A179.60764103517022%24task4%3A180.429676508107%24task6%3A179.01498149506764%24task0%3A182.1657492128632%24task5%3A180.13504957992384%24task2%3A181.3731815061802%24task1%3A180.09291771212457 HTTP/1.1" 200 -
-10.244.11.89 - - [04/Jun/2019 16:00:02] "GET /receive_price_info?pricing_info=node12%238.21991341991339%2336.38316498316512%230%24task0%3A168.07371242014642%24task5%3A164.28573285043106%24task6%3A162.9448912621364%24task3%3A163.30048148919593%24task4%3A164.8358681996177%24task1%3A164.2070479961162%24task2%3A166.596353851685 HTTP/1.1" 200 -
-Received pricing info
-Check price updated interval 
-Received pricing info
-Check price updated interval 
-10.244.8.37 - - [04/Jun/2019 16:00:02] "GET /receive_price_info?pricing_info=node9%239.21091871091872%2334.92515632515641%230%24task3%3A148.5912150688105%24task6%3A148.65455144486106%24task2%3A148.27476442960824%24task1%3A148.5018845765178%24task4%3A148.44093505024804%24task5%3A148.4942123346172%24task0%3A148.1404747229873 HTTP/1.1" 200 -
------------------
-Overall price:
-{'cpu': 7.35449735449734, 'memory': 34.819240019240105, 'network': {'task3': '141.34086991864208', 'task4': '141.7670216769328', 'task6': '141.04575240813045', 'task2': '142.258545671132', 'task5': '141.61406167573566', 'task1': '141.5922086421419', 'task0': '142.6734521991888'}, 'queue': 0}
-Announce my price
 Updated assignment periodically
 Select the current best node
-task3
+{'network': {'node9': 143.27450695127715, 'node6': 138.6166601849601, 'node8': 1213.2991598668773, 'node11': 3365.7484453614447, 'node18': 1119.4814850652901, 'node12': 2468.4024063847664, 'node3': 2490.7828156470982, 'node15': 2865.176527945877, 'node13': 137.7067507227394, 'node10': 3285.70796690072, 'node14': 3040.229170969443}, 'queue': -1, 'memory': -1, 'cpu': -1}
+node10
 Select the current best node
-task4
+node10
 Select the current best node
-task6
+node10
 Select the current best node
-task2
+node10
 Select the current best node
-task5
+node10
 Select the current best node
-task1
+node10
 Select the current best node
-task0
-Announce my current best computing node 10.111.31.48
+Trying to update global assignment
+11
+node10
+Announce my current best computing node 10.104.144.181
+95
+84
+Fully loaded information
+Announce my current best computing node 10.110.227.217
+Received file as input - /input/1botnet.ipsum.
+start time is:  [1560206407.204117]
+Send file to the first node
+node10
+Announce my current best computing node 10.111.109.22
+Announce my current best computing node 10.104.60.85
+10.244.0.0 - - [10/Jun/2019 22:40:07] "GET / HTTP/1.1" 200 -
+Recieved request for number of output files. Current done: 0
+Announce my current best computing node 10.101.109.236
+Announce my current best computing node 10.97.67.66
+Announce my current best computing node 10.103.107.190
+Warning: Permanently added '[10.101.109.236]:5000' (ECDSA) to the list of known hosts.
+Announce my current best computing node 10.111.64.1
+Announce my current best computing node 10.96.138.69
+Announce my current best computing node 10.97.215.194
+Announce my current best computing node 10.97.253.111
+data transfer complete
+
+10.244.9.6 - - [10/Jun/2019 22:40:10] "GET /recv_runtime_profile_computingnode?work_node=node10&task_name=task0&msg=rt_enter+1botnet+1560206410.550678 HTTP/1.1" 200 -
+10.244.9.6 - - [10/Jun/2019 22:40:11] "GET /recv_runtime_profile_computingnode?work_node=node10&task_name=task0&msg=rt_exec+1botnet+1560206411.0210385 HTTP/1.1" 200 -
+----------------------------
+Runtime info at each computing node
+Worker node: node10
+Input file : 1botnet
+Task name: task0
+Total duration time:3.260533094406128
+Waiting time:0.47036051750183105
+node10 execution time:2.790172576904297
+----------------------------
+********************************************
+Runtime profiling computing node info:
+Worker_node Task_name  input_file Enter_time Execute_time Finish_time Elapse_time Duration_time Waiting_time 
+
+node10     task0      1botnet    1560206410.550678 1560206411.0210385 1560206413.811211 3.260533094406128 2.790172576904297 0.47036051750183105
+
+********************************************
+10.244.9.6 - - [10/Jun/2019 22:40:14] "GET /recv_runtime_profile_computingnode?work_node=node10&task_name=task0&msg=rt_finish+1botnet+1560206413.811211 HTTP/1.1" 200 -
+----------------------------
+Runtime info at each computing node
+Worker node: node10
+Input file : 1botnet
+Task name: task0
+Total duration time:3.727867364883423
+Waiting time:0.47036051750183105
+node10 execution time:3.257506847381592
+----------------------------
+********************************************
+Runtime profiling computing node info:
+Worker_node Task_name  input_file Enter_time Execute_time Finish_time Elapse_time Duration_time Waiting_time 
+
+node10     task0      1botnet    1560206410.550678 1560206411.0210385 1560206414.2785454 3.727867364883423 3.257506847381592 0.47036051750183105
+
+********************************************
+10.244.9.6 - - [10/Jun/2019 22:40:14] "GET /recv_runtime_profile_computingnode?work_node=node10&task_name=task0&msg=rt_finish+1botnet+1560206414.2785454 HTTP/1.1" 200 -
+----------------------------
+Runtime info at each computing node
+Worker node: node10
+Input file : 1botnet
+Task name: task0
+Total duration time:4.201990842819214
+Waiting time:0.47036051750183105
+node10 execution time:3.731630325317383
+----------------------------
+********************************************
+Runtime profiling computing node info:
+Worker_node Task_name  input_file Enter_time Execute_time Finish_time Elapse_time Duration_time Waiting_time 
+
+node10     task0      1botnet    1560206410.550678 1560206411.0210385 1560206414.7526689 4.201990842819214 3.731630325317383 0.47036051750183105
+
+********************************************
+10.244.9.6 - - [10/Jun/2019 22:40:15] "GET /recv_runtime_profile_computingnode?work_node=node10&task_name=task0&msg=rt_finish+1botnet+1560206414.7526689 HTTP/1.1" 200 -
+----------------------------
+Runtime info at each computing node
+Worker node: node10
+Input file : 1botnet
+Task name: task0
+Total duration time:4.645015478134155
+Waiting time:0.47036051750183105
+node10 execution time:4.174654960632324
+----------------------------
+********************************************
+Runtime profiling computing node info:
+Worker_node Task_name  input_file Enter_time Execute_time Finish_time Elapse_time Duration_time Waiting_time 
+
+node10     task0      1botnet    1560206410.550678 1560206411.0210385 1560206415.1956935 4.645015478134155 4.174654960632324 0.47036051750183105
+
+********************************************
+10.244.9.6 - - [10/Jun/2019 22:40:15] "GET /recv_runtime_profile_computingnode?work_node=node10&task_name=task0&msg=rt_finish+1botnet+1560206415.1956935 HTTP/1.1" 200 -
+10.244.9.6 - - [10/Jun/2019 22:40:16] "GET /recv_runtime_profile_computingnode?work_node=node10&task_name=task1&msg=rt_enter+1botnet+1560206416.170079 HTTP/1.1" 200 -
+10.244.9.6 - - [10/Jun/2019 22:40:16] "GET /recv_runtime_profile_computingnode?work_node=node10&task_name=task1&msg=rt_exec+1botnet+1560206416.6363194 HTTP/1.1" 200 -
+10.244.6.111 - - [10/Jun/2019 22:40:19] "GET /recv_runtime_profile_computingnode?task_name=task4&msg=rt_enter+1botnet+1560206419.0032485&work_node=node6 HTTP/1.1" 200 -
+10.244.9.6 - - [10/Jun/2019 22:40:19] "GET /recv_runtime_profile_computingnode?work_node=node10&task_name=task3&msg=rt_enter+1botnet+1560206419.1153393 HTTP/1.1" 200 -
+10.244.9.6 - - [10/Jun/2019 22:40:19] "GET /recv_runtime_profile_computingnode?work_node=node10&task_name=task3&msg=rt_exec+1botnet+1560206419.5817556 HTTP/1.1" 200 -
+----------------------------
+Runtime info at each computing node
+Worker node: node10
+Input file : 1botnet
+Task name: task1
+Total duration time:3.4318079948425293
+Waiting time:0.46624040603637695
+node10 execution time:2.9655675888061523
+----------------------------
+********************************************
+Runtime profiling computing node info:
+Worker_node Task_name  input_file Enter_time Execute_time Finish_time Elapse_time Duration_time Waiting_time 
+
+node10     task1      1botnet    1560206416.170079 1560206416.6363194 1560206419.601887 3.4318079948425293 2.9655675888061523 0.46624040603637695
+
+node10     task0      1botnet    1560206410.550678 1560206411.0210385 1560206415.1956935 4.645015478134155 4.174654960632324 0.47036051750183105
+
+********************************************
+10.244.9.6 - - [10/Jun/2019 22:40:19] "GET /recv_runtime_profile_computingnode?work_node=node10&task_name=task1&msg=rt_finish+1botnet+1560206419.601887 HTTP/1.1" 200 -
+10.244.9.6 - - [10/Jun/2019 22:40:22] "GET /recv_runtime_profile_computingnode?work_node=node10&task_name=task2&msg=rt_enter+1botnet+1560206422.009124 HTTP/1.1" 200 -
+10.244.9.6 - - [10/Jun/2019 22:40:22] "GET /recv_runtime_profile_computingnode?work_node=node10&task_name=task2&msg=rt_exec+1botnet+1560206422.4765656 HTTP/1.1" 200 -
+10.244.6.111 - - [10/Jun/2019 22:40:23] "GET /recv_runtime_profile_computingnode?task_name=task4&msg=rt_enter+1botnet+1560206423.387548&work_node=node6 HTTP/1.1" 200 -
+----------------------------
+Runtime info at each computing node
+Worker node: node10
+Input file : 1botnet
+Task name: task3
+Total duration time:4.8065032958984375
+Waiting time:0.4664163589477539
+node10 execution time:4.340086936950684
+----------------------------
+********************************************
+Runtime profiling computing node info:
+Worker_node Task_name  input_file Enter_time Execute_time Finish_time Elapse_time Duration_time Waiting_time 
+
+node10     task1      1botnet    1560206416.170079 1560206416.6363194 1560206419.601887 3.4318079948425293 2.9655675888061523 0.46624040603637695
+
+node10     task0      1botnet    1560206410.550678 1560206411.0210385 1560206415.1956935 4.645015478134155 4.174654960632324 0.47036051750183105
+
+node10     task3      1botnet    1560206419.1153393 1560206419.5817556 1560206423.9218426 4.8065032958984375 4.340086936950684 0.4664163589477539
+
+********************************************
+10.244.9.6 - - [10/Jun/2019 22:40:24] "GET /recv_runtime_profile_computingnode?work_node=node10&task_name=task3&msg=rt_finish+1botnet+1560206423.9218426 HTTP/1.1" 200 -
+10.244.0.0 - - [10/Jun/2019 22:41:08] "GET / HTTP/1.1" 200 -
+Recieved request for number of output files. Current done: 0
 Receive assignment info
-['', 'task0', 'task1', 'task6', 'task3', 'task2', 'task4', 'task5']
+['', 'task2', 'task1', 'task4', 'task3', 'task5', 'task0', 'task6']
 ['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
-10.244.12.251 - - [04/Jun/2019 16:00:03] "GET /receive_assignment_info?assignment_info=node13%23%3Atask0%3Atask1%3Atask6%3Atask3%3Atask2%3Atask4%3Atask5%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
-Announce my current best computing node 10.104.107.255
-Announce my current best computing node 10.106.62.79
-Announce my current best computing node 10.101.153.5
+10.244.15.88 - - [10/Jun/2019 22:41:26] "GET /receive_assignment_info?assignment_info=node18%23%3Atask2%3Atask1%3Atask4%3Atask3%3Atask5%3Atask0%3Atask6%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task0', 'task1', 'task6', 'task4', 'task5', 'task3', 'task2']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.7.58 - - [10/Jun/2019 22:41:26] "GET /receive_assignment_info?assignment_info=node8%23%3Atask0%3Atask1%3Atask6%3Atask4%3Atask5%3Atask3%3Atask2%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task0', 'task1', 'task3', 'task2', 'task5', 'task4', 'task6']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.6.111 - - [10/Jun/2019 22:41:27] "GET /receive_assignment_info?assignment_info=node6%23%3Atask0%3Atask1%3Atask3%3Atask2%3Atask5%3Atask4%3Atask6%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task1', 'task3', 'task5', 'task6', 'task0', 'task2', 'task4']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.14.177 - - [10/Jun/2019 22:41:27] "GET /receive_assignment_info?assignment_info=node15%23%3Atask1%3Atask3%3Atask5%3Atask6%3Atask0%3Atask2%3Atask4%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
 Received pricing info
 Check price updated interval 
-10.244.15.70 - - [04/Jun/2019 16:00:04] "GET /receive_price_info?pricing_info=node18%237.944877344877342%2335.392544492544516%230%24task3%3A179.01460992572606%24task0%3A185.26999381704323%24task2%3A183.33464581836304%24task4%3A181.02751606722444%24task6%3A177.6137739411687%24task1%3A180.20321296097734%24task5%3A180.3063653252455 HTTP/1.1" 200 -
+10.244.6.111 - - [10/Jun/2019 22:41:27] "GET /receive_price_info?pricing_info=node6%2311.144827586206896%2338.724137931034484%230%24task0%3A140.39081963540107%24task1%3A140.12350406468664%24task3%3A140.0636883313949%24task2%3A140.28632366751137%24task5%3A140.12874620051363%24task4%3A140.16562379066426%24task6%3A140.01747774985242 HTTP/1.1" 200 -
 Receive assignment info
-['', 'task3', 'task0', 'task2', 'task4', 'task6', 'task1', 'task5']
+['', 'task2', 'task3', 'task4', 'task5', 'task6', 'task0', 'task1']
 ['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
-10.244.15.70 - - [04/Jun/2019 16:00:04] "GET /receive_assignment_info?assignment_info=node18%23%3Atask3%3Atask0%3Atask2%3Atask4%3Atask6%3Atask1%3Atask5%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
-Announce my current best computing node 10.110.133.32
-Announce my current best computing node 10.103.177.107
+10.244.12.15 - - [10/Jun/2019 22:41:27] "GET /receive_assignment_info?assignment_info=node13%23%3Atask2%3Atask3%3Atask4%3Atask5%3Atask6%3Atask0%3Atask1%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
 Received pricing info
 Check price updated interval 
-10.244.12.251 - - [04/Jun/2019 16:00:05] "GET /receive_price_info?pricing_info=node13%237.796536796536784%2334.73612313612293%230%24task0%3A136.44013597154702%24task2%3A135.28274024302561%24task6%3A132.35912448769278%24task3%3A132.6998515692199%24task1%3A133.41041634917215%24task4%3A133.9032344401684%24task5%3A133.47208537272735 HTTP/1.1" 200 -
-Receive assignment info
-['', 'task0', 'task3', 'task5', 'task2', 'task4', 'task1', 'task6']
-['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
-10.244.10.212 - - [04/Jun/2019 16:00:05] "GET /receive_assignment_info?assignment_info=node11%23%3Atask0%3Atask3%3Atask5%3Atask2%3Atask4%3Atask1%3Atask6%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+10.244.7.58 - - [10/Jun/2019 22:41:27] "GET /receive_price_info?pricing_info=node8%2312.458620689655177%2338.93448275862068%230%24task0%3A189.4091623565611%24task1%3A186.59743221567433%24task6%3A185.22106238220047%24task4%3A187.0543200489838%24task5%3A186.65459520569064%24task3%3A185.93898975047742%24task2%3A188.3342181590788 HTTP/1.1" 200 -
 Received pricing info
 Check price updated interval 
-10.244.10.212 - - [04/Jun/2019 16:00:06] "GET /receive_price_info?pricing_info=node11%237.954256854256858%2334.64997594997594%230%24task0%3A152.54143884496258%24task3%3A148.99189343115185%24task1%3A149.66504135065665%24task2%3A151.4414099128385%24task4%3A150.1322298432498%24task5%3A149.72348874714638%24task6%3A148.16991842671308 HTTP/1.1" 200 -
+10.244.11.114 - - [10/Jun/2019 22:41:27] "GET /receive_price_info?pricing_info=node12%2313.575862068965519%2340.34482758620688%230%24task4%3A170.88831301889726%24task1%3A170.17896496593684%24task6%3A168.009983370689%24task3%3A169.11851398031854%24task5%3A170.2689059011697%24task2%3A172.7586109699177%24task0%3A174.19464368965978 HTTP/1.1" 200 -
 Receive assignment info
-['', 'task3', 'task2', 'task4', 'task0', 'task1', 'task6', 'task5']
-['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
-10.244.14.160 - - [04/Jun/2019 16:00:06] "GET /receive_assignment_info?assignment_info=node15%23%3Atask3%3Atask2%3Atask4%3Atask0%3Atask1%3Atask6%3Atask5%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+['', 'task5', 'task6', 'task2', 'task4', 'task3', 'task0', 'task1']
+['', 'node6', 'node6', 'node6', 'node6', 'node6', 'node6', 'node6']
+10.244.9.6 - - [10/Jun/2019 22:41:28] "GET /receive_assignment_info?assignment_info=node10%23%3Atask5%3Atask6%3Atask2%3Atask4%3Atask3%3Atask0%3Atask1%23%3Anode6%3Anode6%3Anode6%3Anode6%3Anode6%3Anode6%3Anode6 HTTP/1.1" 200 -
 Receive assignment info
-['', 'task5', 'task3', 'task0', 'task2', 'task1', 'task6', 'task4']
+['', 'task1', 'task2', 'task6', 'task3', 'task0', 'task4', 'task5']
 ['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
-10.244.13.190 - - [04/Jun/2019 16:00:06] "GET /receive_assignment_info?assignment_info=node14%23%3Atask5%3Atask3%3Atask0%3Atask2%3Atask1%3Atask6%3Atask4%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+10.244.10.230 - - [10/Jun/2019 22:41:28] "GET /receive_assignment_info?assignment_info=node11%23%3Atask1%3Atask2%3Atask6%3Atask3%3Atask0%3Atask4%3Atask5%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+10.244.8.55 - - [10/Jun/2019 22:41:28] "GET /receive_price_info?pricing_info=node9%2314.22068965517242%2338.71724137931034%230%24task3%3A149.4912681380812%24task4%3A150.06602425257347%24task1%3A150.26703237944474%24task6%3A148.78083294191322%24task0%3A145.9468946983183%24task2%3A147.82116656924723%24task5%3A150.33437494936183 HTTP/1.1" 200 -
 Received pricing info
 Check price updated interval 
-10.244.4.167 - - [04/Jun/2019 16:00:06] "GET /receive_price_info?pricing_info=node17%237.170466570466573%2335.299182299182284%230%24task0%3A143.82463997639195%24task6%3A142.00543369069683%24task5%3A142.4770781440654%24task4%3A142.6713898149415%24task1%3A142.4493243401904%24task2%3A143.29637840507726%24task3%3A142.13024555168604 HTTP/1.1" 200 -
 Received pricing info
 Check price updated interval 
-10.244.13.190 - - [04/Jun/2019 16:00:07] "GET /receive_price_info?pricing_info=node14%238.621115921115926%2338.99639249639262%230%24task5%3A140.6166361060558%24task3%3A139.77420166776452%24task0%3A143.85801400463095%24task2%3A142.59336184094315%24task4%3A141.08714130664094%24task6%3A139.09818035088207%24task1%3A140.5493473434897 HTTP/1.1" 200 -
+10.244.15.88 - - [10/Jun/2019 22:41:28] "GET /receive_price_info?pricing_info=node18%2313.368965517241376%2342.61724137931034%230%24task2%3A192.08151670416294%24task5%3A190.8829654570012%24task3%3A190.37286068633333%24task1%3A190.84220623122638%24task4%3A191.16804066966856%24task0%3A192.8495260831236%24task6%3A189.9842877059627 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task6', 'task2', 'task3', 'task5', 'task4', 'task0', 'task1']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.13.206 - - [10/Jun/2019 22:41:29] "GET /receive_assignment_info?assignment_info=node14%23%3Atask6%3Atask2%3Atask3%3Atask5%3Atask4%3Atask0%3Atask1%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
 Received pricing info
 Check price updated interval 
-10.244.14.160 - - [04/Jun/2019 16:00:07] "GET /receive_price_info?pricing_info=node15%236.948484848484844%2338.621500721500695%230%24task3%3A139.72341409079493%24task2%3A146.845792044594%24task4%3A143.13547344650829%24task0%3A149.7898159677946%24task1%3A141.75772185633966%24task6%3A137.71818775972696%24task5%3A141.93161986411963 HTTP/1.1" 200 -
-Receive assignment info
-['', 'task6', 'task0', 'task3', 'task5', 'task4', 'task2', 'task1']
-['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
-10.244.4.167 - - [04/Jun/2019 16:00:07] "GET /receive_assignment_info?assignment_info=node17%23%3Atask6%3Atask0%3Atask3%3Atask5%3Atask4%3Atask2%3Atask1%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
-Receive assignment info
-['', 'task0', 'task1', 'task2', 'task6', 'task3', 'task5', 'task4']
-['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
-10.244.6.94 - - [04/Jun/2019 16:00:08] "GET /receive_assignment_info?assignment_info=node6%23%3Atask0%3Atask1%3Atask2%3Atask6%3Atask3%3Atask5%3Atask4%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
-Receive assignment info
-['', 'task3', 'task5', 'task4', 'task6', 'task0', 'task2', 'task1']
-['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
-10.244.3.211 - - [04/Jun/2019 16:00:08] "GET /receive_assignment_info?assignment_info=node3%23%3Atask3%3Atask5%3Atask4%3Atask6%3Atask0%3Atask2%3Atask1%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+10.244.12.15 - - [10/Jun/2019 22:41:30] "GET /receive_price_info?pricing_info=node13%2313.017241379310345%2338.54827586206898%230%24task2%3A133.0597724591724%24task6%3A132.03176709632328%24task4%3A132.62289872529533%24task5%3A132.48711977702146%24task0%3A133.4292124167591%24task1%3A132.46772810448792%24task3%3A132.24481946548602 HTTP/1.1" 200 -
 Received pricing info
 Check price updated interval 
-10.244.7.34 - - [04/Jun/2019 16:00:08] "GET /receive_price_info?pricing_info=node8%2311.224271844660212%2343.55447112927947%230%24task5%3A184.2081071363471%24task3%3A183.67195969964766%24task6%3A183.3713909960931%24task2%3A185.47045474831637%24task4%3A184.50802356189593%24task0%3A186.28129045638207%24task1%3A184.16524281832346 HTTP/1.1" 200 -
+10.244.14.177 - - [10/Jun/2019 22:41:30] "GET /receive_price_info?pricing_info=node15%2311.637931034482756%2343.2344827586207%230%24task1%3A147.4557113816324%24task3%3A146.97919054877002%24task5%3A147.4970934156151%24task6%3A146.75088117073844%24task0%3A149.49364323574696%24task2%3A148.71393617640132%24task4%3A147.78652322389084 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.13.206 - - [10/Jun/2019 22:41:30] "GET /receive_price_info?pricing_info=node14%2313.858620689655176%2338.41034482758621%230%24task6%3A150.57113208898934%24task2%3A149.70223554642354%24task3%3A150.37451354746702%24task5%3A150.17184778777926%24task4%3A150.05931111802866%24task0%3A149.40622835127598%24task1%3A150.1879804933143 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.10.230 - - [10/Jun/2019 22:41:30] "GET /receive_price_info?pricing_info=node11%2313.027586206896547%2338.762068965517244%230%24task1%3A168.5504446155981%24task2%3A169.72005115638942%24task6%3A167.79807555843303%24task3%3A168.10717268958527%24task0%3A170.44423302196626%24task4%3A168.8580736423768%24task5%3A168.5889311821846 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.9.6 - - [10/Jun/2019 22:41:30] "GET /receive_price_info?pricing_info=node10%2311.024137931034485%2338.72413793103448%230%24task5%3A139.411539398905%24task6%3A136.89089687251544%24task2%3A142.68980607501155%24task4%3A140.1921617915487%24task3%3A138.01334799939733%24task0%3A144.78526756443836%24task1%3A139.29988331842736 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task1', 'task2', 'task5', 'task3', 'task0', 'task4', 'task6']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.3.26 - - [10/Jun/2019 22:41:38] "GET /receive_assignment_info?assignment_info=node3%23%3Atask1%3Atask2%3Atask5%3Atask3%3Atask0%3Atask4%3Atask6%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.3.26 - - [10/Jun/2019 22:41:38] "GET /receive_price_info?pricing_info=node3%2314.382758620689653%2358.84137931034481%230%24task1%3A167.09206972285835%24task2%3A166.70053011458936%24task5%3A167.0790778812297%24task3%3A167.24222865174326%24task0%3A166.4615451443946%24task4%3A166.98842823510677%24task6%3A167.36071047367838 HTTP/1.1" 200 -
+Overall price:
+{'network': {'node9': 143.27450695127715, 'node6': 138.6166601849601, 'node8': 1213.2991598668773, 'node11': 3365.7484453614447, 'node18': 1119.4814850652901, 'node12': 2468.4024063847664, 'node3': 2490.7828156470982, 'node15': 2865.176527945877, 'node13': 137.7067507227394, 'node10': 3285.70796690072, 'node14': 3040.229170969443}, 'queue': -1, 'memory': -1, 'cpu': -1}
+Updated assignment periodically
+Select the current best node
+node10
+Select the current best node
+node10
+Select the current best node
+node10
+Select the current best node
+node10
+Select the current best node
+node10
+Select the current best node
+node10
+Select the current best node
+node10
+Announce my current best computing node 10.104.144.181
+Trying to update global assignment
+11
+95
+84
+Fully loaded information
+Announce my current best computing node 10.110.227.217
+Announce my current best computing node 10.111.109.22
+Announce my current best computing node 10.104.60.85
+Announce my current best computing node 10.101.109.236
+Announce my current best computing node 10.97.67.66
+Announce my current best computing node 10.103.107.190
+Announce my current best computing node 10.111.64.1
+Announce my current best computing node 10.96.138.69
+Announce my current best computing node 10.97.215.194
+Announce my current best computing node 10.97.253.111
+Recieved request for number of output files. Current done: 0
+10.244.0.0 - - [10/Jun/2019 22:42:09] "GET / HTTP/1.1" 200 -
+Recieved request for number of output files. Current done: 0
+10.244.0.0 - - [10/Jun/2019 22:43:10] "GET / HTTP/1.1" 200 -
+Receive assignment info
+['', 'task5', 'task3', 'task4', 'task1', 'task6', 'task2', 'task0']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.8.55 - - [10/Jun/2019 22:43:25] "GET /receive_assignment_info?assignment_info=node9%23%3Atask5%3Atask3%3Atask4%3Atask1%3Atask6%3Atask2%3Atask0%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task4', 'task1', 'task6', 'task3', 'task5', 'task2', 'task0']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.11.114 - - [10/Jun/2019 22:43:27] "GET /receive_assignment_info?assignment_info=node12%23%3Atask4%3Atask1%3Atask6%3Atask3%3Atask5%3Atask2%3Atask0%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.6.111 - - [10/Jun/2019 22:43:27] "GET /receive_price_info?pricing_info=node6%2310.941935483870967%2339.00967741935484%230%24task0%3A140.39081963540107%24task1%3A140.12350406468664%24task3%3A140.0636883313949%24task2%3A140.28632366751137%24task5%3A140.12874620051363%24task4%3A140.16562379066426%24task6%3A140.01747774985242 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.7.58 - - [10/Jun/2019 22:43:27] "GET /receive_price_info?pricing_info=node8%2312.261290322580647%2339.2032258064516%230%24task0%3A189.4091623565611%24task1%3A186.59743221567433%24task6%3A185.22106238220047%24task4%3A187.0543200489838%24task5%3A186.65459520569064%24task3%3A185.93898975047742%24task2%3A188.3342181590788 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.11.114 - - [10/Jun/2019 22:43:27] "GET /receive_price_info?pricing_info=node12%2313.361290322580647%2340.61935483870966%230%24task4%3A170.88831301889726%24task1%3A170.17896496593684%24task6%3A168.009983370689%24task3%3A169.11851398031854%24task5%3A170.2689059011697%24task2%3A172.7586109699177%24task0%3A174.19464368965978 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.8.55 - - [10/Jun/2019 22:43:28] "GET /receive_price_info?pricing_info=node9%2314.10645161290323%2338.993548387096766%230%24task3%3A149.4912681380812%24task4%3A150.06602425257347%24task1%3A150.26703237944474%24task6%3A148.78083294191322%24task0%3A145.9468946983183%24task2%3A147.82116656924723%24task5%3A150.33437494936183 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.15.88 - - [10/Jun/2019 22:43:28] "GET /receive_price_info?pricing_info=node18%2313.141935483870965%2342.89677419354839%230%24task2%3A192.08151670416294%24task5%3A190.8829654570012%24task3%3A190.37286068633333%24task1%3A190.84220623122638%24task4%3A191.16804066966856%24task0%3A192.8495260831236%24task6%3A189.9842877059627 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.12.15 - - [10/Jun/2019 22:43:30] "GET /receive_price_info?pricing_info=node13%2312.816129032258065%2338.819354838709685%230%24task2%3A133.0597724591724%24task6%3A132.03176709632328%24task4%3A132.62289872529533%24task5%3A132.48711977702146%24task0%3A133.4292124167591%24task1%3A132.46772810448792%24task3%3A132.24481946548602 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.14.177 - - [10/Jun/2019 22:43:30] "GET /receive_price_info?pricing_info=node15%2311.406451612903224%2343.50645161290324%230%24task1%3A147.4557113816324%24task3%3A146.97919054877002%24task5%3A147.4970934156151%24task6%3A146.75088117073844%24task0%3A149.49364323574696%24task2%3A148.71393617640132%24task4%3A147.78652322389084 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.13.206 - - [10/Jun/2019 22:43:30] "GET /receive_price_info?pricing_info=node14%2313.680645161290325%2338.68064516129033%230%24task6%3A150.57113208898934%24task2%3A149.70223554642354%24task3%3A150.37451354746702%24task5%3A150.17184778777926%24task4%3A150.05931111802866%24task0%3A149.40622835127598%24task1%3A150.1879804933143 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.10.230 - - [10/Jun/2019 22:43:30] "GET /receive_price_info?pricing_info=node11%2312.8258064516129%2339.032258064516135%230%24task1%3A168.5504446155981%24task2%3A169.72005115638942%24task6%3A167.79807555843303%24task3%3A168.10717268958527%24task0%3A170.44423302196626%24task4%3A168.8580736423768%24task5%3A168.5889311821846 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.9.6 - - [10/Jun/2019 22:43:30] "GET /receive_price_info?pricing_info=node10%2310.77741935483871%2339.0032258064516%230%24task5%3A139.411539398905%24task6%3A136.89089687251544%24task2%3A142.68980607501155%24task4%3A140.1921617915487%24task3%3A138.01334799939733%24task0%3A144.78526756443836%24task1%3A139.29988331842736 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.3.26 - - [10/Jun/2019 22:43:38] "GET /receive_price_info?pricing_info=node3%2314.151612903225804%2359.12258064516127%230%24task1%3A167.09206972285835%24task2%3A166.70053011458936%24task5%3A167.0790778812297%24task3%3A167.24222865174326%24task0%3A166.4615451443946%24task4%3A166.98842823510677%24task6%3A167.36071047367838 HTTP/1.1" 200 -
+Overall price:
+{'network': {'node9': 143.27450695127715, 'node6': 138.6166601849601, 'node8': 1213.2991598668773, 'node11': 3365.7484453614447, 'node18': 1119.4814850652901, 'node12': 2468.4024063847664, 'node3': 2490.7828156470982, 'node15': 2865.176527945877, 'node13': 137.7067507227394, 'node10': 3285.70796690072, 'node14': 3040.229170969443}, 'queue': -1, 'memory': -1, 'cpu': -1}
+Updated assignment periodically
+Select the current best node
+node10
+Select the current best node
+node10
+Select the current best node
+node10
+Select the current best node
+node10
+Select the current best node
+node10
+Select the current best node
+node10
+Select the current best node
+node10
+Announce my current best computing node 10.104.144.181
+Trying to update global assignment
+11
+95
+84
+Fully loaded information
+Announce my current best computing node 10.110.227.217
+Announce my current best computing node 10.111.109.22
+Announce my current best computing node 10.104.60.85
+Announce my current best computing node 10.101.109.236
+Announce my current best computing node 10.97.67.66
+Announce my current best computing node 10.103.107.190
+Announce my current best computing node 10.111.64.1
+Announce my current best computing node 10.96.138.69
+Announce my current best computing node 10.97.215.194
+Announce my current best computing node 10.97.253.111
+Recieved request for number of output files. Current done: 0
+10.244.0.0 - - [10/Jun/2019 22:44:11] "GET / HTTP/1.1" 200 -
+Recieved request for number of output files. Current done: 0
+10.244.0.0 - - [10/Jun/2019 22:45:12] "GET / HTTP/1.1" 200 -
+Receive assignment info
+['', 'task2', 'task1', 'task4', 'task3', 'task5', 'task0', 'task6']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.15.88 - - [10/Jun/2019 22:45:26] "GET /receive_assignment_info?assignment_info=node18%23%3Atask2%3Atask1%3Atask4%3Atask3%3Atask5%3Atask0%3Atask6%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task0', 'task1', 'task6', 'task4', 'task5', 'task3', 'task2']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.7.58 - - [10/Jun/2019 22:45:26] "GET /receive_assignment_info?assignment_info=node8%23%3Atask0%3Atask1%3Atask6%3Atask4%3Atask5%3Atask3%3Atask2%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task0', 'task1', 'task3', 'task2', 'task5', 'task4', 'task6']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.6.111 - - [10/Jun/2019 22:45:27] "GET /receive_assignment_info?assignment_info=node6%23%3Atask0%3Atask1%3Atask3%3Atask2%3Atask5%3Atask4%3Atask6%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task1', 'task3', 'task5', 'task6', 'task0', 'task2', 'task4']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.14.177 - - [10/Jun/2019 22:45:27] "GET /receive_assignment_info?assignment_info=node15%23%3Atask1%3Atask3%3Atask5%3Atask6%3Atask0%3Atask2%3Atask4%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+10.244.6.111 - - [10/Jun/2019 22:45:27] "GET /receive_price_info?pricing_info=node6%2310.76060606060606%2339.25757575757575%230%24task0%3A140.39081963540107%24task1%3A140.12350406468664%24task3%3A140.0636883313949%24task2%3A140.28632366751137%24task5%3A140.12874620051363%24task4%3A140.16562379066426%24task6%3A140.01747774985242 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.12.15 - - [10/Jun/2019 22:45:27] "GET /receive_assignment_info?assignment_info=node13%23%3Atask2%3Atask3%3Atask4%3Atask5%3Atask6%3Atask0%3Atask1%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task2', 'task3', 'task4', 'task5', 'task6', 'task0', 'task1']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.7.58 - - [10/Jun/2019 22:45:27] "GET /receive_price_info?pricing_info=node8%2312.08787878787879%2339.442424242424224%230%24task0%3A189.4091623565611%24task1%3A186.59743221567433%24task6%3A185.22106238220047%24task4%3A187.0543200489838%24task5%3A186.65459520569064%24task3%3A185.93898975047742%24task2%3A188.3342181590788 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.11.114 - - [10/Jun/2019 22:45:27] "GET /receive_price_info?pricing_info=node12%2313.172727272727274%2340.86060606060605%230%24task4%3A170.88831301889726%24task1%3A170.17896496593684%24task6%3A168.009983370689%24task3%3A169.11851398031854%24task5%3A170.2689059011697%24task2%3A172.7586109699177%24task0%3A174.19464368965978 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+Receive assignment info
+['', 'task5', 'task6', 'task2', 'task4', 'task3', 'task0', 'task1']
+['', 'node6', 'node6', 'node6', 'node6', 'node6', 'node6', 'node6']
+10.244.9.6 - - [10/Jun/2019 22:45:28] "GET /receive_assignment_info?assignment_info=node10%23%3Atask5%3Atask6%3Atask2%3Atask4%3Atask3%3Atask0%3Atask1%23%3Anode6%3Anode6%3Anode6%3Anode6%3Anode6%3Anode6%3Anode6 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task1', 'task2', 'task6', 'task3', 'task0', 'task4', 'task5']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.10.230 - - [10/Jun/2019 22:45:28] "GET /receive_assignment_info?assignment_info=node11%23%3Atask1%3Atask2%3Atask6%3Atask3%3Atask0%3Atask4%3Atask5%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.8.55 - - [10/Jun/2019 22:45:28] "GET /receive_price_info?pricing_info=node9%2313.909090909090912%2339.23636363636363%230%24task3%3A149.4912681380812%24task4%3A150.06602425257347%24task1%3A150.26703237944474%24task6%3A148.78083294191322%24task0%3A145.9468946983183%24task2%3A147.82116656924723%24task5%3A150.33437494936183 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.15.88 - - [10/Jun/2019 22:45:28] "GET /receive_price_info?pricing_info=node18%2312.930303030303028%2343.15454545454545%230%24task2%3A192.08151670416294%24task5%3A190.8829654570012%24task3%3A190.37286068633333%24task1%3A190.84220623122638%24task4%3A191.16804066966856%24task0%3A192.8495260831236%24task6%3A189.9842877059627 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task6', 'task2', 'task3', 'task5', 'task4', 'task0', 'task1']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.13.206 - - [10/Jun/2019 22:45:29] "GET /receive_assignment_info?assignment_info=node14%23%3Atask6%3Atask2%3Atask3%3Atask5%3Atask4%3Atask0%3Atask1%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.12.15 - - [10/Jun/2019 22:45:30] "GET /receive_price_info?pricing_info=node13%2312.6%2339.05454545454547%230%24task2%3A133.0597724591724%24task6%3A132.03176709632328%24task4%3A132.62289872529533%24task5%3A132.48711977702146%24task0%3A133.4292124167591%24task1%3A132.46772810448792%24task3%3A132.24481946548602 HTTP/1.1" 200 -
+10.244.14.177 - - [10/Jun/2019 22:45:30] "GET /receive_price_info?pricing_info=node15%2311.290624999999999%2343.625000000000014%230%24task1%3A147.4557113816324%24task3%3A146.97919054877002%24task5%3A147.4970934156151%24task6%3A146.75088117073844%24task0%3A149.49364323574696%24task2%3A148.71393617640132%24task4%3A147.78652322389084 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+Received pricing info
+Check price updated interval 
+10.244.13.206 - - [10/Jun/2019 22:45:30] "GET /receive_price_info?pricing_info=node14%2313.590625000000003%2338.809375%230%24task6%3A150.57113208898934%24task2%3A149.70223554642354%24task3%3A150.37451354746702%24task5%3A150.17184778777926%24task4%3A150.05931111802866%24task0%3A149.40622835127598%24task1%3A150.1879804933143 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.10.230 - - [10/Jun/2019 22:45:30] "GET /receive_price_info?pricing_info=node11%2312.731249999999998%2339.15625000000001%230%24task1%3A168.5504446155981%24task2%3A169.72005115638942%24task6%3A167.79807555843303%24task3%3A168.10717268958527%24task0%3A170.44423302196626%24task4%3A168.8580736423768%24task5%3A168.5889311821846 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.9.6 - - [10/Jun/2019 22:45:30] "GET /receive_price_info?pricing_info=node10%2310.671875%2339.13124999999999%230%24task5%3A139.411539398905%24task6%3A136.89089687251544%24task2%3A142.68980607501155%24task4%3A140.1921617915487%24task3%3A138.01334799939733%24task0%3A144.78526756443836%24task1%3A139.29988331842736 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task1', 'task2', 'task5', 'task3', 'task0', 'task4', 'task6']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.3.26 - - [10/Jun/2019 22:45:38] "GET /receive_assignment_info?assignment_info=node3%23%3Atask1%3Atask2%3Atask5%3Atask3%3Atask0%3Atask4%3Atask6%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.3.26 - - [10/Jun/2019 22:45:38] "GET /receive_price_info?pricing_info=node3%2313.933333333333332%2359.37272727272726%230%24task1%3A167.09206972285835%24task2%3A166.70053011458936%24task5%3A167.0790778812297%24task3%3A167.24222865174326%24task0%3A166.4615451443946%24task4%3A166.98842823510677%24task6%3A167.36071047367838 HTTP/1.1" 200 -
+Overall price:
+{'network': {'node9': 143.27450695127715, 'node6': 138.6166601849601, 'node8': 1213.2991598668773, 'node11': 3365.7484453614447, 'node18': 1119.4814850652901, 'node12': 2468.4024063847664, 'node3': 2490.7828156470982, 'node15': 2865.176527945877, 'node13': 137.7067507227394, 'node10': 3285.70796690072, 'node14': 3040.229170969443}, 'queue': -1, 'memory': -1, 'cpu': -1}
+Updated assignment periodically
+Select the current best node
+node10
+Select the current best node
+node10
+Select the current best node
+node10
+Select the current best node
+node10
+Select the current best node
+node10
+Select the current best node
+node10
+Select the current best node
+node10
+Announce my current best computing node 10.104.144.181
+Trying to update global assignment
+11
+95
+84
+Fully loaded information
+Announce my current best computing node 10.110.227.217
+Announce my current best computing node 10.111.109.22
+Announce my current best computing node 10.104.60.85
+Announce my current best computing node 10.101.109.236
+Announce my current best computing node 10.97.67.66
+Announce my current best computing node 10.103.107.190
+Announce my current best computing node 10.111.64.1
+Announce my current best computing node 10.96.138.69
+Announce my current best computing node 10.97.215.194
+Announce my current best computing node 10.97.253.111
+Recieved request for number of output files. Current done: 0
+10.244.0.0 - - [10/Jun/2019 22:46:13] "GET / HTTP/1.1" 200 -
+Recieved request for number of output files. Current done: 0
+10.244.0.0 - - [10/Jun/2019 22:47:13] "GET / HTTP/1.1" 200 -
+Receive assignment info
+['', 'task5', 'task3', 'task4', 'task1', 'task6', 'task2', 'task0']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.8.55 - - [10/Jun/2019 22:47:25] "GET /receive_assignment_info?assignment_info=node9%23%3Atask5%3Atask3%3Atask4%3Atask1%3Atask6%3Atask2%3Atask0%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Receive assignment info
+['', 'task4', 'task1', 'task6', 'task3', 'task5', 'task2', 'task0']
+['', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10', 'node10']
+10.244.11.114 - - [10/Jun/2019 22:47:27] "GET /receive_assignment_info?assignment_info=node12%23%3Atask4%3Atask1%3Atask6%3Atask3%3Atask5%3Atask2%3Atask0%23%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10%3Anode10 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.6.111 - - [10/Jun/2019 22:47:27] "GET /receive_price_info?pricing_info=node6%2310.639999999999999%2339.474285714285706%230%24task0%3A140.39081963540107%24task1%3A140.12350406468664%24task3%3A140.0636883313949%24task2%3A140.28632366751137%24task5%3A140.12874620051363%24task4%3A140.16562379066426%24task6%3A140.01747774985242 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.7.58 - - [10/Jun/2019 22:47:27] "GET /receive_price_info?pricing_info=node8%2311.925714285714287%2339.65142857142855%230%24task0%3A189.4091623565611%24task1%3A186.59743221567433%24task6%3A185.22106238220047%24task4%3A187.0543200489838%24task5%3A186.65459520569064%24task3%3A185.93898975047742%24task2%3A188.3342181590788 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.11.114 - - [10/Jun/2019 22:47:27] "GET /receive_price_info?pricing_info=node12%2313.025714285714287%2341.077142857142846%230%24task4%3A170.88831301889726%24task1%3A170.17896496593684%24task6%3A168.009983370689%24task3%3A169.11851398031854%24task5%3A170.2689059011697%24task2%3A172.7586109699177%24task0%3A174.19464368965978 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.8.55 - - [10/Jun/2019 22:47:28] "GET /receive_price_info?pricing_info=node9%2313.720000000000002%2339.451428571428565%230%24task3%3A149.4912681380812%24task4%3A150.06602425257347%24task1%3A150.26703237944474%24task6%3A148.78083294191322%24task0%3A145.9468946983183%24task2%3A147.82116656924723%24task5%3A150.33437494936183 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.15.88 - - [10/Jun/2019 22:47:28] "GET /receive_price_info?pricing_info=node18%2312.777142857142856%2343.379999999999995%230%24task2%3A192.08151670416294%24task5%3A190.8829654570012%24task3%3A190.37286068633333%24task1%3A190.84220623122638%24task4%3A191.16804066966856%24task0%3A192.8495260831236%24task6%3A189.9842877059627 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.12.15 - - [10/Jun/2019 22:47:30] "GET /receive_price_info?pricing_info=node13%2312.422857142857143%2339.265714285714296%230%24task2%3A133.0597724591724%24task6%3A132.03176709632328%24task4%3A132.62289872529533%24task5%3A132.48711977702146%24task0%3A133.4292124167591%24task1%3A132.46772810448792%24task3%3A132.24481946548602 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.14.177 - - [10/Jun/2019 22:47:30] "GET /receive_price_info?pricing_info=node15%2311.1%2343.85588235294119%230%24task1%3A147.4557113816324%24task3%3A146.97919054877002%24task5%3A147.4970934156151%24task6%3A146.75088117073844%24task0%3A149.49364323574696%24task2%3A148.71393617640132%24task4%3A147.78652322389084 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.13.206 - - [10/Jun/2019 22:47:30] "GET /receive_price_info?pricing_info=node14%2313.432352941176473%2339.038235294117655%230%24task6%3A150.57113208898934%24task2%3A149.70223554642354%24task3%3A150.37451354746702%24task5%3A150.17184778777926%24task4%3A150.05931111802866%24task0%3A149.40622835127598%24task1%3A150.1879804933143 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.10.230 - - [10/Jun/2019 22:47:30] "GET /receive_price_info?pricing_info=node11%2312.538235294117644%2339.37647058823531%230%24task1%3A168.5504446155981%24task2%3A169.72005115638942%24task6%3A167.79807555843303%24task3%3A168.10717268958527%24task0%3A170.44423302196626%24task4%3A168.8580736423768%24task5%3A168.5889311821846 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.9.6 - - [10/Jun/2019 22:47:30] "GET /receive_price_info?pricing_info=node10%2310.488235294117647%2339.36176470588234%230%24task5%3A139.411539398905%24task6%3A136.89089687251544%24task2%3A142.68980607501155%24task4%3A140.1921617915487%24task3%3A138.01334799939733%24task0%3A144.78526756443836%24task1%3A139.29988331842736 HTTP/1.1" 200 -
+Received pricing info
+Check price updated interval 
+10.244.3.26 - - [10/Jun/2019 22:47:38] "GET /receive_price_info?pricing_info=node3%2313.728571428571428%2359.585714285714275%230%24task1%3A167.09206972285835%24task2%3A166.70053011458936%24task5%3A167.0790778812297%24task3%3A167.24222865174326%24task0%3A166.4615451443946%24task4%3A166.98842823510677%24task6%3A167.36071047367838 HTTP/1.1" 200 -

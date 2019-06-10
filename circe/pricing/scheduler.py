@@ -1253,67 +1253,67 @@ def get_taskmap():
     print("non tasks", non_tasks)
     return tasks, task_order, super_tasks, non_tasks
 
-def bfs(graph, start,glocal_task_node_map):
-    visited, queue = set(), [start]
-    update = dict()
-    while queue:
-        print('------------')
-        print(queue)
-        vertex = queue.pop(0)
-        print(vertex)
-        print(queue)
-        if vertex not in visited:
-            visited.add(vertex)
-            queue.extend(graph[vertex] - visited)
-            # print('====')
-            # print(vertex)
-            # for item in global_task_node_map:
-            #     print(item)
-            #     print(item[0])
-            #     print(item[1])
-            #     print(global_task_node_map[item])
-            #     c = dict()
-            #     for next_task in next_tasks_map[vertex]:
-            #         print(last_tasks_map[next_task])
-            #         print(len(last_tasks_map[next_task]))
-            #         if len(last_tasks_map[next_task])==1:
-            #             print(global_task_node_map[vertex])
-            #             global_task_node_map[next_task]=local_task_node_map[global_task_node_map[vertex],next_task]
-            #         else:
-            #             for prev_task in last_tasks_map[next_task]:
-            #                 print(prev_task)
-            #                 print(global_task_node_map[prev_task])
-            #                 print(local_task_node_map[global_task_node_map[prev_task],next_task]) 
-            for next_task in tasks[vertex]:
-                # print(last_tasks_map[next_task])
-                # print(len(last_tasks_map[next_task]))
-                # print('====')
-                if len(last_tasks_map[next_task])==1:
-                    # print(global_task_node_map[vertex])
-                    global_task_node_map[next_task]=glocal_task_node_map[global_task_node_map[vertex],next_task]
-                else:
-                    c = dict()
-                    for prev_task in last_tasks_map[next_task]:
-                        # print(prev_task)
-                        print('----')
-                        print(global_task_node_map[prev_task])
-                        print(glocal_task_node_map[global_task_node_map[prev_task],next_task])   
-                        best_avail = glocal_task_node_map[global_task_node_map[prev_task],next_task]
-                        if best_avail not in c:
-                            c[best_avail]=0
-                        else:
-                            c[best_avail]=c[best_avail]+1
-                    best_node = max(c, key=c.get)
-                    global_task_node_map[next_task] = best_node
-                    update[next_task] = True
-                # print(global_task_node_map)
-                # print('====')
-        print(global_task_node_map)
-        print(update)
-        # print(visited)
-        if len(visited) == len(tasks) or len(update)==len(taks):
-            break
-    print(global_task_node_map)
+# def bfs(graph, start,glocal_task_node_map):
+#     visited, queue = set(), [start]
+#     update = dict()
+#     while queue:
+#         print('------------')
+#         print(queue)
+#         vertex = queue.pop(0)
+#         print(vertex)
+#         print(queue)
+#         if vertex not in visited:
+#             visited.add(vertex)
+#             queue.extend(graph[vertex] - visited)
+#             # print('====')
+#             # print(vertex)
+#             # for item in global_task_node_map:
+#             #     print(item)
+#             #     print(item[0])
+#             #     print(item[1])
+#             #     print(global_task_node_map[item])
+#             #     c = dict()
+#             #     for next_task in next_tasks_map[vertex]:
+#             #         print(last_tasks_map[next_task])
+#             #         print(len(last_tasks_map[next_task]))
+#             #         if len(last_tasks_map[next_task])==1:
+#             #             print(global_task_node_map[vertex])
+#             #             global_task_node_map[next_task]=local_task_node_map[global_task_node_map[vertex],next_task]
+#             #         else:
+#             #             for prev_task in last_tasks_map[next_task]:
+#             #                 print(prev_task)
+#             #                 print(global_task_node_map[prev_task])
+#             #                 print(local_task_node_map[global_task_node_map[prev_task],next_task]) 
+#             for next_task in tasks[vertex]:
+#                 # print(last_tasks_map[next_task])
+#                 # print(len(last_tasks_map[next_task]))
+#                 # print('====')
+#                 if len(last_tasks_map[next_task])==1:
+#                     # print(global_task_node_map[vertex])
+#                     global_task_node_map[next_task]=glocal_task_node_map[global_task_node_map[vertex],next_task]
+#                 else:
+#                     c = dict()
+#                     for prev_task in last_tasks_map[next_task]:
+#                         # print(prev_task)
+#                         print('----')
+#                         print(global_task_node_map[prev_task])
+#                         print(glocal_task_node_map[global_task_node_map[prev_task],next_task])   
+#                         best_avail = glocal_task_node_map[global_task_node_map[prev_task],next_task]
+#                         if best_avail not in c:
+#                             c[best_avail]=0
+#                         else:
+#                             c[best_avail]=c[best_avail]+1
+#                     best_node = max(c, key=c.get)
+#                     global_task_node_map[next_task] = best_node
+#                     update[next_task] = True
+#                 # print(global_task_node_map)
+#                 # print('====')
+#         print(global_task_node_map)
+#         print(update)
+#         # print(visited)
+#         if len(visited) == len(tasks) or len(update)==len(taks):
+#             break
+#     print(global_task_node_map)
     
 
 def main():

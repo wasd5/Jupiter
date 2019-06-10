@@ -34,6 +34,7 @@ from apscheduler.schedulers.background import BackgroundScheduler
 from readconfig import read_config
 from shutil import copyfile
 import datetime
+from collections import defaultdict 
 
 app = Flask(__name__)
 
@@ -146,69 +147,70 @@ def get_taskmap():
     return tasks, task_order, super_tasks, non_tasks
 
 
-def bfs(graph, start,glocal_task_node_map):
-    visited, queue = set(), [start]
-    update = dict()
-    while queue:
-        print('------------')
-        print(queue)
-        vertex = queue.pop(0)
-        print(vertex)
-        print(queue)
-        if vertex not in visited:
-            visited.add(vertex)
-            queue.extend(graph[vertex] - visited)
-            # print('====')
-            # print(vertex)
-            # # for item in global_task_node_map:
-            #     print(item)
-            #     print(item[0])
-            #     print(item[1])
-            #     print(global_task_node_map[item])
-            #     c = dict()
-            #     for next_task in next_tasks_map[vertex]:
-            #         print(last_tasks_map[next_task])
-            #         print(len(last_tasks_map[next_task]))
-            #         if len(last_tasks_map[next_task])==1:
-            #             print(global_task_node_map[vertex])
-            #             global_task_node_map[next_task]=local_task_node_map[global_task_node_map[vertex],next_task]
-            #         else:
-            #             for prev_task in last_tasks_map[next_task]:
-            #                 print(prev_task)
-            #                 print(global_task_node_map[prev_task])
-            #                 print(local_task_node_map[global_task_node_map[prev_task],next_task]) 
 
-            for next_task in tasks[vertex]:
-                # print(last_tasks_map[next_task])
-                # print(len(last_tasks_map[next_task]))
-                # print('====')
-                # print(next_task)
-                if len(last_tasks_map[next_task])==1:
-                    # print(global_task_node_map[vertex])
-                    global_task_node_map[next_task]=glocal_task_node_map[global_task_node_map[vertex],next_task]
-                else:
-                    c = dict()
-                    for prev_task in last_tasks_map[next_task]:
-                        # print(prev_task)
-                        print('----')
-                        print(global_task_node_map[prev_task])
-                        print(glocal_task_node_map[global_task_node_map[prev_task],next_task])   
-                        best_avail = glocal_task_node_map[global_task_node_map[prev_task],next_task]
-                        if best_avail not in c:
-                            c[best_avail]=0
-                        else:
-                            c[best_avail]=c[best_avail]+1
-                    best_node = max(c, key=c.get)
-                    global_task_node_map[next_task] = best_node
-                    update[next_task] = True
-                # print(global_task_node_map)
-                # print('====')
-        print(global_task_node_map)      
-        print(update)  
-        # print(visited)
-        if len(visited) == len(tasks) or len(update)==len(tasks):
-            break
-    print(global_task_node_map)
+# def bfs(graph, start,glocal_task_node_map):
+#     visited, queue = set(), [start]
+#     update = dict()
+#     while queue:
+#         print('------------')
+#         print(queue)
+#         vertex = queue.pop(0)
+#         print(vertex)
+#         print(queue)
+#         if vertex not in visited:
+#             visited.add(vertex)
+#             queue.extend(graph[vertex] - visited)
+#             # print('====')
+#             # print(vertex)
+#             # # for item in global_task_node_map:
+#             #     print(item)
+#             #     print(item[0])
+#             #     print(item[1])
+#             #     print(global_task_node_map[item])
+#             #     c = dict()
+#             #     for next_task in next_tasks_map[vertex]:
+#             #         print(last_tasks_map[next_task])
+#             #         print(len(last_tasks_map[next_task]))
+#             #         if len(last_tasks_map[next_task])==1:
+#             #             print(global_task_node_map[vertex])
+#             #             global_task_node_map[next_task]=local_task_node_map[global_task_node_map[vertex],next_task]
+#             #         else:
+#             #             for prev_task in last_tasks_map[next_task]:
+#             #                 print(prev_task)
+#             #                 print(global_task_node_map[prev_task])
+#             #                 print(local_task_node_map[global_task_node_map[prev_task],next_task]) 
+
+#             for next_task in tasks[vertex]:
+#                 # print(last_tasks_map[next_task])
+#                 # print(len(last_tasks_map[next_task]))
+#                 # print('====')
+#                 # print(next_task)
+#                 if len(last_tasks_map[next_task])==1:
+#                     # print(global_task_node_map[vertex])
+#                     global_task_node_map[next_task]=glocal_task_node_map[global_task_node_map[vertex],next_task]
+#                 else:
+#                     c = dict()
+#                     for prev_task in last_tasks_map[next_task]:
+#                         # print(prev_task)
+#                         print('----')
+#                         print(global_task_node_map[prev_task])
+#                         print(glocal_task_node_map[global_task_node_map[prev_task],next_task])   
+#                         best_avail = glocal_task_node_map[global_task_node_map[prev_task],next_task]
+#                         if best_avail not in c:
+#                             c[best_avail]=0
+#                         else:
+#                             c[best_avail]=c[best_avail]+1
+#                     best_node = max(c, key=c.get)
+#                     global_task_node_map[next_task] = best_node
+#                     update[next_task] = True
+#                 # print(global_task_node_map)
+#                 # print('====')
+#         print(global_task_node_map)      
+#         print(update)  
+#         # print(visited)
+#         if len(visited) == len(tasks) or len(update)==len(tasks):
+#             break
+#     print(global_task_node_map)
 
 def prepare_global_info():
 
@@ -334,10 +336,12 @@ def prepare_global_info():
                 last_tasks_map[last_task].append(task)
 
     global graph
-    graph = dict()
+    graph= Graph(len(tasks)) 
     for tmp_task in tasks:
-        graph[tmp_task] = set(tasks[tmp_task])
-    print('SETTTT')
+        for nb in tasks[tmp_task]:
+            graph.addEdge(tmp_task,nb)
+        # graph[tmp_task] = set(tasks[tmp_task])
+    print('GRAPH')
     print(graph)
 
     last_tasks_map[os.environ['CHILD_NODES']] = []
@@ -462,7 +466,7 @@ def push_assignment_map():
         # print('----')
         # print(self_name)
         local_task_node_map[self_name,task] = best_node
-    # print(local_task_node_map)
+    print(local_task_node_map)
     # for computing_ip in computing_ips:
     task_list = ''
     best_list = ''
@@ -555,7 +559,11 @@ def update_global_assignment():
         global_task_node_map[first_task]=local_task_node_map[self_name,first_task]
         # print(global_task_node_map)
         glocal_task_node_map = dict(local_task_node_map)
-        bfs(graph, first_task,glocal_task_node_map)
+        print('======')
+        print(local_task_node_map)
+        print('======') 
+        graph.topologicalSort() 
+        #bfs(graph, first_task,glocal_task_node_map)
         # for task in tasks:
         #     print(task)
         #     print(next_tasks_map[task])
@@ -1898,6 +1906,66 @@ class MonitorRecv(multiprocessing.Process):
         """
         print("Flask server started")
         app.run(host='0.0.0.0', port=FLASK_DOCKER)
+
+class Graph(): 
+    def __init__(self,vertices): 
+        self.graph = defaultdict(list) #dictionary containing adjacency List 
+        self.V = vertices #No. of vertices 
+  
+    # function to add an edge to graph 
+    def addEdge(self,u,v): 
+        self.graph[u].append(v) 
+    def topologicalSort(self): 
+              
+        # Create a vector to store indegrees of all 
+        # vertices. Initialize all indegrees as 0. 
+        in_degree = [0]*(self.V) 
+          
+        # Traverse adjacency lists to fill indegrees of 
+           # vertices.  This step takes O(V+E) time 
+        for i in self.graph: 
+            for j in self.graph[i]: 
+                in_degree[j] += 1
+
+        # Create an queue and enqueue all vertices with 
+        # indegree 0 
+        queue = [] 
+        for i in range(self.V): 
+            if in_degree[i] == 0: 
+                queue.append(i) 
+
+        #Initialize count of visited vertices 
+        cnt = 0
+
+        # Create a vector to store result (A topological 
+        # ordering of the vertices) 
+        top_order = [] 
+
+        # One by one dequeue vertices from queue and enqueue 
+        # adjacents if indegree of adjacent becomes 0 
+        while queue: 
+
+            # Extract front of queue (or perform dequeue) 
+            # and add it to topological order 
+            u = queue.pop(0) 
+            top_order.append(u) 
+            # Iterate through all neighbouring nodes 
+            # of dequeued node u and decrease their in-degree 
+            # by 1 
+            for i in self.graph[u]: 
+                in_degree[i] -= 1
+                # If in-degree becomes zero, add it to queue 
+                if in_degree[i] == 0: 
+                    queue.append(i) 
+
+            cnt += 1
+
+        # Check if there was a cycle 
+        if cnt != self.V: 
+            print("There exists a cycle in the graph")
+        else : 
+            #Print topological order 
+            print(top_order)
 
 def main():
     
