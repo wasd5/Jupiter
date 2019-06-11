@@ -1,15 +1,18 @@
-graph = dict()
-graph = {'task0': {'task2', 'task3', 'task1', 'task4'}, 'task3': {'task6', 'task4', 'task5'}, 'task6': {'home'}, 'task2': {'task6', 'task4', 'task5'}, 'task1': {'task4'}, 'task4': {'task6'}, 'task5': {'task6'}}
-# task 6 -> home ????
+# graph = dict()
+# graph = {'task0': {'task2', 'task3', 'task1', 'task4'}, 'task3': {'task6', 'task4', 'task5'}, 'task6': {'home'}, 'task2': {'task6', 'task4', 'task5'}, 'task1': {'task4'}, 'task4': {'task6'}, 'task5': {'task6'}}
+# # task 6 -> home ????
 
-print(graph)
+# print(graph)
 glocal_task_node_map = dict()
 
 from collections import defaultdict 
   
 #Class to represent a graph 
+local_task_node_map = {('node14', 'task1'): 'node10', ('node12', 'task0'): 'node10', ('node13', ''): 'node10', ('node15', 'task0'): 'node6', ('node11', 'task0'): 'node6', ('node9', 'task1'): 'node8', ('node10', 'task5'): 'node6', ('node13', 'task0'): 'node10', ('node11', 'task5'): 'node6', ('node14', 'task2'): 'node10', ('node14', ''): 'node10', ('node18', 'task5'): 'node6', ('node13', 'task4'): 'node10', ('node12', 'task5'): 'node10', ('node14', 'task4'): 'node10', ('home', 'task3'): 'node10', ('node10', 'task6'): 'node6', ('node9', 'task4'): 'node8', ('node13', 'task1'): 'node10', ('node12', 'task4'): 'node10', ('node11', 'task6'): 'node6', ('node18', 'task4'): 'node6', ('node18', 'task6'): 'node6', ('node9', 'task2'): 'node8', ('node11', 'task4'): 'node6', ('node12', 'task6'): 'node10', ('node18', ''): 'node6', ('node11', ''): 'node6', ('node13', 'task2'): 'node10', ('node15', 'task3'): 'node6', ('node15', 'task2'): 'node6', ('node13', 'task3'): 'node10', ('node12', ''): 'node10', ('node18', 'task1'): 'node6', ('node9', 'task3'): 'node8', ('node15', ''): 'node6', ('node11', 'task1'): 'node6', ('node13', 'task6'): 'node10', ('node10', 'task0'): 'node6', ('node10', 'task1'): 'node6', ('node12', 'task1'): 'node10', ('home', 'task2'): 'node10', ('node18', 'task0'): 'node6', ('home', 'task6'): 'node10', ('node9', 'task5'): 'node8', ('home', 'task1'): 'node10', ('node14', 'task3'): 'node10', ('node13', 'task5'): 'node10', ('home', ''): 'node10', ('node9', 'task6'): 'node8', ('node10', 'task4'): 'node6', ('node14', 'task6'): 'node10', ('home', 'task0'): 'node10', ('node15', 'task4'): 'node6', ('node15', 'task6'): 'node6', ('node10', 'task2'): 'node6', ('home', 'task5'): 'node10', ('node15', 'task5'): 'node6', ('node12', 'task3'): 'node10', ('node11', 'task2'): 'node6', ('node14', 'task5'): 'node10', ('node18', 'task3'): 'node6', ('node18', 'task2'): 'node6', ('node11', 'task3'): 'node6', ('node12', 'task2'): 'node10', ('node9', ''): 'node8', ('node14', 'task0'): 'node10', ('node10', 'task3'): 'node6', ('node15', 'task1'): 'node6', ('node9', 'task0'): 'node8', ('home', 'task4'): 'node10'}
 
-local_task_node_map = {('node14', 'task6'): 'node10', ('node3', 'task6'): 'node10', ('node14', 'task0'): 'node10', ('node13', 'task1'): 'node10', ('node9', 'task1'): 'node10', ('node13', 'task5'): 'node10', ('node15', 'task4'): 'node10', ('node14', 'task4'): 'node10', ('node9', 'task6'): 'node10', ('node10', 'task0'): 'node6', ('node10', 'task3'): 'node6', ('node6', 'task5'): 'node10', ('node14', 'task5'): 'node10', ('node11', 'task1'): 'node10', ('node15', 'task1'): 'node10', ('node18', 'task4'): 'node10', ('node10', 'task2'): 'node6', ('node6', 'task3'): 'node10', ('node11', 'task2'): 'node10', ('node8', 'task5'): 'node10', ('node11', 'task3'): 'node10', ('node3', 'task0'): 'node10', ('node3', 'task1'): 'node10', ('node8', 'task4'): 'node10', ('node6', 'task6'): 'node10', ('node8', 'task6'): 'node10', ('home', 'task5'): 'node10', ('node15', ''): 'node10', ('node3', 'task4'): 'node10', ('node9', 'task0'): 'node10', ('node8', 'task1'): 'node10', ('node15', 'task5'): 'node10', ('node8', 'task3'): 'node10', ('node11', 'task5'): 'node10', ('node8', 'task2'): 'node10', ('node18', 'task3'): 'node10', ('node3', 'task5'): 'node10', ('node15', 'task6'): 'node10', ('node11', 'task4'): 'node10', ('home', ''): 'node10', ('node12', 'task6'): 'node10', ('home', 'task3'): 'node10', ('home', 'task1'): 'node10', ('node18', 'task5'): 'node10', ('node12', ''): 'node10', ('node13', ''): 'node10', ('node6', 'task0'): 'node10', ('node6', 'task2'): 'node10', ('node14', 'task2'): 'node10', ('node10', 'task4'): 'node6', ('node9', 'task3'): 'node10', ('node10', 'task5'): 'node6', ('node6', 'task4'): 'node10', ('node13', 'task0'): 'node10', ('node10', 'task1'): 'node6', ('node13', 'task2'): 'node10', ('node12', 'task4'): 'node10', ('node18', 'task6'): 'node10', ('node14', 'task3'): 'node10', ('node9', 'task5'): 'node10', ('node13', 'task4'): 'node10', ('home', 'task4'): 'node10', ('node11', ''): 'node10', ('node11', 'task0'): 'node10', ('node6', ''): 'node10', ('node9', ''): 'node10', ('node12', 'task5'): 'node10', ('node3', 'task2'): 'node10', ('home', 'task0'): 'node10', ('node3', 'task3'): 'node10', ('node3', ''): 'node10', ('node8', 'task0'): 'node10', ('node12', 'task0'): 'node10', ('node14', 'task1'): 'node10', ('node9', 'task2'): 'node10', ('node9', 'task4'): 'node10', ('node13', 'task6'): 'node10', ('node18', 'task2'): 'node10', ('node8', ''): 'node10', ('node18', 'task0'): 'node10', ('node18', ''): 'node10', ('node12', 'task2'): 'node10', ('node10', 'task6'): 'node6', ('home', 'task2'): 'node10', ('node18', 'task1'): 'node10', ('node11', 'task6'): 'node10', ('node15', 'task0'): 'node10', ('node13', 'task3'): 'node10', ('node14', ''): 'node10', ('node15', 'task2'): 'node10', ('home', 'task6'): 'node10', ('node6', 'task1'): 'node10', ('node12', 'task1'): 'node10', ('node15', 'task3'): 'node10', ('node12', 'task3'): 'node10'}
+global_task_node_map =  dict()
+
+
 class Graph(): 
     def __init__(self,vertices): 
         self.graph = defaultdict(list) #dictionary containing adjacency List 
@@ -46,12 +49,22 @@ class Graph():
 
         # One by one dequeue vertices from queue and enqueue 
         # adjacents if indegree of adjacent becomes 0 
+        print(local_task_node_map)
         while queue: 
 
             # Extract front of queue (or perform dequeue) 
             # and add it to topological order 
             u = queue.pop(0) 
             top_order.append(u) 
+            print('------')
+            print(u)
+
+            if len(top_order)==1:
+                global_task_node_map[u] = local_task_node_map[('home',u)]
+                cur_node = global_task_node_map[u]
+            else:
+                tmp_next_list = 
+
             # Iterate through all neighbouring nodes 
             # of dequeued node u and decrease their in-degree 
             # by 1 

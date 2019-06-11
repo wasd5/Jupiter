@@ -466,6 +466,7 @@ def push_assignment_map():
         # print('----')
         # print(self_name)
         local_task_node_map[self_name,task] = best_node
+    print('===================================')
     print(local_task_node_map)
     # for computing_ip in computing_ips:
     task_list = ''
@@ -1910,28 +1911,28 @@ class MonitorRecv(multiprocessing.Process):
 class Graph(): 
     def __init__(self,vertices): 
         self.graph = defaultdict(list) #dictionary containing adjacency List 
-        self.V = vertices #No. of vertices 
+        self.V = vertices #List of vertices 
   
     # function to add an edge to graph 
     def addEdge(self,u,v): 
         self.graph[u].append(v) 
     def topologicalSort(self): 
               
-        # Create a vector to store indegrees of all 
-        # vertices. Initialize all indegrees as 0. 
-        in_degree = [0]*(self.V) 
+        #in_degree = [0]*(self.V) 
+        in_degree = dict.fromkeys(self.V, 0)
           
         # Traverse adjacency lists to fill indegrees of 
            # vertices.  This step takes O(V+E) time 
         for i in self.graph: 
-            for j in self.graph[i]: 
+            for j in self.graph[i]:
                 in_degree[j] += 1
 
         # Create an queue and enqueue all vertices with 
         # indegree 0 
         queue = [] 
-        for i in range(self.V): 
-            if in_degree[i] == 0: 
+        # for i in range(self.V):
+        for i in self.V:
+            if in_degree[i] == 0:
                 queue.append(i) 
 
         #Initialize count of visited vertices 
@@ -1956,16 +1957,15 @@ class Graph():
                 in_degree[i] -= 1
                 # If in-degree becomes zero, add it to queue 
                 if in_degree[i] == 0: 
-                    queue.append(i) 
-
+                    queue.append(i)
             cnt += 1
 
         # Check if there was a cycle 
-        if cnt != self.V: 
+        if cnt != len(self.V): 
             print("There exists a cycle in the graph")
         else : 
             #Print topological order 
-            print(top_order)
+            print(top_order) 
 
 def main():
     
