@@ -117,10 +117,10 @@ def set_globals():
 	KUBECONFIG_PATH         = os.environ['KUBECONFIG']
 
 	# Namespaces
-	DEPLOYMENT_NAMESPACE    = 'johndoe-circe'
-	PROFILER_NAMESPACE      = 'johndoe-profiler'
-	MAPPER_NAMESPACE        = 'johndoe-mapper'
-	EXEC_NAMESPACE          = 'johndoe-exec'
+	DEPLOYMENT_NAMESPACE    = 'zxc-circe'
+	PROFILER_NAMESPACE      = 'zxc-profiler'
+	MAPPER_NAMESPACE        = 'zxc-mapper'
+	EXEC_NAMESPACE          = 'zxc-exec'
 
 	""" Node file path and first task information """
 	global HOME_NODE, HOME_CHILD
