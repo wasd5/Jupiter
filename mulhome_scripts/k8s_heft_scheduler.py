@@ -34,7 +34,9 @@ def k8s_heft_scheduler(profiler_ips, ex_profiler_ips, node_names,app_name):
     nexthost_names = ''
     path2 = jupiter_config.HERE + 'nodes.txt'
     nodes, homes = utilities.k8s_get_nodes_worker(path2)
-
+    print("==============node homes=============")
+    print(nodes)
+    print(homes)
     """
         This loads the kubernetes instance configuration.
         In our case this is stored in admin.conf.
